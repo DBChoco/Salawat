@@ -22,7 +22,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         URL cssURL = getClass().getResource("css/main.css");
         scene.getStylesheets().add(cssURL.toExternalForm());
-        stage.setTitle("Hello!");
+        stage.setTitle("Salawat");
         stage.setScene(scene);
         stage.show();
 
