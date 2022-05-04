@@ -2,6 +2,7 @@ package io.github.dbchoco.salawat;
 
 import io.github.dbchoco.salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.salawat.helpers.Controllers;
+import io.github.dbchoco.salawat.helpers.StageController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +19,13 @@ import java.util.TimerTask;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         URL cssURL = getClass().getResource("css/main.css");
         scene.getStylesheets().add(cssURL.toExternalForm());
         stage.setTitle("Salawat");
-        stage.setScene(scene);
+        StageController.setStage(stage);
+        StageController.setCurrentScene(scene);
         stage.show();
 
 
