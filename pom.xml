@@ -71,7 +71,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>io.github.dbchoco.salawat/io.github.dbchoco.salawat.HelloApplication</mainClass>
+                            <mainClass>io.github.dbchoco.salawat/io.github.dbchoco.salawat.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

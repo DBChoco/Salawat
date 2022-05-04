@@ -13,7 +13,8 @@
          </HBox>
          <VBox prefHeight="753.0" prefWidth="1280.0">
             <children>
-               <fx:include fx:id="middle" source="main/clock.fxml" />
+               <fx:include fx:id="clock" source="main/clock.fxml" />
+               <fx:include fx:id="prayerGrid" source="main/prayerGrid.fxml" />
             </children>
          </VBox>
          <HBox prefHeight="40.0" prefWidth="1280.0">
