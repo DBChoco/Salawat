@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.ClockController">
+<AnchorPane prefHeight="238.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.main.TimeController">
    <GridPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="401.0">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,17 +21,26 @@
       <children>
          <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
             <children>
-                <Label id="clock" fx:id="clock" styleClass="title" text="00:00:00" />
+                <Label id="clock" fx:id="clock" styleClass="title" text="00:00:00">
+                  <font>
+                     <Font name="MFXResources" size="83.0" />
+                  </font></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
             <children>
-                <Label id="date" fx:id="date" styleClass="title" text="00/00/0000" />
+                <Label id="date" fx:id="date" styleClass="title" text="00/00/0000">
+                  <font>
+                     <Font name="MFXResources" size="31.0" />
+                  </font></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
             <children>
-                <Label id="timeLeft" fx:id="timeLeft" text="Time before X: XX:XX:XX" />
+                <Label id="timeLeft" fx:id="timeLeft" text="Time before X: XX:XX:XX">
+                  <font>
+                     <Font name="MFXResources" size="32.0" />
+                  </font></Label>
             </children>
          </FlowPane>
       </children>

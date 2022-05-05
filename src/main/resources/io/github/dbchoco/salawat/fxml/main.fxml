@@ -7,24 +7,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0"
-      xmlns="http://javafx.com/javafx/18"
-      xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <BorderPane prefHeight="720.0" prefWidth="1280.0">
       <top>
          <HBox prefHeight="65.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
-            <AnchorPane prefHeight="19.0" prefWidth="333.0">
-               <fx:include fx:id="header" source="main/title.fxml" />
+            <AnchorPane>
+               <fx:include fx:id="header" source="main/header.fxml" />
             </AnchorPane>
-            <AnchorPane prefHeight="29.0" prefWidth="952.0" />
+            <AnchorPane />
          </HBox>
       </top>
       <center>
-         <VBox alignment="CENTER" prefHeight="640.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <VBox alignment="TOP_CENTER" prefHeight="640.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
             <children>
                <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="183.0" prefWidth="1280.0">
                   <children>
-                     <fx:include fx:id="clock" source="main/clock.fxml" />
+                     <fx:include fx:id="clock" source="main/time.fxml" />
                   </children>
                </FlowPane>
                <FlowPane alignment="CENTER" prefHeight="123.0" prefWidth="1280.0">

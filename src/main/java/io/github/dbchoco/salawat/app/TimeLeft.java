@@ -1,4 +1,4 @@
-package io.github.dbchoco.salawat.helpers;
+package io.github.dbchoco.salawat.app;
 
 public class TimeLeft {
     private int hours;

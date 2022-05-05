@@ -10,7 +10,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="io.github.dbchoco.salawat.controllers.FooterController"
+            fx:controller="io.github.dbchoco.salawat.controllers.main.FooterController"
             prefHeight="400.0" prefWidth="600.0">
-    <MFXButton fx:id="settingsButton" id="settingsButton" text="Settings" minHeight="27.0" minWidth="70.0" GridPane.rowIndex="1"/>
+    <MFXButton fx:id="settingsButton" id="settingsButton" text="Settings" minHeight="27.0" minWidth="70.0"/>
 </AnchorPane>

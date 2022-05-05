@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
-<AnchorPane prefHeight="236.0" prefWidth="256.0"
-            xmlns="http://javafx.com/javafx/18"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.github.dbchoco.salawat.controllers.PrayerGridController">
-    <MFXProgressBar fx:id="progressBar" id="progressBar"/>
+<AnchorPane prefHeight="236.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.main.PrayerGridController">
+    <MFXProgressBar id="progressBar" fx:id="progressBar" layoutY="-1.0" prefHeight="6.0" prefWidth="257.0" />
     <GridPane prefHeight="263.0" prefWidth="257.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,40 +26,112 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <Label fx:id="fajrText" text="Fajr" />
-            <Label fx:id="sunriseText" text="Sunrise" GridPane.rowIndex="1" />
-            <Label fx:id="dhuhrText" text="Dhuhr" GridPane.rowIndex="2" />
-            <Label fx:id="asrText" text="Asr" GridPane.rowIndex="3" />
-            <Label fx:id="maghribText" text="Maghrib" GridPane.rowIndex="4" />
-            <Label fx:id="ishaText" text="Isha" GridPane.rowIndex="5" />
+            <Label fx:id="fajrText" text="Fajr">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+            <Label fx:id="sunriseText" text="Sunrise" GridPane.rowIndex="1">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+            <Label fx:id="dhuhrText" text="Dhuhr" GridPane.rowIndex="2">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+            <Label fx:id="asrText" text="Asr" GridPane.rowIndex="3">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+            <Label fx:id="maghribText" text="Maghrib" GridPane.rowIndex="4">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+            <Label fx:id="ishaText" text="Isha" GridPane.rowIndex="5">
+            <font>
+               <Font name="MFXResources" size="26.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
          <FlowPane alignment="CENTER_RIGHT" columnHalignment="RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                  <Label fx:id="fajrTime" text="00:00" />
+                  <Label fx:id="fajrTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                  <Label fx:id="sunriseTime" text="00:00" />
+                  <Label fx:id="sunriseTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                  <Label fx:id="dhuhrTime" text="00:00" />
+                  <Label fx:id="dhuhrTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <children>
-                  <Label fx:id="asrTime" text="00:00" />
+                  <Label fx:id="asrTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <children>
-                  <Label fx:id="maghribTime" text="00:00" />
+                  <Label fx:id="maghribTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
          <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <children>
-                  <Label fx:id="ishaTime" text="00:00" />
+                  <Label fx:id="ishaTime" text="00:00">
+                  <font>
+                     <Font name="MFXResources" size="26.0" />
+                  </font>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets></Label>
             </children>
          </FlowPane>
         </children>

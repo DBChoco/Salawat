@@ -5,14 +5,13 @@ import com.batoulapps.adhan.CalculationParameters;
 import com.batoulapps.adhan.Coordinates;
 import com.batoulapps.adhan.PrayerTimes;
 import com.batoulapps.adhan.data.DateComponents;
-import io.github.dbchoco.salawat.helpers.TimeLeft;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
 public class PrayerTimesCalculator {
-    final Coordinates coordinates = new Coordinates(50.40, 4.5);
+    final Coordinates coordinates = new Coordinates((Double) UserSettings.getSettings("lat", 50.24), (Double) UserSettings.getSettings("lon", 4.26));
     final DateComponents dateComponents = DateComponents.from(new Date());
     final CalculationParameters parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
 
@@ -20,6 +19,8 @@ public class PrayerTimesCalculator {
     private Prayer currentPrayer;
     private Prayer nextPrayer;
 
+    public PrayerTimesCalculator() throws ClassNotFoundException {
+    }
 
     public void calculatePrayerTimes(){
 
@@ -39,7 +40,7 @@ public class PrayerTimesCalculator {
     }
 
 
-    public Prayer calculatePrayers(){
+    public void calculatePrayers(){
         prayerTimes = new PrayerTimes(coordinates, dateComponents, parameters);
         Date now = new Date();
         if (now.compareTo(prayerTimes.fajr) < 0){
@@ -66,7 +67,6 @@ public class PrayerTimesCalculator {
             currentPrayer = new Prayer("isha", prayerTimes.isha);
             nextPrayer = new Prayer("fajr", prayerTimes.fajr); //TODO Make it tomorrow prayers
         }
-        return nextPrayer;
     }
 
     public TimeLeft timeUntilNextPrayer(){

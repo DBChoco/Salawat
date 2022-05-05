@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="io.github.dbchoco.salawat.controllers.settings.settingsController"
-            prefHeight="400.0" prefWidth="600.0">
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.github.dbchoco.salawat.controllers.settings.SettingsController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1280.0">
+          <top>
+              <HBox alignment="CENTER">
+                  <Label text="Settings"/>
+              </HBox>
+          </top>
+         <center>
+            <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <fx:include fx:id="sideBar" source="settings/sideBar.fxml" />
+                <FlowPane fx:id="mainSettings" alignment="CENTER" BorderPane.alignment="CENTER">
+                    <fx:include source="settings/tabs/general.fxml" />
+                </FlowPane>
+            </FlowPane>
+         </center>
+          <bottom>
+              <fx:include fx:id="footer" source="settings/footer.fxml" />
+          </bottom>
+      </BorderPane>
+   </children>
 </AnchorPane>

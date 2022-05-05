@@ -1,4 +1,4 @@
-package io.github.dbchoco.salawat.controllers;
+package io.github.dbchoco.salawat.controllers.main;
 
 import javafx.fxml.FXML;
 

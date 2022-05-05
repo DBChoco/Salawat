@@ -5,6 +5,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/16"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.github.dbchoco.salawat.controllers.HeaderController">
+            fx:controller="io.github.dbchoco.salawat.controllers.main.HeaderController">
       <Label id="title" fx:id="title" styleClass="title" text="Salawat" />
 </AnchorPane>

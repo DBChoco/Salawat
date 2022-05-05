@@ -1,9 +1,9 @@
-package io.github.dbchoco.salawat.controllers;
+package io.github.dbchoco.salawat.controllers.settings;
 
 import io.github.dbchoco.salawat.Main;
+import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.dbchoco.salawat.helpers.StageController;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,12 +13,25 @@ import java.io.IOException;
 import java.net.URL;
 
 public class FooterController {
-    public MFXButton settingsButton;
+    public MFXButton returnButton;
 
-    public void initialize(){
-        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    public void initialize() {
+        returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings.fxml"));
+
+                try {
+                    Controllers.getSettingsPage(SideBarController.currentTab).saveSettings();
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
+                try {
+                    Main.reload();
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
                 Scene scene = null;
                 try {
                     scene = new Scene(fxmlLoader.load(), 1280, 720);

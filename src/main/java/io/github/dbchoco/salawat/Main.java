@@ -1,5 +1,6 @@
 package io.github.dbchoco.salawat;
 
+import io.github.dbchoco.salawat.app.Displayer;
 import io.github.dbchoco.salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.dbchoco.salawat.helpers.StageController;
@@ -17,8 +18,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main extends Application {
+
+    private static PrayerTimesCalculator prayerTimesCalculator;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, ClassNotFoundException {
+        loadPrayerTimes();
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         URL cssURL = getClass().getResource("css/main.css");
@@ -26,39 +31,23 @@ public class Main extends Application {
         stage.setTitle("Salawat");
         StageController.setStage(stage);
         StageController.setCurrentScene(scene);
+
         stage.show();
-
-
-        PrayerTimesCalculator prayerTimesCalculator = new PrayerTimesCalculator();
-        prayerTimesCalculator.printPrayerTimes();
-        prayerTimesCalculator.calculatePrayers();
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(new Runnable(){
-                    @Override
-                    public void run() {
-                        Date date = new Date();
-                        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-                        Controllers.getClockController().clock.setText(formatter.format(date));
-                        Controllers.getClockController().timeLeft.setText("Time until " + prayerTimesCalculator.getNextPrayer().getName() + ": " +  prayerTimesCalculator.timeUntilNextPrayer().toString());
-                    }
-                });
-            }
-        }, 0, 1000);
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                Date date = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                Controllers.getClockController().date.setText(formatter.format(date));
-                Controllers.getPrayerGridController().setPrayerTimes(prayerTimesCalculator.getPrayerTimes());
-            }
-        });
     }
 
+    public static void loadPrayerTimes() throws ClassNotFoundException {
+        prayerTimesCalculator = new PrayerTimesCalculator();
+        prayerTimesCalculator.printPrayerTimes();
+        prayerTimesCalculator.calculatePrayers();
+    }
+
+
+    public static PrayerTimesCalculator getPrayerTimesCalculator() {
+        return prayerTimesCalculator;
+    }
+    public static void reload() throws ClassNotFoundException {
+        loadPrayerTimes();
+    }
     public static void main(String[] args) {
         launch();
     }

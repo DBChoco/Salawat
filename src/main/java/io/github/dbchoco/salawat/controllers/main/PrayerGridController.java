@@ -1,6 +1,8 @@
-package io.github.dbchoco.salawat.controllers;
+package io.github.dbchoco.salawat.controllers.main;
 
 import com.batoulapps.adhan.PrayerTimes;
+import io.github.dbchoco.salawat.Main;
+import io.github.dbchoco.salawat.app.Displayer;
 import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.palexdev.materialfx.beans.NumberRange;
 import io.github.palexdev.materialfx.controls.MFXProgressBar;
@@ -43,6 +45,7 @@ public class PrayerGridController{
         Controllers.setPrayerGridController(this);
         progressBar.getRanges1().add(NumberRange.of(0.0,1.0));
         createAndPlayAnimation(progressBar);
+        Controllers.getPrayerGridController().setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
     }
 
     private void createAndPlayAnimation(ProgressIndicator indicator) {
