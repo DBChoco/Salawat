@@ -35,12 +35,14 @@ public class Main extends Application {
         stage.show();
     }
 
+    private void launchPrayerTimer(){
+
+    }
     public static void loadPrayerTimes() throws ClassNotFoundException {
         prayerTimesCalculator = new PrayerTimesCalculator();
         prayerTimesCalculator.printPrayerTimes();
         prayerTimesCalculator.calculatePrayers();
     }
-
 
     public static PrayerTimesCalculator getPrayerTimesCalculator() {
         return prayerTimesCalculator;

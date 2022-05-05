@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="236.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.main.PrayerGridController">
-    <MFXProgressBar id="progressBar" fx:id="progressBar" layoutY="-1.0" prefHeight="6.0" prefWidth="257.0" />
-    <GridPane prefHeight="263.0" prefWidth="257.0">
+<AnchorPane prefHeight="287.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.main.PrayerGridController">
+    <MFXProgressBar id="progressBar" fx:id="progressBar" layoutY="-1.0" prefHeight="11.0" prefWidth="314.0" progress="0" />
+    <GridPane id="prayerGrid" layoutY="12.0" prefHeight="275.0" prefWidth="314.0" style="-fx-padding: 5px;">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -135,5 +135,8 @@
             </children>
          </FlowPane>
         </children>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
     </GridPane>
 </AnchorPane>

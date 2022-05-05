@@ -76,6 +76,12 @@ public class PrayerTimesCalculator {
         return timeLeft;
     }
 
+    public double progressTime(){
+        Date now = new Date();
+        return (double) 1 - (nextPrayer.getPrayerTimes().getTime() - now.getTime()) /
+                (double) (nextPrayer.getPrayerTimes().getTime() - currentPrayer.getPrayerTimes().getTime());
+    }
+
     public Prayer getNextPrayer() {
         return nextPrayer;
     }

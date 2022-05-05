@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="io.github.dbchoco.salawat.controllers.main.FooterController"
-            prefHeight="400.0" prefWidth="600.0">
-    <MFXButton fx:id="settingsButton" id="settingsButton" text="Settings" minHeight="27.0" minWidth="70.0"/>
+<AnchorPane prefHeight="9.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.main.FooterController">
+   <HBox prefHeight="0.0" prefWidth="1280.0">
+      <children>
+         <HBox prefHeight="0.0" prefWidth="795.0" />
+         <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="512.0" style="-fx-padding: 10px;">
+            <children>
+                <MFXButton id="settingsButton" fx:id="settingsButton" minHeight="27.0" minWidth="70.0" text="Settings" />
+            </children>
+         </HBox>
+      </children>
+   </HBox>
 </AnchorPane>

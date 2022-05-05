@@ -1,8 +1,27 @@
+#root{
+    -fx-background-color: #4eaf99;
+}
+
 #title{
     -fx-font-size: 20px;
     -fx-padding: 5px 0 0 5px;
 }
 
-#date{
-    -fx-font-size: 20px;
+#clock, #date, #timeLeft{
+    -fx-background-color: #8c60d3;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#progressBar{
+    -fx-border-radius: 10px 10px 0 0;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+#prayerGrid{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #8c60d3;
+    -fx-font-color: black;
 }

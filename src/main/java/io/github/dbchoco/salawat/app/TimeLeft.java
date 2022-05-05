@@ -5,6 +5,8 @@ public class TimeLeft {
     private int minutes;
     private int seconds;
 
+    private double ms;
+
     public int getHours() {
         return hours;
     }
@@ -36,6 +38,7 @@ public class TimeLeft {
     }
 
     public void setMS(long ms){
+        this.ms = ms;
         ms = Math.round(ms/1000.00) * 1000;
         seconds = (int) (ms / 1000.00 % 60); //TODO fix double second jump stop working with ms values, but with seconds
         minutes = (int) (ms / (1000.00*60) % 60);
@@ -49,6 +52,10 @@ public class TimeLeft {
             hours++;
             minutes = 0;
         }
+    }
+
+    public double getMs() {
+        return ms;
     }
 
     public String toString(){
