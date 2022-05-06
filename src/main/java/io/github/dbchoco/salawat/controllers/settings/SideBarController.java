@@ -22,19 +22,19 @@ public class SideBarController {
 
     public void initialize(){
         currentTab = "general";
-        generalButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+        setupButtonHandler(generalButton, "general");
+        setupButtonHandler(locationButton, "location");
+        setupButtonHandler(audioButton, "audio");
+        setupButtonHandler(appearanceButton, "appearance");
+        setupButtonHandler(advancedButton, "advanced");
+    }
+
+    private void setupButtonHandler(MFXButton button, String title){
+        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 try {
-                    showTab("general");
-                } catch (IOException | ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                try {
-                    showTab("location");
+                    showTab(title);
                 } catch (IOException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }

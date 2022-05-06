@@ -8,7 +8,7 @@
 }
 
 #clock, #date, #timeLeft{
-    -fx-background-color: #8c60d3;
+    -fx-background-color: rgba(175, 98, 225, 0.75);
     -fx-padding: 5px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -22,6 +22,6 @@
 #prayerGrid{
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-background-color: #8c60d3;
+    -fx-background-color: rgba(175, 98, 225, 0.75);
     -fx-font-color: black;
 }

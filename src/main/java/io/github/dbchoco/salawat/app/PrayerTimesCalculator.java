@@ -1,47 +1,104 @@
 package io.github.dbchoco.salawat.app;
 
-import com.batoulapps.adhan.CalculationMethod;
-import com.batoulapps.adhan.CalculationParameters;
-import com.batoulapps.adhan.Coordinates;
-import com.batoulapps.adhan.PrayerTimes;
+import com.batoulapps.adhan.*;
 import com.batoulapps.adhan.data.DateComponents;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 import java.util.TimeZone;
 
 public class PrayerTimesCalculator {
-    final Coordinates coordinates = new Coordinates((Double) UserSettings.getSettings("lat", 50.24), (Double) UserSettings.getSettings("lon", 4.26));
-    final DateComponents dateComponents = DateComponents.from(new Date());
-    final CalculationParameters parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
+    Coordinates coordinates = new Coordinates(UserSettings.latitude, UserSettings.longitude);
+    DateComponents dateComponents;
+    DateComponents tomorrowDateComponents;
+
+    CalculationParameters parameters;
 
     private PrayerTimes prayerTimes;
+    private PrayerTimes tomorrowPrayerTimes;
     private Prayer currentPrayer;
     private Prayer nextPrayer;
 
-    public PrayerTimesCalculator() throws ClassNotFoundException {
-    }
+    public PrayerTimesCalculator(){
+        dateComponents = DateComponents.from(new Date());
+        tomorrowDateComponents = DateComponents.from(new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
 
-    public void calculatePrayerTimes(){
+        if (!UserSettings.customCalculationSettings){
+            switch (UserSettings.calculationMethod) {
+                case "MWL" -> parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
+                case "egyptian" -> parameters = CalculationMethod.EGYPTIAN.getParameters();
+                case "karachi" -> parameters = CalculationMethod.KARACHI.getParameters();
+                case "UAQ" -> parameters = CalculationMethod.UMM_AL_QURA.getParameters();
+                case "dubai" -> parameters = CalculationMethod.DUBAI.getParameters();
+                case "kuwait" -> parameters = CalculationMethod.KUWAIT.getParameters();
+                case "MC" -> parameters = CalculationMethod.MOON_SIGHTING_COMMITTEE.getParameters();
+                case "singapore" -> parameters = CalculationMethod.SINGAPORE.getParameters();
+                case "ISNA" -> parameters = CalculationMethod.NORTH_AMERICA.getParameters();
+                case "france12" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 12;
+                    parameters.ishaAngle = 12;
+                }
+                case "france15" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 15;
+                    parameters.ishaAngle = 15;
+                }
+                case "france18" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 18;
+                    parameters.ishaAngle = 18;
+                }
+                case "russia" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 16;
+                    parameters.ishaAngle = 15;
+                }
+                case "gulf" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 19.5;
+                    parameters.ishaInterval = 90;
+                }
+                case "turkey" -> {
+                    parameters = CalculationMethod.OTHER.getParameters();
+                    parameters.fajrAngle = 18;
+                    parameters.ishaAngle = 17;
+                }
+                default -> parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
+            }
+        }
+        else{
+            parameters = CalculationMethod.OTHER.getParameters();
+            parameters.fajrAngle = UserSettings.fajrAngle;
+            parameters.ishaAngle = UserSettings.ishaAngle;
+        }
 
-    }
+        if ("shafi".equals(UserSettings.madhab)) {
+            parameters.madhab = Madhab.SHAFI;
+        } else {
+            parameters.madhab = Madhab.HANAFI;
+        }
+        switch (UserSettings.highLatitudeRule) {
+            case "MOTN" -> parameters.highLatitudeRule = HighLatitudeRule.MIDDLE_OF_THE_NIGHT;
+            case "SOTN" -> parameters.highLatitudeRule = HighLatitudeRule.SEVENTH_OF_THE_NIGHT;
+            default -> parameters.highLatitudeRule = HighLatitudeRule.TWILIGHT_ANGLE;
+        }
 
-    public void printPrayerTimes(){
-        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
-        formatter.setTimeZone(TimeZone.getTimeZone("Europe/Brussels"));
-
-        PrayerTimes prayerTimes = new PrayerTimes(coordinates, dateComponents, parameters);
-        System.out.println("Fajr: " + formatter.format(prayerTimes.fajr));
-        System.out.println("Sunrise: " + formatter.format(prayerTimes.sunrise));
-        System.out.println("Dhuhr: " + formatter.format(prayerTimes.dhuhr));
-        System.out.println("Asr: " + formatter.format(prayerTimes.asr));
-        System.out.println("Maghrib: " + formatter.format(prayerTimes.maghrib));
-        System.out.println("Isha: " + formatter.format(prayerTimes.isha));
+        if (UserSettings.adjustments){
+            parameters.adjustments.fajr = UserSettings.fajrAdjustments;
+            parameters.adjustments.dhuhr = UserSettings.dhuhrAdjustments;
+            parameters.adjustments.asr = UserSettings.asrAdjustments;
+            parameters.adjustments.maghrib = UserSettings.maghribAdjustments;
+            parameters.adjustments.isha = UserSettings.ishaAdjustments;
+        }
     }
 
 
     public void calculatePrayers(){
         prayerTimes = new PrayerTimes(coordinates, dateComponents, parameters);
+        tomorrowPrayerTimes = new PrayerTimes(coordinates, tomorrowDateComponents, parameters);
         Date now = new Date();
         if (now.compareTo(prayerTimes.fajr) < 0){
             currentPrayer = new Prayer("isha", prayerTimes.isha);
@@ -65,7 +122,7 @@ public class PrayerTimesCalculator {
         }
         else{
             currentPrayer = new Prayer("isha", prayerTimes.isha);
-            nextPrayer = new Prayer("fajr", prayerTimes.fajr); //TODO Make it tomorrow prayers
+            nextPrayer = new Prayer("fajr", tomorrowPrayerTimes.fajr);
         }
     }
 
@@ -78,8 +135,19 @@ public class PrayerTimesCalculator {
 
     public double progressTime(){
         Date now = new Date();
-        return (double) 1 - (nextPrayer.getPrayerTimes().getTime() - now.getTime()) /
+        double progress;
+        if (!currentPrayer.getName().equalsIgnoreCase("isha")) progress = (double) 1 - (nextPrayer.getPrayerTimes().getTime() - now.getTime()) /
                 (double) (nextPrayer.getPrayerTimes().getTime() - currentPrayer.getPrayerTimes().getTime());
+        else if (nextPrayer.getPrayerTimes().after(currentPrayer.getPrayerTimes())){
+            progress = (double) 1 - (nextPrayer.getPrayerTimes().getTime() - now.getTime()) /
+                    (double) (nextPrayer.getPrayerTimes().getTime() - currentPrayer.getPrayerTimes().getTime());
+        }
+        else {
+            progress = (1000 * 60 * 60 * 24 - currentPrayer.getPrayerTimes().getTime() + now.getTime()) /
+                    (double) (1000 * 60 * 60 * 24 - currentPrayer.getPrayerTimes().getTime() + nextPrayer.getPrayerTimes().getTime());
+        }
+        if (progress >= 1) calculatePrayers();
+        return progress;
     }
 
     public Prayer getNextPrayer() {
@@ -88,5 +156,9 @@ public class PrayerTimesCalculator {
 
     public PrayerTimes getPrayerTimes(){
         return prayerTimes;
+    }
+
+    public PrayerTimes getTomorrowPrayerTimes() {
+        return tomorrowPrayerTimes;
     }
 }

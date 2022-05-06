@@ -10,7 +10,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 
 public class CustomTextFormatter extends TextFormatter<Number>{ //Source: purring pigeon on Stackoverflow
-    private static DecimalFormat format = new DecimalFormat("#.0;-#.0");
+    private static final DecimalFormat format = new DecimalFormat("#.0;-#.0");
 
     public CustomTextFormatter(int minDecimals, int maxDecimals) {
         super(getStringConverter(minDecimals, maxDecimals), 0, getUnaryOperator(maxDecimals, true,-1));

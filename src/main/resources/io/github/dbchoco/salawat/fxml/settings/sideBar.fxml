@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.settings.SideBarController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="263.0" prefWidth="150.0">
-          <MFXButton fx:id="generalButton" text="General" minHeight="27.0" minWidth="70.0"/>
-          <MFXButton fx:id="locationButton" text="Location" minHeight="27.0" minWidth="70.0"/>
-          <MFXButton fx:id="audioButton" text="Audio" minHeight="27.0" minWidth="70.0"/>
-          <MFXButton fx:id="appearanceButton" text="Appearance" minHeight="27.0" minWidth="70.0"/>
-          <MFXButton fx:id="advancedButton" text="Advanced" minHeight="27.0" minWidth="70.0"/>
+          <MFXButton fx:id="generalButton" minHeight="27.0" minWidth="70.0" text="General">
+            <VBox.margin>
+               <Insets bottom="15.0" />
+            </VBox.margin></MFXButton>
+          <MFXButton fx:id="locationButton" minHeight="27.0" minWidth="70.0" text="Location">
+            <VBox.margin>
+               <Insets bottom="15.0" />
+            </VBox.margin></MFXButton>
+          <MFXButton fx:id="audioButton" minHeight="27.0" minWidth="70.0" text="Audio">
+            <VBox.margin>
+               <Insets bottom="15.0" />
+            </VBox.margin></MFXButton>
+          <MFXButton fx:id="appearanceButton" minHeight="27.0" minWidth="70.0" text="Appearance">
+            <VBox.margin>
+               <Insets bottom="15.0" />
+            </VBox.margin></MFXButton>
+          <MFXButton fx:id="advancedButton" minHeight="27.0" minWidth="70.0" text="Advanced">
+            <VBox.margin>
+               <Insets bottom="15.0" />
+            </VBox.margin></MFXButton>
       </VBox>
    </children>
 </AnchorPane>

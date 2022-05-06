@@ -1,21 +1,16 @@
 package io.github.dbchoco.salawat;
 
-import io.github.dbchoco.salawat.app.Displayer;
+import io.github.dbchoco.salawat.app.MainTimer;
 import io.github.dbchoco.salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.dbchoco.salawat.helpers.StageController;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main extends Application {
 
@@ -32,6 +27,9 @@ public class Main extends Application {
         StageController.setStage(stage);
         StageController.setCurrentScene(scene);
 
+        MainTimer mainTimer = new MainTimer();
+        mainTimer.start();
+
         stage.show();
     }
 
@@ -40,7 +38,6 @@ public class Main extends Application {
     }
     public static void loadPrayerTimes() throws ClassNotFoundException {
         prayerTimesCalculator = new PrayerTimesCalculator();
-        prayerTimesCalculator.printPrayerTimes();
         prayerTimesCalculator.calculatePrayers();
     }
 

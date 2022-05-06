@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="88.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER" prefWidth="1280.0">
+      <FlowPane alignment="CENTER" prefHeight="70.0" prefWidth="1280.0">
+         <children>
+              <Label text="Settings">
+               <font>
+                  <Font name="MFXResources" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+    </HBox>
+</AnchorPane>

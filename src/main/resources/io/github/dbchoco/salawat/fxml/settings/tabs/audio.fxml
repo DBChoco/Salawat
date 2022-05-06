@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="409.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.salawat.controllers.settings.tabs.AudioController">
+   <children>
+      <GridPane prefHeight="323.0" prefWidth="383.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="189.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="194.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <FlowPane prefHeight="134.0" prefWidth="189.0">
+               <children>
+                  <Label text="Adhan" />
+               </children>
+            </FlowPane>
+             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                 <children>
+
+                 </children>
+                 <children>
+                     <VBox prefHeight="154.0" prefWidth="192.0">
+                         <FlowPane alignment="CENTER_RIGHT">
+                             <children>
+                                 <MFXCheckbox text="Enable Adhan" />
+                             </children>
+                         </FlowPane>
+                         <FlowPane alignment="CENTER_RIGHT">
+                             <children>
+                                 <MFXComboBox fx:id="adhanCombo" floatingText="Adhan" />
+                             </children>
+                         </FlowPane>
+                         <FlowPane alignment="CENTER_RIGHT">
+                             <children>
+                                 <MFXCheckbox text="Show seconds" />
+                             </children>
+                         </FlowPane>
+                     <FlowPane alignment="CENTER_RIGHT">
+                        <children>
+                           <MFXButton />
+                        </children>
+                     </FlowPane>
+                     <FlowPane alignment="CENTER_RIGHT">
+                        <children>
+                           <MFXCheckbox />
+                        </children>
+                     </FlowPane>
+                     <FlowPane alignment="CENTER_RIGHT">
+                        <children>
+                           <MFXButton />
+                        </children>
+                     </FlowPane>
+                     </VBox>
+                 </children>
+             </FlowPane>
+
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Du'a after Adhan" />
+               </children>
+            </FlowPane>
+
+             <FlowPane alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                 <children>
+                      <MFXCheckbox text="Show seconds" />
+                 </children>
+             </FlowPane>
+
+             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                 <children>
+                     <Label text="Startup sound" />
+                 </children>
+             </FlowPane>
+             <FlowPane alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <MFXCheckbox text="Play Bismillah on startup" />
+               </children>
+             </FlowPane>
+
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

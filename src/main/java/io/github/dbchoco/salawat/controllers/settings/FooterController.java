@@ -1,6 +1,7 @@
 package io.github.dbchoco.salawat.controllers.settings;
 
 import io.github.dbchoco.salawat.Main;
+import io.github.dbchoco.salawat.app.UserSettings;
 import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.dbchoco.salawat.helpers.StageController;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -21,6 +22,7 @@ public class FooterController {
 
                 try {
                     Controllers.getSettingsPage(SideBarController.currentTab).saveSettings();
+                    UserSettings.saveAllSettings();
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }

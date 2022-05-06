@@ -2,14 +2,12 @@ package io.github.dbchoco.salawat.controllers.settings.tabs;
 
 
 import io.github.dbchoco.salawat.app.UserSettings;
-import io.github.dbchoco.salawat.helpers.CustomTextFormatter;
 import io.github.dbchoco.salawat.helpers.Controllers;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 public class LocationController implements SettingsPage{
 
     public MFXTextField latField;
     public MFXTextField lonField;
-    private double latitude, longitude;
 
     public void initialize() throws ClassNotFoundException {
         loadSettings();
@@ -22,15 +20,15 @@ public class LocationController implements SettingsPage{
 
     @Override
     public void saveSettings() throws ClassNotFoundException {
-        UserSettings.saveSetting("lat", Double.parseDouble(latField.getText()));
-        UserSettings.saveSetting("lon", Double.parseDouble(lonField.getText()));
+        UserSettings.latitude = Double.parseDouble(latField.getText());
+        UserSettings.longitude = Double.parseDouble(lonField.getText());
     }
 
     @Override
     public void loadSettings() throws ClassNotFoundException {
-        latitude = (double) UserSettings.getSettings("lat", 0.00);
+        double latitude = (double) UserSettings.latitude;
         latField.setText(String.valueOf(latitude));
-        longitude = (double) UserSettings.getSettings("lon", 0.00);
+        double longitude = (double) UserSettings.longitude;
         lonField.setText(String.valueOf(longitude));
         System.out.println(latitude + " " + longitude);
     }
