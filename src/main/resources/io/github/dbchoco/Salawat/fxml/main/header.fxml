@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.github.dbchoco.Salawat.controllers.main.HeaderController">
+      <Label id="title" fx:id="title" styleClass="title" text="Salawat" />
+</AnchorPane>
