@@ -1,6 +1,7 @@
 package io.github.dbchoco.Salawat;
 
 import io.github.dbchoco.Salawat.app.*;
+import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -30,35 +31,17 @@ public class Main extends Application {
         StageController.setStage(stage);
         StageController.setCurrentScene(scene);
 
-        //TrayMenu trayMenu = new TrayMenu();
-        //trayMenu.show();
-
         MainTimer mainTimer = new MainTimer();
         mainTimer.start();
 
         //Notifier notifier = new Notifier(StageController.getStage());
 
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                TrayMenu trayMenu = new TrayMenu();
-                trayMenu.show();
-            }
-        });
-
-
-        Platform.setImplicitExit(false);
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                if (UserSettings.systemTray){
-                    stage.hide();
-                    windowEvent.consume();
-                }
-            }
-        });
+        minimizeToTray();
+        launchTrayIcon();
 
         if(!UserSettings.launchMinimized) stage.show();
+
+        playStartupSound();
     }
 
     private void launchPrayerTimer(){
@@ -74,6 +57,34 @@ public class Main extends Application {
     }
     public static void reload() throws ClassNotFoundException {
         loadPrayerTimes();
+        Controllers.getPrayerGridController().setPrayerTimes(prayerTimesCalculator.getPrayerTimes());
+    }
+
+    private void playStartupSound(){
+        if (!UserSettings.startupSound) AudioPlayer.play("audio/Bismillah - Fatih Sefaragic.mp3", false);
+    }
+
+    private void minimizeToTray(){
+        StageController.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                if (UserSettings.systemTray){
+                    Platform.setImplicitExit(false);
+                    StageController.getStage().hide();
+                    windowEvent.consume();
+                }
+            }
+        });
+    }
+
+    private void launchTrayIcon(){
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+                //TrayMenu trayMenu = new TrayMenu();
+                //trayMenu.show();
+            }
+        });
     }
     public static void main(String[] args) {
         launch();

@@ -24,7 +24,6 @@
             <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
 
@@ -35,7 +34,7 @@
             </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                     <MFXComboBox fx:id="languageCombo" floatingText="Calculation method" />
+                     <MFXComboBox fx:id="calcMethodCombo" floatingText="Calculation method" />
                </children>
              </FlowPane>
 
@@ -47,7 +46,7 @@
 
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <MFXComboBox fx:id="languageCombo1" floatingText="Madhab" layoutX="77.0" layoutY="10.0" />
+                  <MFXComboBox fx:id="madhabCombo" floatingText="Madhab" layoutX="77.0" layoutY="10.0" />
                </children>
              </FlowPane>
 
@@ -58,74 +57,57 @@
              </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <MFXComboBox floatingText="High latitude rule" />
+                  <MFXComboBox fx:id="hlrCombo" floatingText="High latitude rule" />
                </children>
              </FlowPane>
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                  <children>
-                     <Label text="Shafaq" />
-                 </children>
-             </FlowPane>
-             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <MFXComboBox floatingText="Shafaq" />
-               </children>
-             </FlowPane>
-
-             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-                 <children>
                      <Label text="Delay After Maghrib" />
                  </children>
              </FlowPane>
-             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <VBox prefHeight="82.0" prefWidth="185.0">
                      <children>
                         <FlowPane alignment="TOP_RIGHT">
                            <children>
-                              <MFXCheckbox text="Enable delay after Maghrib" />
+                              <MFXCheckbox fx:id="delayCheck" text="Enable delay after Maghrib" />
                            </children>
                         </FlowPane>
                         <FlowPane alignment="TOP_RIGHT">
                            <children>
-                              <MFXTextField floatingText="Delay" />
+                              <MFXTextField fx:id="delayInput" floatingText="Delay" />
                            </children>
                         </FlowPane>
                      </children>
                   </VBox>
                </children>
              </FlowPane>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
                   <Label text="Custom settings" />
                </children>
             </FlowPane>
-            <VBox prefHeight="82.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <VBox prefHeight="82.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
                   <FlowPane alignment="TOP_RIGHT">
                      <children>
-                        <MFXCheckbox text="Enable custom settings" />
+                        <MFXCheckbox fx:id="customSettingsCheck" text="Enable custom settings" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="TOP_RIGHT">
                      <children>
-                        <MFXTextField floatingText="Fajr angle" />
+                        <MFXTextField fx:id="fajrAngle" floatingText="Fajr angle" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <MFXTextField floatingText="Maghrib angle" />
-                     </children>
-                  </FlowPane>
-                  <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <MFXTextField floatingText="Isha angle" />
+                        <MFXTextField fx:id="ishaAngle" floatingText="Isha angle" />
                      </children>
                   </FlowPane>
                </children>
             </VBox>
-
          </children>
       </GridPane>
    </children>

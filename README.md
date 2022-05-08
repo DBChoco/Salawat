@@ -6,25 +6,27 @@
   - [ ] Better system tray
 - [ ] Auto start
 - [x] Start Minimized
-- [ ] Latitude & Longitude
+- [x] Latitude & Longitude
 - [ ] Automatic Location
-- [ ] City list instead of lat & lon
 - [ ] Timezone
 - [x] Adhan
   - [ ] Adhan list
     - [ ] Custom Adhan
     - [ ] Custom Fajr Adhan
   - [x] Dua after Adhan
-- [ ] Startup Sound
-- [ ] Darkmode
+- [x] Startup Sound
 - [ ] Background images
-- [ ] Sunnah times
-- [ ] Weather
-- [ ] Calculation methods
-  - [ ] Custom calculation methods
-  - [ ] Delay after Maghrib
+- [x] Calculation methods
+  - [x] Custom calculation methods
+  - [x] Delay after Maghrib
   - [ ] Adjustements
-- [ ] Quran Quote
 - [ ] Whole UI style (make it look good (only 1280x720))
   - [ ] Scale UI
 - [ ] Logo
+
+Not very important, probably future updates.
+- [ ] Weather
+- [ ] Quran Quote
+- [ ] City list instead of lat & lon
+- [ ] Darkmode
+- [ ] Sunnah times

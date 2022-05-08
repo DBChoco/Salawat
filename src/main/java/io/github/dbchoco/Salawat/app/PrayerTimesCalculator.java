@@ -89,6 +89,10 @@ public class PrayerTimesCalculator {
             parameters.adjustments.maghrib = UserSettings.maghribAdjustments;
             parameters.adjustments.isha = UserSettings.ishaAdjustments;
         }
+
+        if (UserSettings.enableIshaDelay){
+            parameters.ishaInterval = UserSettings.ishaDelay;
+        }
     }
 
 

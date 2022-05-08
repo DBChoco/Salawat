@@ -21,6 +21,6 @@ public class ListItem {
 
     @Override
     public String toString() {
-        return I18N.get(name);
+        return name;
     }
 }

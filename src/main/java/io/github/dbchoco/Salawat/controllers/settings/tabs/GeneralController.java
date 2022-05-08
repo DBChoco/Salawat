@@ -1,9 +1,11 @@
 package io.github.dbchoco.Salawat.controllers.settings.tabs;
 
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.ListGenerator;
 import io.github.dbchoco.Salawat.helpers.ListItem;
+import io.github.dbchoco.Salawat.helpers.ListItemArray;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -17,23 +19,20 @@ public class GeneralController implements SettingsPage{
     public MFXCheckbox systrayCheck;
     public MFXCheckbox autoStartCheck;
     public MFXCheckbox minStartCheck;
+    private ListItemArray languageItems = new ListItemArray();
 
     public void initialize(){
-        ListItem[] items = {new ListItem("english", "en"),
-                new ListItem("french", "fr"),
-                new ListItem("spanish", "es")};
-        ListGenerator.generateList(languageCombo, items);
+        languageItems.add(new ListItem(I18N.get("english"), "en"));
+        languageItems.add(new ListItem(I18N.get("french"), "fr"));
+        languageItems.add(new ListItem(I18N.get("spanish"), "es"));
+        ListGenerator.generateList(languageCombo, languageItems);
         loadSettings();
         Controllers.setGeneralController(this);
     }
 
     @Override
     public void saveSettings() {
-        switch (languageCombo.getSelectedIndex()) {
-            case 0 -> UserSettings.language = "en";
-            case 1 -> UserSettings.language = "fr";
-            case 2 -> UserSettings.language = "es";
-        }
+        UserSettings.language  = languageItems.getItembyName(languageCombo.getText()).getValue();
         if (halfTime.isSelected()) UserSettings.timeFormat = 12;
         else UserSettings.timeFormat = 24;
         UserSettings.showSeconds = showSecondsCheck.isSelected();
@@ -45,11 +44,7 @@ public class GeneralController implements SettingsPage{
 
     @Override
     public void loadSettings() {
-        switch (UserSettings.language) {
-            case "en" -> languageCombo.getSelectionModel().selectIndex(0);
-            case "fr" -> languageCombo.getSelectionModel().selectIndex(1);
-            case "es" -> languageCombo.getSelectionModel().selectIndex(2);
-        }
+        languageCombo.getSelectionModel().selectItem(languageItems.getItembyValue(UserSettings.language));
         halfTime.setSelected(UserSettings.timeFormat == 12);
         fullTime.setSelected(UserSettings.timeFormat == 24);
         halfTime.selectedProperty().addListener((obs, wasSelected, isNowSelected) ->

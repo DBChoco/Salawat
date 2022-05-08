@@ -30,7 +30,30 @@ public class ListGenerator {
 
             }
         });
+    }
 
-        System.out.println(comboBox.getItems().get(0));
+    public static void generateList(MFXComboBox comboBox, ListItemArray items){
+        comboBox.setItems(FXCollections.observableArrayList(items));
+
+        comboBox.setConverter(new StringConverter() {
+            @Override
+            public String toString(Object o) {
+                if (o != null){
+                    return o.toString();
+                }
+                else return "";
+            }
+
+            @Override
+            public Object fromString(String s) {
+                return null;
+            }
+        });
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+
+            }
+        });
     }
 }

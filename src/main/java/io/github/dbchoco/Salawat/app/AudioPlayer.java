@@ -17,6 +17,11 @@ public class AudioPlayer {
         playMedia();
     }
 
+    public static void play(String file, Boolean playDua){
+        media = new Media(Main.class.getResource(file).toExternalForm());
+        playMedia(playDua);
+    }
+
     public static void play(){
         media = new Media(Main.class.getResource(UserSettings.adhanPath).toExternalForm());
         playMedia();
@@ -37,6 +42,25 @@ public class AudioPlayer {
         mediaPlayer.play();
         mediaPlayer.setOnEndOfMedia(() -> {
             if (UserSettings.dua){
+                playDua();
+            }
+            else {
+                isPlaying = false;
+            }
+        });
+        isPlaying = true;
+    }
+
+    private static void playMedia(Boolean playDua){
+        if (isPlaying){
+            mediaPlayer.stop();
+        }
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(UserSettings.volume);
+        mediaPlayer.volumeProperty().bind(Controllers.getMainFooterController().volumeSlider.valueProperty().divide(100));
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(() -> {
+            if (UserSettings.dua && playDua){
                 playDua();
             }
             else {

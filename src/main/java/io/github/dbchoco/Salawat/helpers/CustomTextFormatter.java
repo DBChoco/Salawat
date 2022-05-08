@@ -109,4 +109,8 @@ public class CustomTextFormatter extends TextFormatter<Number>{ //Source: purrin
             }
         };
     }
+
+    public static IntegerFilter getIntFormatter(){
+        return new IntegerFilter();
+    }
 }
