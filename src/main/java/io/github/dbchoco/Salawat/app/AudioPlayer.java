@@ -13,18 +13,25 @@ public class AudioPlayer {
     static MediaPlayer mediaPlayer;
 
     public static void play(String file){
-        media = new Media(Main.class.getResource(file).toExternalForm());
+        media = new Media(file);
         playMedia();
     }
 
     public static void play(String file, Boolean playDua){
-        media = new Media(Main.class.getResource(file).toExternalForm());
+        media = new Media(file);
         playMedia(playDua);
     }
 
     public static void play(){
-        media = new Media(Main.class.getResource(UserSettings.adhanPath).toExternalForm());
+        if (UserSettings.customAdhan) media = new Media(UserSettings.customAdhanPath);
+        else media = new Media(UserSettings.adhanPath);
         playMedia();
+    }
+
+    public static void play(Boolean playDua){
+        if (UserSettings.customAdhan) media = new Media(UserSettings.customAdhanPath);
+        else media = new Media(UserSettings.adhanPath);
+        playMedia(playDua);
     }
 
     public static void stop(){

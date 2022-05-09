@@ -37,7 +37,7 @@
                      <VBox prefHeight="154.0" prefWidth="192.0">
                          <FlowPane alignment="CENTER_RIGHT">
                              <children>
-                                 <MFXCheckbox text="Enable Adhan" />
+                                 <MFXCheckbox fx:id="adhanCheck" text="Enable Adhan" />
                              </children>
                          </FlowPane>
                          <FlowPane alignment="CENTER_RIGHT">
@@ -47,22 +47,22 @@
                          </FlowPane>
                          <FlowPane alignment="CENTER_RIGHT">
                              <children>
-                                 <MFXCheckbox text="Show seconds" />
+                                 <MFXCheckbox fx:id="customAdhanCheck" text="Custom Adhan" />
                              </children>
                          </FlowPane>
                      <FlowPane alignment="CENTER_RIGHT">
                         <children>
-                           <MFXButton />
+                           <MFXButton fx:id="customAdhanButton" text="Select file" />
                         </children>
                      </FlowPane>
                      <FlowPane alignment="CENTER_RIGHT">
                         <children>
-                           <MFXCheckbox />
+                           <MFXCheckbox fx:id="customFajrAdhanCheck" text="Custom Fajr Adhan" />
                         </children>
                      </FlowPane>
                      <FlowPane alignment="CENTER_RIGHT">
                         <children>
-                           <MFXButton />
+                           <MFXButton fx:id="customFajrAdhanButton" text="Select file" />
                         </children>
                      </FlowPane>
                      </VBox>
@@ -77,7 +77,7 @@
 
              <FlowPane alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                  <children>
-                      <MFXCheckbox text="Show seconds" />
+                      <MFXCheckbox fx:id="duaCheck" text="Enable du'a after Adhan" />
                  </children>
              </FlowPane>
 
@@ -88,7 +88,7 @@
              </FlowPane>
              <FlowPane alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <MFXCheckbox text="Play Bismillah on startup" />
+                  <MFXCheckbox fx:id="startupSoundCheck" text="Play Bismillah on startup" />
                </children>
              </FlowPane>
 

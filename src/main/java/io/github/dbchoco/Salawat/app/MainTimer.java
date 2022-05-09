@@ -1,5 +1,6 @@
 package io.github.dbchoco.Salawat.app;
 
+import com.batoulapps.adhan.PrayerTimes;
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.StageController;
@@ -70,7 +71,8 @@ public class MainTimer{
                 if (!launchedAlerts){
                     if (UserSettings.enableAdhan){
                         if (!AudioPlayer.getIsPlaying()){
-                            AudioPlayer.play();
+                            if (UserSettings.customFajrAdhan && (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr")) AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
+                            else AudioPlayer.play(true);
                         }
                     }
                     if (UserSettings.notifications){

@@ -9,44 +9,48 @@ import javafx.scene.control.MenuItem;
 
 
 public class TrayMenu {
+
+    private FXTrayIcon icon;
     public TrayMenu(){
-        FXTrayIcon icon = new FXTrayIcon(StageController.getStage(), Main.class.getResource("images/icon.png"));
+        if (FXTrayIcon.isSupported()){
+            icon = new FXTrayIcon(StageController.getStage(), Main.class.getResource("images/icon.png"));
 
-        MenuItem open = new MenuItem("Open");
-        open.setOnAction(actionEvent -> {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    StageController.getStage().show();
-                }
+            MenuItem open = new MenuItem("Open");
+            open.setOnAction(actionEvent -> {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        StageController.getStage().show();
+                    }
+                });
             });
-        });
-        MenuItem hide = new MenuItem("Hide");
-        hide.setOnAction(actionEvent -> {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    StageController.getStage().hide();
-                }
+            MenuItem hide = new MenuItem("Hide");
+            hide.setOnAction(actionEvent -> {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        StageController.getStage().hide();
+                    }
+                });
             });
-        });
-        MenuItem close = new MenuItem("Close");
-        close.setOnAction(actionEvent -> {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    StageController.getStage().close();
-                    icon.hide();
-                    Platform.exit();
-                }
+            MenuItem close = new MenuItem("Close");
+            close.setOnAction(actionEvent -> {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        StageController.getStage().close();
+                        icon.hide();
+                        Platform.exit();
+                    }
+                });
             });
-        });
 
-        icon.addMenuItems(open, hide, close);
-        icon.show();
+            icon.addMenuItems(open, hide, close);
+        }
+
     }
 
     public void show(){
-
+        if (FXTrayIcon.isSupported()) icon.show();
     }
 }

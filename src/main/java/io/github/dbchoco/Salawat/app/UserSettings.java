@@ -1,5 +1,7 @@
 package io.github.dbchoco.Salawat.app;
 
+import io.github.dbchoco.Salawat.Main;
+
 import java.util.prefs.Preferences;
 
 public class UserSettings {
@@ -16,11 +18,11 @@ public class UserSettings {
     public static Double longitude = prefs.getDouble("longitude", 4.2);
     public static String timezone = prefs.get("timezone", "Europe/Brussels");
     public static Boolean enableAdhan = prefs.getBoolean("enableAdhan", true);
-    public static String adhanPath = prefs.get("adhanPath", "audio/Adhan - Ahmed Al-Nufais.mp3");
+    public static String adhanPath = prefs.get("adhanPath",  Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm());
     public static Boolean customAdhan = prefs.getBoolean("customAdhan", false);
-    public static String customAdhanPath = prefs.get("customAdhanPath", "audio/Adhan - Ahmed Al-Nufais.mp3");
+    public static String customAdhanPath = prefs.get("customAdhanPath",  Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm());
     public static Boolean customFajrAdhan = prefs.getBoolean("customFajrAdhan", false);
-    public static String customFajrAdhanPath = prefs.get("customFajrAdhanPath", "audio/Adhan - Ahmed Al-Nufais.mp3");
+    public static String customFajrAdhanPath = prefs.get("customFajrAdhanPath",  Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm());
     public static Boolean dua = prefs.getBoolean("dua", true);
     public static Boolean startupSound = prefs.getBoolean("startupSound", false);
     public static Boolean darkMode = prefs.getBoolean("darkMode", false);

@@ -154,6 +154,10 @@ public class PrayerTimesCalculator {
         return nextPrayer;
     }
 
+    public Prayer getCurrentPrayer() {
+        return currentPrayer;
+    }
+
     public PrayerTimes getPrayerTimes(){
         return prayerTimes;
     }

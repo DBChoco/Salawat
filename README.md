@@ -1,28 +1,39 @@
-- [ ] Languages (French, Spanish & Arabic)
+Done:
 - [x] TimeFormat
-- [ ] DateFormat
-- [ ] Notifications
-- [x] System Tray
-  - [ ] Better system tray
-- [ ] Auto start
+- [x] Hijri date
 - [x] Start Minimized
 - [x] Latitude & Longitude
-- [ ] Automatic Location
-- [ ] Timezone
 - [x] Adhan
-  - [ ] Adhan list
-    - [ ] Custom Adhan
-    - [ ] Custom Fajr Adhan
+  - [x] Adhan list
+    - [x] Custom Adhan
+    - [x] Custom Fajr Adhan
   - [x] Dua after Adhan
 - [x] Startup Sound
-- [ ] Background images
 - [x] Calculation methods
   - [x] Custom calculation methods
   - [x] Delay after Maghrib
   - [ ] Adjustements
+- [x] Logo (somewhat)
+
+
+Todo:
+- [ ] Languages
+  - [x] English
+  - [ ] Load language from I118N
+  - [ ] French
+  - [ ] Spanish
+  - [ ] Arabic
 - [ ] Whole UI style (make it look good (only 1280x720))
   - [ ] Scale UI
-- [ ] Logo
+- [ ] Background images
+- [ ] Automatic Location
+- [ ] Timezone
+- [ ] Auto start
+- [x] System Tray
+  - [ ] Better system tray
+- [ ] Notifications
+- [x] Calculation methods
+  - [ ] Adjustements
 
 Not very important, probably future updates.
 - [ ] Weather
@@ -30,3 +41,5 @@ Not very important, probably future updates.
 - [ ] City list instead of lat & lon
 - [ ] Darkmode
 - [ ] Sunnah times
+- [ ] Date picker
+- [ ] DateFormat

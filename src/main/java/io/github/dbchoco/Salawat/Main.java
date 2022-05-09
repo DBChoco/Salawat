@@ -61,7 +61,7 @@ public class Main extends Application {
     }
 
     private void playStartupSound(){
-        if (!UserSettings.startupSound) AudioPlayer.play("audio/Bismillah - Fatih Sefaragic.mp3", false);
+        if (UserSettings.startupSound) AudioPlayer.play("audio/Bismillah - Fatih Sefaragic.mp3", false);
     }
 
     private void minimizeToTray(){
@@ -81,8 +81,8 @@ public class Main extends Application {
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                //TrayMenu trayMenu = new TrayMenu();
-                //trayMenu.show();
+                TrayMenu trayMenu = new TrayMenu();
+                trayMenu.show();
             }
         });
     }

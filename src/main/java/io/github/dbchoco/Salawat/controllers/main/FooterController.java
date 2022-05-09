@@ -31,7 +31,7 @@ public class FooterController {
     }
 
     private void loadVolume(){
-        volumeSlider.setValue(UserSettings.volume);
+        volumeSlider.setValue(UserSettings.volume * 100);
     }
 
     private void loadHandlers(){
@@ -53,7 +53,7 @@ public class FooterController {
 
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                AudioPlayer.play();
+                AudioPlayer.play(false);
             }
         });
 
@@ -69,7 +69,6 @@ public class FooterController {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 UserSettings.volume = (double)number/100.00;
-                System.out.println(UserSettings.volume);
             }
         });
     }

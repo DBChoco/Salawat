@@ -2,9 +2,9 @@ module io.github.dbchoco.salawat {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires java.prefs;
     requires adhan;
     requires MaterialFX;
-    requires java.prefs;
     requires FXTrayIcon;
 
     exports io.github.dbchoco.Salawat;

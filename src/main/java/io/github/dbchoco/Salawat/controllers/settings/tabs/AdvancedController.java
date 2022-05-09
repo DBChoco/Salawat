@@ -26,7 +26,6 @@ public class AdvancedController implements SettingsPage{
 
     public void initialize() throws ClassNotFoundException {
         addListItems();
-
         delayInput.setTextLimit(4);
         TextFormatter<Integer> formatter = new TextFormatter<>(
                 new IntegerStringConverter(), // Standard converter form JavaFX
