@@ -3,6 +3,7 @@ package io.github.dbchoco.Salawat.helpers;
 import io.github.dbchoco.Salawat.app.UserSettings;
 
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public class FormatLoader {
     private SimpleDateFormat timeFormatter;
@@ -10,6 +11,7 @@ public class FormatLoader {
     public FormatLoader(){
         if (UserSettings.timeFormat == 12){
             if (UserSettings.showSeconds){
+
                 timeFormatter = new SimpleDateFormat("hh:mm:ss aa");
 
             }
@@ -25,7 +27,8 @@ public class FormatLoader {
                 timeFormatter = new SimpleDateFormat("HH:mm");
             }
         }
-    } //TODO TRay icon, fix formatter latitude field
+        timeFormatter.setTimeZone(TimeZone.getTimeZone(UserSettings.timezone));
+    }
 
     public SimpleDateFormat getTimeFormatter() {
         return timeFormatter;

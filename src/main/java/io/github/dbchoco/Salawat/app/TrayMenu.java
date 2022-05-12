@@ -10,9 +10,12 @@ import javafx.scene.control.MenuItem;
 
 public class TrayMenu {
 
-    private FXTrayIcon icon;
-    public TrayMenu(){
-        if (FXTrayIcon.isSupported()){
+    private static FXTrayIcon icon;
+
+    private static Boolean isSupported = FXTrayIcon.isSupported();
+
+    public static  void launch(){
+        if (isSupported) {
             icon = new FXTrayIcon(StageController.getStage(), Main.class.getResource("images/icon.png"));
 
             MenuItem open = new MenuItem("Open");
@@ -44,13 +47,12 @@ public class TrayMenu {
                     }
                 });
             });
-
             icon.addMenuItems(open, hide, close);
+            icon.show();
         }
-
     }
 
-    public void show(){
-        if (FXTrayIcon.isSupported()) icon.show();
+    public static void showNotification(String caption, String content){
+        if (isSupported) icon.showMessage(caption, content);
     }
 }

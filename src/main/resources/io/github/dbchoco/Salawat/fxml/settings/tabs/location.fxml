@@ -42,7 +42,7 @@
                 </FlowPane>
                 <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.columnIndex="1">
                     <children>
-                        <MFXFilterComboBox floatingText="Timezone"/>
+                        <MFXFilterComboBox fx:id="timezoneCombo" floatingText="Timezone"/>
                     </children>
                 </FlowPane>
 

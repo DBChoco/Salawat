@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat;
 
 import io.github.dbchoco.Salawat.app.*;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -30,6 +31,8 @@ public class Main extends Application {
 
         StageController.setStage(stage);
         StageController.setCurrentScene(scene);
+
+        SizeBinder.init();
 
         MainTimer mainTimer = new MainTimer();
         mainTimer.start();
@@ -81,8 +84,7 @@ public class Main extends Application {
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                TrayMenu trayMenu = new TrayMenu();
-                trayMenu.show();
+                TrayMenu.launch();
             }
         });
     }

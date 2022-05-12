@@ -76,8 +76,9 @@ public class MainTimer{
                         }
                     }
                     if (UserSettings.notifications){
-                        Notifier notifier = new Notifier(StageController.getStage());
-                        notifier.show("Time for prayer", "Time for Salah");
+                        TrayMenu.showNotification(I18N.get("timeForPrayer").replace("%prayer",
+                                        Main.getPrayerTimesCalculator().getCurrentPrayer().getI18Name()) ,
+                                I18N.get("comeToPrayer"));
                     }
                     launchedAlerts = true;
                 }

@@ -26,4 +26,8 @@ public class Prayer {
     public Date getPrayerTimes() {
         return prayerTimes;
     }
+
+    public String getI18Name() {
+        return I18N.get(name);
+    }
 }

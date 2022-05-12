@@ -1,14 +1,10 @@
-#root{
-    -fx-background-color: #4eaf99;
-}
-
 #title{
     -fx-font-size: 20px;
     -fx-padding: 5px 0 0 5px;
 }
 
 #clock, #date, #timeLeft{
-    -fx-background-color: rgba(175, 98, 225, 0.75);
+    -fx-background-color: rgba(255, 255, 255, 0.75);
     -fx-padding: 5px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -17,11 +13,32 @@
 #progressBar{
     -fx-border-radius: 10px 10px 0 0;
     -fx-background-radius: 10px 10px 0 0;
+    -fx-background-color: rgba(255, 255, 255, 0.75);
+}
+
+#progressBar .bar1, #volumeSlider .bar{
+    -fx-fill: #212121;
+}
+
+#volumeSlider .thumb,
+#volumeSlider .track{
+    -mfx-color: #212121;
+    -fx-fill: derive(#212121, 85%);
+}
+
+#volumeSlider .thumb-container:hover .thumb-radius,
+#volumeSlider .thumb-container:pressed .thumb-radius {
+	-mfx-color: derive(#212121, 85%);
+	-fx-opacity: 0.5;
+}
+
+#volumeSlider .thumb-container .mfx-ripple-generator {
+	-mfx-ripple-color: #212121;
 }
 
 #prayerGrid{
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-background-color: rgba(175, 98, 225, 0.75);
+    -fx-border-radius: 0 0 10px 10px;
+    -fx-background-radius: 0 0 10px 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.75);
     -fx-font-color: black;
 }

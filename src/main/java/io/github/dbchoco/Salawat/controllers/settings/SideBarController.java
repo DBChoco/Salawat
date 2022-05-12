@@ -59,4 +59,9 @@ public class SideBarController extends BaseController {
         appearanceButton.textProperty().bind(I18N.createStringBinding("appearance"));
         advancedButton.textProperty().bind(I18N.createStringBinding("advanced"));
     }
+
+    @Override
+    protected void makeResizable() {
+
+    }
 }

@@ -12,14 +12,15 @@ Done:
 - [x] Calculation methods
   - [x] Custom calculation methods
   - [x] Delay after Maghrib
-  - [ ] Adjustements
 - [x] Logo (somewhat)
-
+- [x] System Tray
+- [x] Timezone
+- [x] Notifications
 
 Todo:
 - [ ] Languages
   - [x] English
-  - [ ] Load language from I118N
+  - [ ] Load language from I18N
   - [ ] French
   - [ ] Spanish
   - [ ] Arabic
@@ -27,11 +28,7 @@ Todo:
   - [ ] Scale UI
 - [ ] Background images
 - [ ] Automatic Location
-- [ ] Timezone
 - [ ] Auto start
-- [x] System Tray
-  - [ ] Better system tray
-- [ ] Notifications
 - [x] Calculation methods
   - [ ] Adjustements
 
@@ -43,3 +40,12 @@ Not very important, probably future updates.
 - [ ] Sunnah times
 - [ ] Date picker
 - [ ] DateFormat
+- [ ] Taskbar customization
+- [ ] Better system tray
+
+
+Useful things to add 
+- Builder : https://github.com/wiverson/maven-jpackage-template
+- Translucent effect: https://github.com/iAmGio/froxty
+- FontAwesome: https://bitbucket.org/Jerady/fontawesomefx/src/master/
+- AutoUpdater: https://github.com/edvin/fxlauncher

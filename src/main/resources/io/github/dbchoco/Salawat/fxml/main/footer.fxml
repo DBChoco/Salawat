@@ -2,21 +2,41 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXSlider?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="9.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.FooterController">
-   <HBox prefHeight="0.0" prefWidth="1280.0">
+<AnchorPane fx:id="root" prefHeight="50" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.FooterController">
+   <HBox fx:id="hbox" alignment="BOTTOM_CENTER" prefHeight="50" prefWidth="1280.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
       <children>
-         <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="795.0">
+         <HBox fx:id="volumeBox" alignment="CENTER_LEFT" prefHeight="50" prefWidth="640.0">
             <children>
-               <MFXButton fx:id="stopButton" text="Stop" />
-               <MFXButton fx:id="playButton" text="Play" />
-               <MFXSlider fx:id="volumeSlider"/>
+               <MFXButton fx:id="stopButton" text="Stop">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font name="MFXResources" size="16.0" />
+                  </font></MFXButton>
+               <MFXButton fx:id="playButton" text="Play">
+                  <HBox.margin>
+                     <Insets left="15.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font name="MFXResources" size="16.0" />
+                  </font></MFXButton>
+               <MFXSlider fx:id="volumeSlider" id="volumeSlider">
+                  <HBox.margin>
+                     <Insets left="15.0" />
+                  </HBox.margin></MFXSlider>
             </children></HBox>
-         <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="512.0" style="-fx-padding: 10px;">
+         <HBox fx:id="buttonBox" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50" prefWidth="640.0">
             <children>
-                <MFXButton id="settingsButton" fx:id="settingsButton" minHeight="27.0" minWidth="70.0" text="Settings" />
+                <MFXButton id="settingsButton" fx:id="settingsButton" minHeight="27.0" minWidth="70.0" text="Settings">
+                  <font>
+                     <Font name="MFXResources" size="16.0" />
+                  </font></MFXButton>
             </children>
          </HBox>
       </children>

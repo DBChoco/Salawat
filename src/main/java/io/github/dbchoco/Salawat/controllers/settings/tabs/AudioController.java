@@ -8,14 +8,10 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 public class AudioController implements SettingsPage{
     public MFXCheckbox adhanCheck;
@@ -53,6 +49,8 @@ public class AudioController implements SettingsPage{
             UserSettings.customAdhan = false;
             UserSettings.customFajrAdhan = false;
         }
+        UserSettings.dua = duaCheck.isSelected();
+        UserSettings.startupSound = startupSoundCheck.isSelected();
     }
 
     @Override
@@ -65,7 +63,6 @@ public class AudioController implements SettingsPage{
 
         adhanCheck.setSelected(UserSettings.enableAdhan);
         if (adhanCheck.isSelected()){
-            System.out.println(adhanItems.getItembyValue(UserSettings.adhanPath).getName());
             adhanCombo.getSelectionModel().selectItem(adhanItems.getItembyValue(UserSettings.adhanPath));
             customAdhanCheck.setSelected(UserSettings.customAdhan);
             customFajrAdhanCheck.setSelected(UserSettings.customFajrAdhan);
@@ -76,6 +73,8 @@ public class AudioController implements SettingsPage{
                 customFajrAdhanButton.setText(StringShortener.shortenString(UserSettings.customFajrAdhanPath, 25));
             }
         }
+        duaCheck.setSelected(UserSettings.dua);
+        startupSoundCheck.setSelected(UserSettings.startupSound);
     }
 
     private void addListItems() {
