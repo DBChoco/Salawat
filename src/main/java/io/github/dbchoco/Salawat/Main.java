@@ -20,8 +20,8 @@ public class Main extends Application {
     private static PrayerTimesCalculator prayerTimesCalculator;
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
+        StageController.setStage(stage);
         loadPrayerTimes();
-
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         URL cssURL = getClass().getResource("css/main.css");
@@ -29,7 +29,6 @@ public class Main extends Application {
         StageController.setMainScene(scene);
         stage.setTitle("Salawat");
 
-        StageController.setStage(stage);
         StageController.setCurrentScene(scene);
 
         SizeBinder.init();

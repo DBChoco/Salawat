@@ -2,7 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,10 +10,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="409.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AppearanceController">
+<AnchorPane prefHeight="400" prefWidth="400" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AppearanceController">
    <children>
-      <GridPane prefHeight="367.0" prefWidth="383.0">
+      <GridPane prefHeight="400" prefWidth="400">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,84 +30,57 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label text="Theme" />
+                  <Label text="Theme">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <MFXCheckbox text="Dark mode" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
              </FlowPane>
 
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Background Image" />
+                  <Label text="Background Image">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </FlowPane>
 
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                  <children>
-                     <VBox prefHeight="77.0" prefWidth="191.0">
+                     <VBox prefHeight="108.0" prefWidth="186.0">
                      <FlowPane alignment="TOP_RIGHT">
                         <children>
-                           <MFXCheckbox text="Enable background image" />
+                           <MFXCheckbox text="Enable background image">
+                              <FlowPane.margin>
+                                 <Insets bottom="10.0" />
+                              </FlowPane.margin></MFXCheckbox>
                         </children>
                      </FlowPane>
                      <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="171.0">
                         <children>
-                           <MFXButton />
+                           <MFXButton>
+                              <FlowPane.margin>
+                                 <Insets bottom="10.0" />
+                              </FlowPane.margin></MFXButton>
                         </children>
                      </FlowPane>
+                     <FlowPane.margin>
+                        <Insets top="5.0" />
+                     </FlowPane.margin>
                      </VBox>
                  </children>
-             </FlowPane>
-
-             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                 <children>
-                     <Label text="Sunnah Times" />
-                 </children>
-             </FlowPane>
-             <FlowPane alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-                  <VBox prefHeight="77.0" prefWidth="191.0">
-                     <children>
-                        <FlowPane alignment="TOP_RIGHT">
-                           <children>
-                              <MFXCheckbox text="Middle of the night" />
-                           </children>
-                        </FlowPane>
-                        <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="171.0">
-                           <children>
-                              <MFXCheckbox text="Third of the night" />
-                           </children>
-                        </FlowPane>
-                     </children>
-                  </VBox>
-               </children>
-             </FlowPane>
-
-             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                 <children>
-                     <Label text="Weather" />
-                 </children>
-             </FlowPane>
-             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <VBox prefHeight="77.0" prefWidth="191.0">
-                     <children>
-                        <FlowPane alignment="TOP_RIGHT">
-                           <children>
-                              <MFXCheckbox text="Show weather" />
-                           </children>
-                        </FlowPane>
-                        <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="171.0">
-                           <children>
-                              <MFXComboBox text="Units" />
-                           </children>
-                        </FlowPane>
-                     </children>
-                  </VBox>
-               </children>
              </FlowPane>
 
          </children>

@@ -2,29 +2,37 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.github.dbchoco.Salawat.controllers.settings.SettingsController">
+<AnchorPane  fx:id="root" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.SettingsController">
    <children>
-      <BorderPane prefHeight="720.0" prefWidth="1280.0">
+      <BorderPane fx:id="borderPane">
           <top>
               <fx:include source="settings/header.fxml" />
           </top>
-         <center>
-            <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                <fx:include fx:id="sideBar" source="settings/sideBar.fxml" />
-                <FlowPane fx:id="mainSettings" alignment="CENTER" BorderPane.alignment="CENTER">
-                    <fx:include source="settings/tabs/general.fxml" />
-                </FlowPane>
+         <bottom>
+            <FlowPane prefHeight="21.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+               <children>
+                    <fx:include fx:id="footer" source="settings/footer.fxml" />
+               </children>
             </FlowPane>
+         </bottom>
+         <center >
+            <GridPane fx:id="gridPane" alignment="TOP_CENTER" prefHeight="582.0" prefWidth="669.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                   <fx:include fx:id="mainArea" source="settings/mainArea.fxml" />
+               </children>
+            </GridPane>
          </center>
-          <bottom>
-              <fx:include fx:id="footer" source="settings/footer.fxml" />
-          </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

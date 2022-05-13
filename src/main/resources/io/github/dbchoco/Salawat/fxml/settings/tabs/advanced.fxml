@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,10 +11,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AdvancedController">
+<AnchorPane prefHeight="500" prefWidth="400" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AdvancedController">
    <children>
-      <GridPane prefHeight="490.0" prefWidth="383.0">
+      <GridPane prefHeight="490.0" prefWidth="400.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,18 +31,30 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label text="Calculation Methods" />
+                  <Label text="Calculation Methods">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                      <MFXComboBox fx:id="calcMethodCombo" floatingText="Calculation method" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
              </FlowPane>
 
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Madhab" />
+                  <Label text="Madhab">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </FlowPane>
 
@@ -48,31 +62,49 @@
                <children>
                   <MFXComboBox fx:id="madhabCombo" floatingText="Madhab" layoutX="77.0" layoutY="10.0" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
              </FlowPane>
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                  <children>
-                     <Label text="High Latitude Rule " />
+                     <Label text="High Latitude Rule ">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                  </children>
              </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <MFXComboBox fx:id="hlrCombo" floatingText="High latitude rule" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
              </FlowPane>
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                  <children>
-                     <Label text="Delay After Maghrib" />
+                     <Label text="Delay After Maghrib">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                  </children>
              </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <VBox prefHeight="82.0" prefWidth="185.0">
+                  <VBox prefHeight="82.0" prefWidth="185.0" spacing="10.0">
                      <children>
                         <FlowPane alignment="TOP_RIGHT">
                            <children>
-                              <MFXCheckbox fx:id="delayCheck" text="Enable delay after Maghrib" />
+                              <MFXCheckbox fx:id="delayCheck" prefHeight="8.0" prefWidth="191.0" text="Enable delay after Maghrib" />
                            </children>
                         </FlowPane>
                         <FlowPane alignment="TOP_RIGHT">
@@ -83,31 +115,50 @@
                      </children>
                   </VBox>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
              </FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <Label text="Custom settings" />
+                  <Label text="Custom settings">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </FlowPane>
-            <VBox prefHeight="82.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <FlowPane alignment="TOP_RIGHT">
+                  <VBox prefHeight="142.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <MFXCheckbox fx:id="customSettingsCheck" text="Enable custom settings" />
+                        <FlowPane alignment="TOP_RIGHT">
+                           <children>
+                              <MFXCheckbox fx:id="customSettingsCheck" text="Enable custom settings" />
+                           </children>
+                        </FlowPane>
+                        <FlowPane alignment="TOP_RIGHT">
+                           <children>
+                              <MFXTextField fx:id="fajrAngle" floatingText="Fajr angle" />
+                           </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <MFXTextField fx:id="ishaAngle" floatingText="Isha angle" />
+                           </children>
+                        </FlowPane>
                      </children>
-                  </FlowPane>
-                  <FlowPane alignment="TOP_RIGHT">
-                     <children>
-                        <MFXTextField fx:id="fajrAngle" floatingText="Fajr angle" />
-                     </children>
-                  </FlowPane>
-                  <FlowPane alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <MFXTextField fx:id="ishaAngle" floatingText="Isha angle" />
-                     </children>
-                  </FlowPane>
+                  </VBox>
                </children>
-            </VBox>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </FlowPane>
          </children>
       </GridPane>
    </children>

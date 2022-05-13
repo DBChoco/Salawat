@@ -4,20 +4,25 @@ import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class SideBarController extends BaseController {
+public class SideBarController extends BaseController{
     public static String currentTab = "general";
     public MFXButton generalButton;
     public MFXButton locationButton;
     public MFXButton audioButton;
     public MFXButton appearanceButton;
     public MFXButton advancedButton;
+    public VBox vbox;
+    public AnchorPane root;
 
     public void initialize(){
         translate();
@@ -44,9 +49,9 @@ public class SideBarController extends BaseController {
     public void showTab(String tab) throws IOException, ClassNotFoundException {
         if (currentTab != tab){
             Controllers.getSettingsPage(currentTab).saveSettings();
-            Controllers.getSettingsController().mainSettings.getChildren().remove(0);
+            Controllers.getMainAreaController().mainSettings.getChildren().remove(0);
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings/tabs/" + tab + ".fxml"));
-            Controllers.getSettingsController().mainSettings.getChildren().add(fxmlLoader.load());
+            Controllers.getMainAreaController().mainSettings.getChildren().add(fxmlLoader.load());
             currentTab = tab;
         }
     }

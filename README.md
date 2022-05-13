@@ -16,6 +16,8 @@ Done:
 - [x] System Tray
 - [x] Timezone
 - [x] Notifications
+- [x] Whole UI style (make it look good (only 1280x720))
+  - [x] Scale UI
 
 Todo:
 - [ ] Languages
@@ -24,13 +26,10 @@ Todo:
   - [ ] French
   - [ ] Spanish
   - [ ] Arabic
-- [ ] Whole UI style (make it look good (only 1280x720))
-  - [ ] Scale UI
 - [ ] Background images
 - [ ] Automatic Location
 - [ ] Auto start
-- [x] Calculation methods
-  - [ ] Adjustements
+
 
 Not very important, probably future updates.
 - [ ] Weather
@@ -42,10 +41,11 @@ Not very important, probably future updates.
 - [ ] DateFormat
 - [ ] Taskbar customization
 - [ ] Better system tray
+-  Calculation methods
+  - [ ] Adjustements
 
 
 Useful things to add 
 - Builder : https://github.com/wiverson/maven-jpackage-template
-- Translucent effect: https://github.com/iAmGio/froxty
 - FontAwesome: https://bitbucket.org/Jerady/fontawesomefx/src/master/
 - AutoUpdater: https://github.com/edvin/fxlauncher

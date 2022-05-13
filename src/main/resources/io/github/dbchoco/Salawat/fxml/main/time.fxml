@@ -24,7 +24,7 @@
             <children>
                 <Label id="clock" fx:id="clock" alignment="CENTER" contentDisplay="CENTER" prefHeight="86.0" styleClass="title" text="00:00:00">
                   <font>
-                     <Font name="MFXResources" size="83.0" />
+                     <Font size="83.0" />
                   </font>
                   <FlowPane.margin>
                      <Insets bottom="10.0" />
@@ -35,7 +35,7 @@
             <children>
                 <Label id="date" fx:id="date" alignment="TOP_CENTER" prefHeight="32.0" styleClass="title" text="00/00/0000">
                   <font>
-                     <Font name="MFXResources" size="31.0" />
+                     <Font size="31.0" />
                   </font></Label>
             </children>
          </FlowPane>
@@ -43,7 +43,7 @@
             <children>
                 <Label id="timeLeft" fx:id="timeLeft" alignment="CENTER" prefHeight="33.0" text="Time before X: XX:XX:XX">
                   <font>
-                     <Font name="MFXResources" size="32.0" />
+                     <Font size="32.0" />
                   </font></Label>
             </children>
          </FlowPane>

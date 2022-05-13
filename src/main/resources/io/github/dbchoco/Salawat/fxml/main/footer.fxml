@@ -13,29 +13,26 @@
          <HBox fx:id="volumeBox" alignment="CENTER_LEFT" prefHeight="50" prefWidth="640.0">
             <children>
                <MFXButton fx:id="stopButton" text="Stop">
-                  <HBox.margin>
-                     <Insets />
-                  </HBox.margin>
                   <font>
-                     <Font name="MFXResources" size="16.0" />
+                     <Font size="16.0" />
                   </font></MFXButton>
                <MFXButton fx:id="playButton" text="Play">
                   <HBox.margin>
                      <Insets left="15.0" />
                   </HBox.margin>
                   <font>
-                     <Font name="MFXResources" size="16.0" />
+                     <Font size="16.0" />
                   </font></MFXButton>
-               <MFXSlider fx:id="volumeSlider" id="volumeSlider">
+               <MFXSlider id="volumeSlider" fx:id="volumeSlider">
                   <HBox.margin>
                      <Insets left="15.0" />
                   </HBox.margin></MFXSlider>
             </children></HBox>
-         <HBox fx:id="buttonBox" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50" prefWidth="640.0">
+         <HBox fx:id="buttonBox" alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50" prefWidth="640.0">
             <children>
                 <MFXButton id="settingsButton" fx:id="settingsButton" minHeight="27.0" minWidth="70.0" text="Settings">
                   <font>
-                     <Font name="MFXResources" size="16.0" />
+                     <Font size="16.0" />
                   </font></MFXButton>
             </children>
          </HBox>
