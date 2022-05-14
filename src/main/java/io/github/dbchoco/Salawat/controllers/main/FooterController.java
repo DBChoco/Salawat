@@ -94,10 +94,10 @@ public class FooterController extends BaseController {
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                SizeBinder.bindSize(root, 1280, 50);
-                SizeBinder.bindSize(hbox, 1280, 50);
-                SizeBinder.bindSize(volumeBox, 640, 50);
-                SizeBinder.bindSize(buttonBox, 640, 50);
+                SizeBinder.bindSize(root, 1280, 50, "main");
+                SizeBinder.bindSize(hbox, 1280, 50, "main");
+                SizeBinder.bindSize(volumeBox, 640, 50, "main");
+                SizeBinder.bindSize(buttonBox, 640, 50, "main");
             }
         });
     }

@@ -20,7 +20,7 @@ public class HeaderController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(hbox, 1280, 70);
-        SizeBinder.bindSize(flowPane, 1280, 70);
+        SizeBinder.bindSize(hbox, 1280, 70, "settings");
+        SizeBinder.bindSize(flowPane, 1280, 70, "settings");
     }
 }

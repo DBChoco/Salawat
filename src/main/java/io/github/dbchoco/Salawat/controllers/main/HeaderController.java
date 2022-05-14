@@ -10,6 +10,4 @@ public class HeaderController {
     public void initialize(){
         //title.setText("Salam");
     }
-
-
 }

@@ -3,6 +3,7 @@ package io.github.dbchoco.Salawat.controllers.settings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
@@ -14,6 +15,7 @@ public class SettingsController extends BaseController {
     public AnchorPane root;
 
     public void initialize(){
+        Controllers.setSettingsController(this);
         makeResizable();
     }
 
@@ -24,7 +26,15 @@ public class SettingsController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(root, 1280, 720);
-        SizeBinder.bindSize(borderPane, 1280, 720);
+        //SizeBinder.bindSize(root, 1280, 720, "settings");
+        SizeBinder.bindSize(borderPane, 1280, 720, "settings");
+    }
+
+    public ReadOnlyDoubleProperty getWidthProperty(){
+        return root.widthProperty();
+    }
+
+    public ReadOnlyDoubleProperty getHeightProperty(){
+        return root.heightProperty();
     }
 }

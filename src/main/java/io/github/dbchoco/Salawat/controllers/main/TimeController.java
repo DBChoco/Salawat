@@ -80,7 +80,7 @@ public class TimeController extends BaseController{
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                SizeBinder.bindSize(grid, 1280, 300);
+                SizeBinder.bindSize(grid, 1280, 300, "main");
                 SizeBinder.bindFontSize(clock, "larger");
                 SizeBinder.bindFontSize(date, "small");
                 SizeBinder.bindFontSize(timeLeft, "large");

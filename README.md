@@ -18,6 +18,7 @@ Done:
 - [x] Notifications
 - [x] Whole UI style (make it look good (only 1280x720))
   - [x] Scale UI
+- [x] Added packager
 
 Todo:
 - [ ] Languages
@@ -48,4 +49,4 @@ Not very important, probably future updates.
 Useful things to add 
 - Builder : https://github.com/wiverson/maven-jpackage-template
 - FontAwesome: https://bitbucket.org/Jerady/fontawesomefx/src/master/
-- AutoUpdater: https://github.com/edvin/fxlauncher
+- AutoUpdater: https://github.com/update4j/update4j

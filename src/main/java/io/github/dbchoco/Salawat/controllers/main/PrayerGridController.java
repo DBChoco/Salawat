@@ -82,11 +82,11 @@ public class PrayerGridController extends BaseController {
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                SizeBinder.bindSize(root, 1280, 290);
-                SizeBinder.bindSize(hbox, 1280, 290);
-                SizeBinder.bindSizeVH(vbox, 320, 290);
-                SizeBinder.bindSizeVH(prayerGrid, 320, 280);
-                SizeBinder.bindSizeVH(progressBar, 320, 10);
+                SizeBinder.bindSize(root, 1280, 290, "main");
+                SizeBinder.bindSize(hbox, 1280, 290, "main");
+                SizeBinder.bindSizeVH(vbox, 320, 290, "main");
+                SizeBinder.bindSizeVH(prayerGrid, 320, 280, "main");
+                SizeBinder.bindSizeVH(progressBar, 320, 10, "main");
                 Label[] labels = {fajrText, fajrTime, sunriseText, sunriseTime, dhuhrText, dhuhrTime, asrText, asrTime,
                 maghribText, maghribTime, ishaText, ishaTime};
                 for (Label label : labels){

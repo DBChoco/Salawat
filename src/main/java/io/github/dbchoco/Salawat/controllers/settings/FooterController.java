@@ -49,7 +49,7 @@ public class FooterController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(root, 1280, 50);
-        SizeBinder.bindSize(hbox, 1280, 50);
+        SizeBinder.bindSize(root, 1280, 50, "settings");
+        SizeBinder.bindSize(hbox, 1280, 50, "settings");
     }
 }

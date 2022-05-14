@@ -6,7 +6,7 @@
 
     <groupId>io.github.dbchoco</groupId>
     <artifactId>Salawat</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>salawat</name>
 
     <properties>
@@ -60,6 +60,11 @@
             <artifactId>FXTrayIcon</artifactId>
             <version>3.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.update4j</groupId>
+            <artifactId>update4j</artifactId>
+            <version>1.5.9</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -95,13 +100,39 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>io.github.dbchoco.salawat/io.github.dbchoco.Salawat.Main</mainClass>
+                            <mainClass>io.github.dbchoco.Salawat.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- https://github.com/fvarrui/JavaPackager -->
+            <plugin>
+                <groupId>io.github.fvarrui</groupId>
+                <artifactId>javapackager</artifactId>
+                <version>1.6.6</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                        <configuration>
+                            <!-- mandatory -->
+                            <mainClass>io.github.dbchoco.Salawat.Main</mainClass>
+                            <!-- optional -->
+                            <bundleJre>true</bundleJre>
+                            <customizedJre>false</customizedJre>
+                            <generateInstaller>true</generateInstaller>
+                            <administratorRequired>false</administratorRequired>
+                            <createTarball>true</createTarball>
+                            <platform>auto</platform>
                         </configuration>
                     </execution>
                 </executions>

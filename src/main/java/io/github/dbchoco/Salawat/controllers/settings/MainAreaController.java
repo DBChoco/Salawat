@@ -26,7 +26,7 @@ public class MainAreaController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(root, 1280, 550);
-        SizeBinder.bindSize(flowPane, 1280, 550);
+        SizeBinder.bindSize(root, 1280, 550, "settings");
+        SizeBinder.bindSize(flowPane, 1280, 550, "settings");
     }
 }

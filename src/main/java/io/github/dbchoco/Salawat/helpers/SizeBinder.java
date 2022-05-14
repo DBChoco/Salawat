@@ -22,11 +22,11 @@ public class SizeBinder {
     private static final Integer largerFontRatio = 10;
 
     public static void init(){
-        fontSmall.set(Font.font(Controllers.getMainController().getHeightProperty().doubleValue() / smallFontRatio));
-        fontMedium.set(Font.font(Controllers.getMainController().getHeightProperty().doubleValue() / mediumFontRatio));
-        fontLarge.set(Font.font(Controllers.getMainController().getHeightProperty().doubleValue() / largeFontRatio));
-        fontLarger.set(Font.font(Controllers.getMainController().getHeightProperty().doubleValue() / largerFontRatio));
-        Controllers.getMainController().getHeightProperty().addListener(new ChangeListener<Number>() {
+        fontSmall.set(Font.font(StageController.getStage().heightProperty().doubleValue() / smallFontRatio));
+        fontMedium.set(Font.font(StageController.getStage().heightProperty().doubleValue() / mediumFontRatio));
+        fontLarge.set(Font.font(StageController.getStage().heightProperty().doubleValue() / largeFontRatio));
+        fontLarger.set(Font.font(StageController.getStage().heightProperty().doubleValue() / largerFontRatio));
+        StageController.getStage().heightProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 fontSmall.set(Font.font(t1.doubleValue() / smallFontRatio));
@@ -36,47 +36,53 @@ public class SizeBinder {
             }
         });
     }
-    public static void  bindSize(Pane node, double width, double height){
-        if (StageController.getStage() != null){
-            node.prefWidthProperty().bind(StageController.getStage().widthProperty().divide(1280).multiply(width));
-            node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
-        }
-        else {
+    public static void  bindSize(Pane node, double width, double height, String scene){
+        if (scene.equals("main")){
             node.prefWidthProperty().bind(Controllers.getMainController().getWidthProperty().divide(1280).multiply(width));
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
+        else {
+            if (Controllers.getSettingsController() != null){
+                node.prefWidthProperty().bind(Controllers.getSettingsController().getWidthProperty().divide(1280).multiply(width));
+                node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
+            }
+            else {
+                node.prefWidthProperty().bind(StageController.getStage().widthProperty().divide(1280).multiply(width));
+                node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
+            }
+        }
     }
 
-    public static void  bindSize(Control node, double width, double height){
-        if (StageController.getStage() != null){
-            node.prefWidthProperty().bind(StageController.getStage().widthProperty().divide(1280).multiply(width));
-            node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
-        }
-        else {
+    public static void  bindSize(Control node, double width, double height, String scene){
+        if (scene.equals("main")){
             node.prefWidthProperty().bind(Controllers.getMainController().getWidthProperty().divide(1280).multiply(width));
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
-    }
-
-    public static void  bindSizeVH(Pane node, double width, double height){
-        if (StageController.getStage() != null){
-            node.prefWidthProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(width));
-            node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
-        }
         else {
-            node.prefWidthProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(width));
-            node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
+            node.prefWidthProperty().bind(Controllers.getSettingsController().getWidthProperty().divide(1280).multiply(width));
+            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
         }
     }
 
-    public static void bindSizeVH(Control node, double width, double height){
-        if (StageController.getStage() != null){
-            node.prefWidthProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(width));
-            node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
-        }
-        else {
+    public static void  bindSizeVH(Pane node, double width, double height, String scene){
+        if (scene.equals("main")){
             node.prefWidthProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(width));
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
+        }
+        else {
+            node.prefWidthProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(width));
+            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
+        }
+    }
+
+    public static void bindSizeVH(Control node, double width, double height, String scene){
+        if (scene.equals("main")){
+            node.prefWidthProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(width));
+            node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
+        }
+        else {
+            node.prefWidthProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(width));
+            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
         }
     }
 
@@ -91,6 +97,5 @@ public class SizeBinder {
             case "large" -> label.fontProperty().bind(fontLarge);
             case "larger" -> label.fontProperty().bind(fontLarger);
         }
-
     }
 }

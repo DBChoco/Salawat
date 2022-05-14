@@ -17,7 +17,6 @@ public class MainController extends BaseController {
     public BorderPane borderPane;
     public Pane root;
     public FlowPane gridFlowPane;
-    public ImageView backgroundImage;
 
     public void initialize(){
         Controllers.setMainController(this);
@@ -40,8 +39,8 @@ public class MainController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(borderPane, 1280, 720);
-        SizeBinder.bindSize(gridFlowPane, 1280, 300);
+        SizeBinder.bindSize(borderPane, 1280, 720, "main");
+        SizeBinder.bindSize(gridFlowPane, 1280, 300, "main");
     }
 
     private void loadBGImage(){

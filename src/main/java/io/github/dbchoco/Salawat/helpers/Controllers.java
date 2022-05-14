@@ -94,4 +94,9 @@ public class Controllers {
     public static void setMainController(MainController mainController) {
         Controllers.mainController = mainController;
     }
+
+    public static void setSettingsController(SettingsController settingsController) {
+        Controllers.settingsController = settingsController;
+        System.out.println("salam");
+    }
 }
