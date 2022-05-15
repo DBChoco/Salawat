@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat;
 
 import io.github.dbchoco.Salawat.app.*;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.Reloader;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import javafx.application.Application;
@@ -58,8 +59,7 @@ public class Main extends Application {
         return prayerTimesCalculator;
     }
     public static void reload() throws ClassNotFoundException {
-        loadPrayerTimes();
-        Controllers.getPrayerGridController().setPrayerTimes(prayerTimesCalculator.getPrayerTimes());
+        Reloader.reload();
     }
 
     private void playStartupSound(){

@@ -22,6 +22,7 @@ public class Controllers {
     private static MainAreaController mainAreaController;
     private static FooterController mainFooterController;
 
+
     public static TimeController getTimeController() {
         return timeController;
     }
@@ -44,6 +45,10 @@ public class Controllers {
 
     public static MainAreaController getMainAreaController() {
         return mainAreaController;
+    }
+
+    public static AppearanceController getAppearanceController() {
+        return appearanceController;
     }
 
     public static SettingsPage getSettingsPage(String tab) throws ClassNotFoundException {
@@ -97,6 +102,5 @@ public class Controllers {
 
     public static void setSettingsController(SettingsController settingsController) {
         Controllers.settingsController = settingsController;
-        System.out.println("salam");
     }
 }

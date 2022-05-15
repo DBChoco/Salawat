@@ -112,6 +112,27 @@
                 </executions>
             </plugin>
 
+
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- https://github.com/fvarrui/JavaPackager -->
             <plugin>
                 <groupId>io.github.fvarrui</groupId>
@@ -125,10 +146,11 @@
                         </goals>
                         <configuration>
                             <!-- mandatory -->
-                            <mainClass>io.github.dbchoco.Salawat.Main</mainClass>
+                            <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
                             <!-- optional -->
-                            <bundleJre>true</bundleJre>
-                            <customizedJre>false</customizedJre>
+                            <bundleJre>false</bundleJre>
+                            <copyDependencies>false</copyDependencies>
+                            <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
                             <generateInstaller>true</generateInstaller>
                             <administratorRequired>false</administratorRequired>
                             <createTarball>true</createTarball>
@@ -137,6 +159,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>

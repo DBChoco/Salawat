@@ -20,6 +20,8 @@ Done:
   - [x] Scale UI
 - [x] Added packager
 
+- [x] Reduce jar size
+
 Todo:
 - [ ] Languages
   - [x] English
@@ -31,6 +33,7 @@ Todo:
 - [ ] Automatic Location
 - [ ] Auto start
 
+- [ ] Fix dua after adhan not playing
 
 Not very important, probably future updates.
 - [ ] Weather

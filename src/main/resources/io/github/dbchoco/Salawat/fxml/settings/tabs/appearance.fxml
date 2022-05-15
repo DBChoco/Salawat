@@ -38,7 +38,7 @@
             </FlowPane>
              <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <MFXCheckbox text="Dark mode" />
+                  <MFXCheckbox fx:id="darkmodeCheck" text="Dark mode" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -62,7 +62,7 @@
                      <VBox prefHeight="108.0" prefWidth="186.0">
                      <FlowPane alignment="TOP_RIGHT">
                         <children>
-                           <MFXCheckbox text="Enable background image">
+                           <MFXCheckbox fx:id="bgImageCheck" text="Enable background image">
                               <FlowPane.margin>
                                  <Insets bottom="10.0" />
                               </FlowPane.margin></MFXCheckbox>
@@ -70,7 +70,7 @@
                      </FlowPane>
                      <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="171.0">
                         <children>
-                           <MFXButton>
+                           <MFXButton fx:id="bgImageButton">
                               <FlowPane.margin>
                                  <Insets bottom="10.0" />
                               </FlowPane.margin></MFXButton>

@@ -5,7 +5,7 @@ import io.github.dbchoco.Salawat.Main;
 import java.util.prefs.Preferences;
 
 public class UserSettings {
-    static Preferences prefs = Preferences.systemRoot().node("io/github/dbchoco/Salawat");
+    static Preferences prefs = Preferences.userRoot().node("io/github/dbchoco/Salawat");
 
     public static String language = prefs.get("language", "en");
     public static Integer timeFormat = prefs.getInt("timeFormat", 12);
@@ -27,7 +27,7 @@ public class UserSettings {
     public static Boolean startupSound = prefs.getBoolean("startupSound", false);
     public static Boolean darkMode = prefs.getBoolean("darkMode", false);
     public static Boolean bgImage = prefs.getBoolean("bgImage", true);
-    public static String bgImagePath = prefs.get("bgImagePath", "TODO"); //TODO
+    public static String bgImagePath = prefs.get("bgImagePath", Main.class.getResource("images/bgImage.jpg").toExternalForm());
     public static Boolean showMOTN = prefs.getBoolean("showMOTN", false);
     public static Boolean showTOTN = prefs.getBoolean("showTOTN", false);
     public static Boolean showWeather = prefs.getBoolean("showWeather", true);
