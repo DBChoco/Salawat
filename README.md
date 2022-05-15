@@ -109,7 +109,6 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [x] Whole UI style (make it look good (only 1280x720))
   - [x] Scale UI
 - [x] Added packager
-
 - [x] Reduce jar size
 
 #### Todo:
