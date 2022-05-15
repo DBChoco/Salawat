@@ -1,18 +1,23 @@
 package io.github.dbchoco.Salawat.controllers.settings.tabs;
 
 
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.scene.control.Label;
 
 import java.util.TimeZone;
 
-public class LocationController implements SettingsPage{
+public class LocationController extends BaseController implements SettingsPage{
 
     public MFXTextField latField;
     public MFXTextField lonField;
     public MFXFilterComboBox timezoneCombo;
+    public Label coordinatesLabel;
+    public Label timezoneLabel;
 
     private ListItemArray timezones = new ListItemArray();
 
@@ -29,6 +34,8 @@ public class LocationController implements SettingsPage{
 
         loadSettings();
         Controllers.setLocationController(this);
+        translate();
+
     }
 
 
@@ -47,5 +54,20 @@ public class LocationController implements SettingsPage{
         latField.setText(String.valueOf(latitude));
         double longitude = (double) UserSettings.longitude;
         lonField.setText(String.valueOf(longitude));
+    }
+
+    @Override
+    protected void translate() {
+        I18N.bindString(coordinatesLabel, "coordinates");
+        I18N.bindString(timezoneLabel, "timezone");
+
+        I18N.bindString(latField, "latitude");
+        I18N.bindString(lonField, "longitude");
+        I18N.bindString(timezoneCombo, "timezone");
+    }
+
+    @Override
+    protected void makeResizable() {
+
     }
 }

@@ -28,7 +28,7 @@
          <children>
             <FlowPane prefHeight="134.0" prefWidth="189.0">
                <children>
-                  <Label text="Adhan">
+                  <Label fx:id="adhanLabel" text="Adhan">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -97,7 +97,7 @@
 
             <FlowPane prefHeight="91.0" prefWidth="123.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Du'a after Adhan">
+                  <Label fx:id="duaAfterAdhanLabel" text="Du'a after Adhan">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -115,7 +115,7 @@
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                  <children>
-                     <Label text="Startup sound">
+                     <Label fx:id="statupSoundLabel" text="Startup sound">
                      <font>
                         <Font size="20.0" />
                      </font>

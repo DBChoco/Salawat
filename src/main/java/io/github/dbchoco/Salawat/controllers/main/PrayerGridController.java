@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.controllers.main;
 
 import com.batoulapps.adhan.PrayerTimes;
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
@@ -56,6 +57,7 @@ public class PrayerGridController extends BaseController {
         setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
         createProgressAnimation();
         makeResizable();
+        translate();
     }
 
     public void createProgressAnimation(){
@@ -74,7 +76,12 @@ public class PrayerGridController extends BaseController {
 
     @Override
     protected void translate() {
-
+        I18N.bindString(fajrText, "fajr");
+        I18N.bindString(sunriseText, "sunrise");
+        I18N.bindString(dhuhrText, "dhuhr");
+        I18N.bindString(asrText, "asr");
+        I18N.bindString(maghribText, "maghrib");
+        I18N.bindString(ishaText, "isha");
     }
 
     @Override
@@ -90,7 +97,7 @@ public class PrayerGridController extends BaseController {
                 Label[] labels = {fajrText, fajrTime, sunriseText, sunriseTime, dhuhrText, dhuhrTime, asrText, asrTime,
                 maghribText, maghribTime, ishaText, ishaTime};
                 for (Label label : labels){
-                    SizeBinder.bindFontSize(label, "medium");
+                    SizeBinder.bindFontSize(label, "small");
                 }
             }
         });

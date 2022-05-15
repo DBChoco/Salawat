@@ -1,48 +1,41 @@
+@import 'fonts.css';
+
 #title{
     -fx-font-size: 20px;
     -fx-padding: 5px 0 0 5px;
 }
 
 #clock, #date, #timeLeft{
-    -fx-background-color: rgba(255, 255, 255, 0.75);
     -fx-padding: 5px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.12, -1.0, 2.0);
 }
 
 #progressBar{
     -fx-border-radius: 10px 10px 0 0;
     -fx-background-radius: 10px 10px 0 0;
-    -fx-background-color: rgba(255, 255, 255, 0.75);
-}
-
-#progressBar .bar1, #volumeSlider .bar{
-    -fx-fill: #212121;
-}
-
-#volumeSlider .thumb,
-#volumeSlider .track{
-    -mfx-color: #212121;
-    -fx-fill: derive(#212121, 85%);
-}
-
-#volumeSlider .thumb-container:hover .thumb-radius,
-#volumeSlider .thumb-container:pressed .thumb-radius {
-	-mfx-color: derive(#212121, 85%);
-	-fx-opacity: 0.5;
-}
-
-#volumeSlider .thumb-container .mfx-ripple-generator {
-	-mfx-ripple-color: #212121;
 }
 
 #prayerGrid{
     -fx-border-radius: 0 0 10px 10px;
     -fx-background-radius: 0 0 10px 10px;
-    -fx-background-color: rgba(255, 255, 255, 0.75);
-    -fx-font-color: black;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.12, -1.0, 2.0);
 }
 
-#test{
-    -fx-background-color: rgba(0, 0, 0, 1);
+.mfx-button .text {
+	-fx-font-smoothing-type: lcd;
+}
+
+.mfx-button .mfx-ripple-generator {
+	-mfx-ripple-radius: 40;
+	-mfx-auto-clip: true;
+}
+
+#volumeSlider{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.12, -1.0, 2.0);
+}
+
+.root{
+    -fx-font-family: "Rubik";
 }

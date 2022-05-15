@@ -48,17 +48,32 @@ public class FooterController extends BaseController {
     private void loadHandlers(){
         settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings.fxml"));
-                Scene scene = null;
-                try {
-                    scene = new Scene(fxmlLoader.load(), 1280, 720);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if (StageController.getSettingsScene() != null){
+                    StageController.setCurrentScene(StageController.getSettingsScene());
                 }
-                URL cssURL = Main.class.getResource("css/main.css");
-                assert cssURL != null;
-                scene.getStylesheets().add(cssURL.toExternalForm());
-                StageController.setCurrentScene(scene);
+                else {
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings.fxml"));
+                    Scene scene = null;
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 1280, 720);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    URL cssURL = Main.class.getResource("css/main.css");
+                    URL theme;
+                    if (UserSettings.darkMode){
+                        theme = Main.class.getResource("css/dark.css");
+                    }
+                    else {
+                        theme = Main.class.getResource("css/light.css");
+                    }
+                    assert cssURL != null;
+                    scene.getStylesheets().add(cssURL.toExternalForm());
+                    assert theme != null;
+                    scene.getStylesheets().add(theme.toExternalForm());
+                    StageController.setSettingsScene(scene);
+                    StageController.setCurrentScene(scene);
+                }
             }
         });
 

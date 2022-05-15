@@ -49,9 +49,6 @@
                   <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
                 </transformer>
               </transformers>
-              <descriptorRefs>
-                <descriptorRef>shaded</descriptorRef>
-              </descriptorRefs>
             </configuration>
           </execution>
         </executions>

@@ -21,6 +21,9 @@ public class SizeBinder {
     private static final Integer largeFontRatio = 18;
     private static final Integer largerFontRatio = 10;
 
+    private static Double diffWidth;
+    private static Double diffHeight;
+
     public static void init(){
         fontSmall.set(Font.font(StageController.getStage().heightProperty().doubleValue() / smallFontRatio));
         fontMedium.set(Font.font(StageController.getStage().heightProperty().doubleValue() / mediumFontRatio));
@@ -37,19 +40,14 @@ public class SizeBinder {
         });
     }
     public static void  bindSize(Pane node, double width, double height, String scene){
+        calcDiffDimensions();
         if (scene.equals("main")){
             node.prefWidthProperty().bind(Controllers.getMainController().getWidthProperty().divide(1280).multiply(width));
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
         else {
-            if (Controllers.getSettingsController() != null){
-                node.prefWidthProperty().bind(Controllers.getSettingsController().getWidthProperty().divide(1280).multiply(width));
-                node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
-            }
-            else {
-                node.prefWidthProperty().bind(StageController.getStage().widthProperty().divide(1280).multiply(width));
-                node.prefHeightProperty().bind(StageController.getStage().heightProperty().divide(720).multiply(height));
-            }
+            node.prefWidthProperty().bind((StageController.getStage().widthProperty().subtract(diffWidth)).divide(1280).multiply(width));
+            node.prefHeightProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
         }
     }
 
@@ -59,8 +57,8 @@ public class SizeBinder {
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
         else {
-            node.prefWidthProperty().bind(Controllers.getSettingsController().getWidthProperty().divide(1280).multiply(width));
-            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
+            node.prefWidthProperty().bind((StageController.getStage().widthProperty().subtract(diffWidth)).divide(1280).multiply(width));
+            node.prefHeightProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
         }
     }
 
@@ -70,8 +68,8 @@ public class SizeBinder {
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
         else {
-            node.prefWidthProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(width));
-            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
+            node.prefWidthProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
+            node.prefHeightProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
         }
     }
 
@@ -81,8 +79,17 @@ public class SizeBinder {
             node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
         }
         else {
-            node.prefWidthProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(width));
-            node.prefHeightProperty().bind(Controllers.getSettingsController().getHeightProperty().divide(720).multiply(height));
+            node.prefWidthProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
+            node.prefHeightProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
+        }
+    }
+
+    public static void bindHeight(Pane node, double height, String scene){
+        if (scene.equals("main")){
+            node.prefHeightProperty().bind(Controllers.getMainController().getHeightProperty().divide(720).multiply(height));
+        }
+        else {
+            node.prefHeightProperty().bind((StageController.getStage().heightProperty().subtract(diffHeight)).divide(720).multiply(height));
         }
     }
 
@@ -96,6 +103,13 @@ public class SizeBinder {
             case "medium" -> label.fontProperty().bind(fontMedium);
             case "large" -> label.fontProperty().bind(fontLarge);
             case "larger" -> label.fontProperty().bind(fontLarger);
+        }
+    }
+
+    private static void calcDiffDimensions(){
+        if (diffWidth == null || Double.isNaN(diffWidth)){
+            diffWidth = StageController.getStage().getWidth() - Controllers.getMainController().getWidthProperty().get();
+            diffHeight = StageController.getStage().getHeight() - Controllers.getMainController().getHeightProperty().get();
         }
     }
 }

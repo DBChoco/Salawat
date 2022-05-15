@@ -7,6 +7,9 @@ import io.github.dbchoco.Salawat.helpers.StageController;
 import io.github.dbchoco.Salawat.helpers.StringShortener;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -21,9 +24,11 @@ public class AppearanceController implements SettingsPage{
 
     public void initialize() throws ClassNotFoundException {
         setupFilePickers();
+        setupThemeListener();
         loadSettings();
         Controllers.setAppearanceController(this);
     }
+
     @Override
     public void saveSettings() {
         UserSettings.darkMode = darkmodeCheck.isSelected();
@@ -59,6 +64,15 @@ public class AppearanceController implements SettingsPage{
                     bgImageButton.setText(StringShortener.shortenString(file.getName(), 25));
                     UserSettings.bgImagePath = file.toURI().toString();
                 }
+            }
+        });
+    }
+
+    private void setupThemeListener() {
+        darkmodeCheck.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                StageController.changeTheme(StageController.getSettingsScene(), darkmodeCheck.isSelected());
             }
         });
     }

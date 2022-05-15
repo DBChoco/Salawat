@@ -26,7 +26,7 @@
 
                 <FlowPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <Label text="Coordinates">
+                        <Label fx:id="coordinatesLabel" text="Coordinates">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -44,7 +44,7 @@
 
                 <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <children>
-                        <Label text="Time zone">
+                        <Label fx:id="timezoneLabel" text="Time zone">
                      <font>
                         <Font size="20.0" />
                      </font></Label>

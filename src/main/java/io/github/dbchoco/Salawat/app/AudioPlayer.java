@@ -35,8 +35,10 @@ public class AudioPlayer {
     }
 
     public static void stop(){
-        mediaPlayer.stop();
-        isPlaying = false;
+        if (mediaPlayer != null){
+            mediaPlayer.stop();
+            isPlaying = false;
+        }
     }
 
     private static void playMedia(){

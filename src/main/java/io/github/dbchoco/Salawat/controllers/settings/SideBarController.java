@@ -49,20 +49,20 @@ public class SideBarController extends BaseController{
     public void showTab(String tab) throws IOException, ClassNotFoundException {
         if (currentTab != tab){
             Controllers.getSettingsPage(currentTab).saveSettings();
-            Controllers.getMainAreaController().mainSettings.getChildren().remove(0);
+            Controllers.getSettingsController().mainSettings.getChildren().remove(0);
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings/tabs/" + tab + ".fxml"));
-            Controllers.getMainAreaController().mainSettings.getChildren().add(fxmlLoader.load());
+            Controllers.getSettingsController().mainSettings.getChildren().add(fxmlLoader.load());
             currentTab = tab;
         }
     }
 
     @Override
     protected void translate() {
-        generalButton.textProperty().bind(I18N.createStringBinding("general"));
-        locationButton.textProperty().bind(I18N.createStringBinding("location"));
-        audioButton.textProperty().bind(I18N.createStringBinding("audio"));
-        appearanceButton.textProperty().bind(I18N.createStringBinding("appearance"));
-        advancedButton.textProperty().bind(I18N.createStringBinding("advanced"));
+        I18N.bindString(generalButton, "general");
+        I18N.bindString(locationButton, "location");
+        I18N.bindString(audioButton, "audio");
+        I18N.bindString(appearanceButton, "appearance");
+        I18N.bindString(advancedButton, "advanced");
     }
 
     @Override

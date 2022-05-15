@@ -4,7 +4,6 @@ import io.github.dbchoco.Salawat.controllers.main.FooterController;
 import io.github.dbchoco.Salawat.controllers.main.MainController;
 import io.github.dbchoco.Salawat.controllers.main.TimeController;
 import io.github.dbchoco.Salawat.controllers.main.PrayerGridController;
-import io.github.dbchoco.Salawat.controllers.settings.MainAreaController;
 import io.github.dbchoco.Salawat.controllers.settings.SettingsController;
 import io.github.dbchoco.Salawat.controllers.settings.tabs.*;
 
@@ -18,8 +17,6 @@ public class Controllers {
     private static AppearanceController appearanceController;
     private static AdvancedController advancedController;
     private static MainController mainController;
-
-    private static MainAreaController mainAreaController;
     private static FooterController mainFooterController;
 
 
@@ -43,10 +40,6 @@ public class Controllers {
         return mainController;
     }
 
-    public static MainAreaController getMainAreaController() {
-        return mainAreaController;
-    }
-
     public static AppearanceController getAppearanceController() {
         return appearanceController;
     }
@@ -66,10 +59,6 @@ public class Controllers {
 
     public static void setPrayerGridController(PrayerGridController prayerGridController) {
         Controllers.prayerGridController = prayerGridController;
-    }
-
-    public static void setMainAreaController(MainAreaController mainAreaController) {
-        Controllers.mainAreaController = mainAreaController;
     }
 
     public static void setGeneralController(GeneralController generalController) {

@@ -26,7 +26,15 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         URL cssURL = getClass().getResource("css/main.css");
+        URL theme;
+        if (UserSettings.darkMode){
+            theme = getClass().getResource("css/dark.css");
+        }
+        else {
+            theme = getClass().getResource("css/light.css");
+        }
         scene.getStylesheets().add(cssURL.toExternalForm());
+        scene.getStylesheets().add(1, theme.toExternalForm());
         StageController.setMainScene(scene);
         stage.setTitle("Salawat");
 

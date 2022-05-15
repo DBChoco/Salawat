@@ -1,0 +1,39 @@
+@import 'colors.css';
+
+#clock, #date, #timeLeft{
+    -fx-background-color: -color-light-faded;
+}
+
+#progressBar{
+    -fx-background-color: -color-light-faded;
+}
+
+#progressBar .bar1, #volumeSlider .bar{
+    -fx-fill: -color-dark;
+}
+
+#volumeSlider .thumb,
+#volumeSlider .track{
+    -mfx-color: -color-dark;
+    -fx-fill: derive(-color-dark, 85%);
+}
+
+#volumeSlider .thumb-container:hover .thumb-radius,
+#volumeSlider .thumb-container:pressed .thumb-radius {
+	-mfx-color: derive(-color-dark, 85%);
+	-fx-opacity: 0.5;
+}
+
+#volumeSlider .thumb-container .mfx-ripple-generator {
+	-mfx-ripple-color: -color-dark;
+}
+
+#prayerGrid{
+    -fx-background-color: -color-light-faded;
+    -fx-font-color: black;
+}
+
+.mfx-button{
+    -fx-background-color: -color-dark;
+    -fx-text-fill: white;
+}

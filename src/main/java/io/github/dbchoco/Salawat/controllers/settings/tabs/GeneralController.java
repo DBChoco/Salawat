@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.controllers.settings.tabs;
 
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.ListGenerator;
 import io.github.dbchoco.Salawat.helpers.ListItem;
@@ -9,16 +10,26 @@ import io.github.dbchoco.Salawat.helpers.ListItemArray;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
-public class GeneralController implements SettingsPage{
+import java.util.Locale;
+
+public class GeneralController extends BaseController implements SettingsPage{
     public MFXComboBox languageCombo;
     public MFXRadioButton halfTime;
     public MFXRadioButton fullTime;
     public MFXCheckbox showSecondsCheck;
     public MFXCheckbox notificationsCheck;
     public MFXCheckbox systrayCheck;
-    public MFXCheckbox autoStartCheck;
     public MFXCheckbox minStartCheck;
+    public AnchorPane root;
+    public Label languageLabel;
+    public Label timeformatLabel;
+    public Label notificationsLabel;
+    public Label systrayLabel;
     private ListItemArray languageItems = new ListItemArray();
 
     public void initialize(){
@@ -28,6 +39,17 @@ public class GeneralController implements SettingsPage{
         ListGenerator.generateList(languageCombo, languageItems);
         loadSettings();
         Controllers.setGeneralController(this);
+        setupLanguageListener();
+        translate();
+    }
+
+    private void setupLanguageListener() {
+        languageCombo.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                I18N.setLocale(Locale.forLanguageTag(((ListItem) t1).getValue()));
+            }
+        });
     }
 
     @Override
@@ -38,7 +60,6 @@ public class GeneralController implements SettingsPage{
         UserSettings.showSeconds = showSecondsCheck.isSelected();
         UserSettings.notifications = notificationsCheck.isSelected();
         UserSettings.systemTray = systrayCheck.isSelected();
-        UserSettings.launchStart = autoStartCheck.isSelected();
         UserSettings.launchMinimized = minStartCheck.isSelected();
     }
 
@@ -55,7 +76,27 @@ public class GeneralController implements SettingsPage{
         showSecondsCheck.setSelected(UserSettings.showSeconds);
         notificationsCheck.setSelected(UserSettings.notifications);
         systrayCheck.setSelected(UserSettings.systemTray);
-        autoStartCheck.setSelected(UserSettings.launchStart);
         minStartCheck.setSelected(UserSettings.launchMinimized);
+    }
+
+    @Override
+    protected void translate() {
+        I18N.bindString(languageLabel, "language");
+        I18N.bindString(timeformatLabel, "timeformat");
+        I18N.bindString(notificationsLabel, "notifications");
+        I18N.bindString(systrayLabel, "systray");
+
+        I18N.bindString(languageCombo, "language");
+        I18N.bindString(halfTime, "12hour");
+        I18N.bindString(fullTime, "24hour");
+        I18N.bindString(showSecondsCheck, "showSeconds");
+        I18N.bindString(notificationsCheck, "notifCheck");
+        I18N.bindString(systrayCheck, "systrayCheck");
+        I18N.bindString(minStartCheck, "minStart");
+    }
+
+    @Override
+    protected void makeResizable() {
+
     }
 }

@@ -1,9 +1,13 @@
 package io.github.dbchoco.Salawat.app;
 
+import io.github.palexdev.materialfx.controls.*;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -23,7 +27,7 @@ public final class I18N {
     private static final ObjectProperty<Locale> locale;
 
     static {
-        locale = new SimpleObjectProperty<>(getDefaultLocale());
+        locale = new SimpleObjectProperty<>(loadSettingsLocale());
         locale.addListener((observable, oldValue, newValue) -> Locale.setDefault(newValue));
     }
 
@@ -33,7 +37,7 @@ public final class I18N {
      * @return List of Locale objects.
      */
     public static List<Locale> getSupportedLocales() {
-        return new ArrayList<>(Arrays.asList(Locale.ENGLISH, Locale.GERMAN));
+        return new ArrayList<>(Arrays.asList(Locale.ENGLISH, Locale.FRENCH, new Locale.Builder().setLanguage("es").build()));
     }
 
     /**
@@ -41,9 +45,9 @@ public final class I18N {
      *
      * @return
      */
-    public static Locale getDefaultLocale() {
-        Locale sysDefault = Locale.getDefault();
-        return getSupportedLocales().contains(sysDefault) ? sysDefault : Locale.ENGLISH;
+    public static Locale loadSettingsLocale() {
+        Locale settingsLocale = new Locale.Builder().setLanguage(UserSettings.language).build();
+        return getSupportedLocales().contains(settingsLocale) ? settingsLocale : Locale.ENGLISH;
     }
 
     public static Locale getLocale() {
@@ -95,5 +99,29 @@ public final class I18N {
      */
     public static StringBinding createStringBinding(Callable<String> func) {
         return Bindings.createStringBinding(func, locale);
+    }
+
+    public static void bindString(Label label, String key){
+        label.textProperty().bind(createStringBinding(key));
+    }
+
+    public static void bindString(MFXButton button, String key){
+        button.textProperty().bind(createStringBinding(key));
+    }
+
+    public static void bindString(MFXRadioButton button, String key){
+        button.textProperty().bind(createStringBinding(key));
+    }
+
+    public static void bindString(MFXCheckbox button, String key){
+        button.textProperty().bind(createStringBinding(key));
+    }
+
+    public static void bindString(MFXComboBox comboBox, String key) {
+        comboBox.floatingTextProperty().bind(createStringBinding(key));
+    }
+
+    public static void bindString(MFXTextField comboBox, String key) {
+        comboBox.floatingTextProperty().bind(createStringBinding(key));
     }
 }

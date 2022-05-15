@@ -3,17 +3,19 @@ package io.github.dbchoco.Salawat.controllers.settings.tabs;
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class AudioController implements SettingsPage{
+public class AudioController extends BaseController implements SettingsPage{
     public MFXCheckbox adhanCheck;
     public MFXComboBox adhanCombo;
     public MFXCheckbox customAdhanCheck;
@@ -22,10 +24,14 @@ public class AudioController implements SettingsPage{
     public MFXButton customFajrAdhanButton;
     public MFXCheckbox duaCheck;
     public MFXCheckbox startupSoundCheck;
+    public Label adhanLabel;
+    public Label statupSoundLabel;
+    public Label duaAfterAdhanLabel;
 
     private ListItemArray adhanItems = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
+        translate();
         setupFilePickers();
         addListItems();
         loadSettings();
@@ -38,7 +44,11 @@ public class AudioController implements SettingsPage{
         UserSettings.enableAdhan = adhanCheck.isSelected();
         if (adhanCheck.isSelected()){
             if (!customAdhanCheck.isSelected()){
-                UserSettings.adhanPath = adhanItems.getItembyName(adhanCombo.getText()).getValue();
+                try {
+                    UserSettings.adhanPath = adhanItems.getItembyName(adhanCombo.getText()).getValue();
+                } catch (NullPointerException nullPointerException){
+                    UserSettings.adhanPath = Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm();
+                }
             }
             else UserSettings.adhanPath = Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm();
             UserSettings.customAdhan = customAdhanCheck.isSelected();
@@ -117,5 +127,26 @@ public class AudioController implements SettingsPage{
                 }
             }
         });
+    }
+
+    @Override
+    protected void translate() {
+        I18N.bindString(adhanLabel, "adhan");
+        I18N.bindString(duaAfterAdhanLabel, "duaAfterAdhan");
+        I18N.bindString(statupSoundLabel, "startUpSound");
+
+        I18N.bindString(adhanCheck, "adhanCheck");
+        I18N.bindString(adhanCombo, "adhan");
+        I18N.bindString(customAdhanCheck, "customAdhan");
+        I18N.bindString(customAdhanButton, "selectFile");
+        I18N.bindString(customFajrAdhanCheck, "customFajrAdhan");
+        I18N.bindString(customFajrAdhanButton, "selectFile");
+        I18N.bindString(duaCheck, "playDua");
+        I18N.bindString(startupSoundCheck, "playSound");
+    }
+
+    @Override
+    protected void makeResizable() {
+
     }
 }

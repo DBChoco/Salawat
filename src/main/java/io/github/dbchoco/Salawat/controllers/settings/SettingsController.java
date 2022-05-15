@@ -13,6 +13,7 @@ public class SettingsController extends BaseController {
     public BorderPane borderPane;
     public GridPane gridPane;
     public AnchorPane root;
+    public FlowPane mainSettings;
 
     public void initialize(){
         Controllers.setSettingsController(this);
