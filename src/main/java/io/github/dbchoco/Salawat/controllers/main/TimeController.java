@@ -66,9 +66,9 @@ public class TimeController extends BaseController{
         Date date = new Date();
         SimpleDateFormat formatter = (new FormatLoader()).getTimeFormatter();
         clock.setText(formatter.format(date));
-        timeLeft.setText("Time\suntil " +
-                Main.getPrayerTimesCalculator().getNextPrayer().getName() +
-                ": " +  Main.getPrayerTimesCalculator().timeUntilNextPrayer().toString());
+        timeLeft.setText(I18N.get("timeUntil").replace("%prayer", Main.getPrayerTimesCalculator().getNextPrayer().getI18Name()) +
+                " " +
+                Main.getPrayerTimesCalculator().timeUntilNextPrayer().toString());
     }
 
     @Override

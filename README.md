@@ -57,7 +57,7 @@ but more efficiently.
 
 For now, if you have a powerful enough computer, I'd suggest you use Muezzin, because it's more stable.
 
-On Salawat you can choose to play an Adhan or not, you can import your own audio file; you can also chose to have a background or not, and import your own.
+On Salawat you can choose to play an Adhan or not, you can import your own audio file; you can also choose to have a background or not, and import your own.
 
 <div align="center">
   <img src="images/lightSettings.png" alt="Settings screen of Salawat" width="70%">
@@ -103,31 +103,34 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
   - [x] Scale UI
 - [x] Added packager
 - [x] Reduce jar size
+- [x] Background images
+- [x] Automatic Location
+- [x] Darkmode
+- [x] Update Dialog
+
 
 #### Todo:
 
 - [ ] Languages
   - [x] English
-  - [ ] Load language from I18N
-  - [ ] French
-  - [ ] Spanish
+  - [x] Load language from I18N
+  - [x] French
+  - [x] Spanish
   - [ ] Arabic
-- [ ] Background images
-- [ ] Automatic Location
-- [ ] Auto start
+  - [ ] Turkish
 
+  
 #### Probably future updates, inshaAllah:
 - [ ] Weather
 - [ ] Quran Quote
 - [ ] City list instead of lat & lon
-- [ ] Darkmode
 - [ ] Sunnah times
 - [ ] Date picker
 - [ ] DateFormat
 - [ ] Taskbar customization
 - [ ] Better system tray
--  Calculation methods
-- [ ] Adjustements
+- Calculation methods
+  - [ ] Adjustements
 
 See the [open issues](https://github.com/DBChoco/SalawatPrayerTimes/issues) for a full list of proposed features (and known issues).
 
@@ -166,6 +169,7 @@ Email: dbchoco.muezzin@gmail.com
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
+* [Source of Adhan by Ahmad al-Nufais](https://www.youtube.com/watch?v=9k0wQtYu2nU)
 * [Source of Mecca Adhan](https://www.youtube.com/watch?v=MaEzj5eRmjc&t)
 * [Source of al-Aqsa Adhan](https://www.youtube.com/watch?v=z2xEwSi2vaI)
 * [Source of Bismillah startup sound](https://www.youtube.com/c/FatihSeferagic/featured)
@@ -173,5 +177,6 @@ Email: dbchoco.muezzin@gmail.com
 
 ### Source of images
 * [Light mode image by Nick Fewings](https://unsplash.com/photos/sfMW7-4NI-o)
+* [Dark mode image by Katerina Kerdi](https://unsplash.com/photos/TAfqq1B3-2s)
 
 <p align="right">(<a href="#Salawat">back to top</a>)</p>

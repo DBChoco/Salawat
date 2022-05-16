@@ -37,7 +37,12 @@ public final class I18N {
      * @return List of Locale objects.
      */
     public static List<Locale> getSupportedLocales() {
-        return new ArrayList<>(Arrays.asList(Locale.ENGLISH, Locale.FRENCH, new Locale.Builder().setLanguage("es").build()));
+        return new ArrayList<>(Arrays.asList(
+                Locale.ENGLISH,
+                Locale.FRENCH,
+                new Locale.Builder().setLanguage("es").build(),
+                new Locale.Builder().setLanguage("ar").build(),
+                new Locale.Builder().setLanguage("tr").build()));
     }
 
     /**
@@ -46,7 +51,7 @@ public final class I18N {
      * @return
      */
     public static Locale loadSettingsLocale() {
-        Locale settingsLocale = new Locale.Builder().setLanguage(UserSettings.language).build();
+        Locale settingsLocale = new Locale.Builder().setLanguage(UserSettings.language).setRegion("US").build();
         return getSupportedLocales().contains(settingsLocale) ? settingsLocale : Locale.ENGLISH;
     }
 

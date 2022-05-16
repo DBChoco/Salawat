@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500" prefWidth="400" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AdvancedController">
+<AnchorPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.tabs.AdvancedController">
    <children>
-      <GridPane prefHeight="490.0" prefWidth="400.0">
+      <GridPane prefHeight="490.0" prefWidth="500.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,7 +31,7 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label text="Calculation Methods">
+                  <Label fx:id="calcMethodsLabel" text="Calculation Methods">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -51,7 +51,7 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Madhab">
+                  <Label fx:id="madhabLabel" text="Madhab">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -72,7 +72,7 @@
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                  <children>
-                     <Label text="High Latitude Rule ">
+                     <Label fx:id="hlrLabel" text="High Latitude Rule ">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -92,7 +92,7 @@
 
              <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                  <children>
-                     <Label text="Delay After Maghrib">
+                     <Label fx:id="delayLabel" text="Delay After Maghrib">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -124,7 +124,7 @@
              </FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <Label text="Custom settings">
+                  <Label fx:id="customSettingsLabel" text="Custom settings">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -132,7 +132,7 @@
             </FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <VBox prefHeight="142.0" prefWidth="200.0" spacing="10.0">
+                  <VBox prefHeight="142.0" prefWidth="250.0" spacing="10.0">
                      <children>
                         <FlowPane alignment="TOP_RIGHT">
                            <children>

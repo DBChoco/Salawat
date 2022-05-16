@@ -14,8 +14,8 @@ public class UserSettings {
     public static Boolean systemTray = prefs.getBoolean("systemTray", true);
     public static Boolean launchStart = prefs.getBoolean("launchStart", true);
     public static Boolean launchMinimized = prefs.getBoolean("launchMinimized", false);
-    public static Double latitude = prefs.getDouble("latitude", 50.2);
-    public static Double longitude = prefs.getDouble("longitude", 4.2);
+    public static Double latitude = prefs.getDouble("latitude", 0.00);
+    public static Double longitude = prefs.getDouble("longitude", 0.00);
     public static String timezone = prefs.get("timezone", "Europe/Brussels");
     public static Boolean enableAdhan = prefs.getBoolean("enableAdhan", true);
     public static String adhanPath = prefs.get("adhanPath",  Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm());
@@ -49,6 +49,7 @@ public class UserSettings {
     public static Integer asrAdjustments = prefs.getInt("asrAdjustments", 0);
     public static Integer maghribAdjustments = prefs.getInt("maghribAdjustments", 0);
     public static Integer ishaAdjustments = prefs.getInt("ishaAdjustments", 0);
+    public static Boolean firstTime = prefs.getBoolean("firstTime", true);
 
     public static Double volume = prefs.getDouble("volume", 0.5);
 
@@ -112,5 +113,6 @@ public class UserSettings {
         prefs.putInt("maghribAdjustments", maghribAdjustments);
         prefs.putInt("ishaAdjustments", ishaAdjustments);
         prefs.putDouble("volume", volume);
+        prefs.putBoolean("firstTime", firstTime);
     }
 }

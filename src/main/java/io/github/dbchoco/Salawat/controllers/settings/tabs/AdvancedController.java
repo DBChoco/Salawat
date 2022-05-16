@@ -2,14 +2,16 @@ package io.github.dbchoco.Salawat.controllers.settings.tabs;
 
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 
-public class AdvancedController implements SettingsPage{
+public class AdvancedController extends BaseController implements SettingsPage{
     public MFXComboBox calcMethodCombo;
     public MFXComboBox madhabCombo;
     public MFXComboBox hlrCombo;
@@ -19,12 +21,18 @@ public class AdvancedController implements SettingsPage{
     public MFXCheckbox customSettingsCheck;
     public MFXTextField fajrAngle;
     public MFXTextField ishaAngle;
+    public Label calcMethodsLabel;
+    public Label madhabLabel;
+    public Label hlrLabel;
+    public Label delayLabel;
+    public Label customSettingsLabel;
 
     private ListItemArray calcMethodItems = new ListItemArray();
     private ListItemArray madhabItems = new ListItemArray();
     private ListItemArray hlrItems = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
+        translate();
         addListItems();
         delayInput.setTextLimit(4);
         TextFormatter<Integer> formatter = new TextFormatter<>(
@@ -94,5 +102,28 @@ public class AdvancedController implements SettingsPage{
         ListGenerator.generateList(calcMethodCombo, calcMethodItems);
         ListGenerator.generateList(madhabCombo, madhabItems);
         ListGenerator.generateList(hlrCombo, hlrItems);
+    }
+
+    @Override
+    protected void translate() {
+        I18N.bindString(calcMethodsLabel, "calcMethods");
+        I18N.bindString(madhabLabel, "madhab");
+        I18N.bindString(hlrLabel, "hlr");
+        I18N.bindString(delayLabel, "delayAfterM");
+        I18N.bindString(customSettingsLabel, "customSettings");
+
+        I18N.bindString(calcMethodCombo, "calcMethods");
+        I18N.bindString(madhabCombo, "madhab");
+        I18N.bindString(hlrCombo, "hlr");
+        I18N.bindString(delayCheck, "delayCheck");
+        I18N.bindString(delayInput, "delayMin");
+        I18N.bindString(customSettingsCheck, "enableCS");
+        I18N.bindString(fajrAngle, "fAngle");
+        I18N.bindString(ishaAngle, "iAngle");
+    }
+
+    @Override
+    protected void makeResizable() {
+
     }
 }

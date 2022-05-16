@@ -138,9 +138,9 @@ public class AudioController extends BaseController implements SettingsPage{
         I18N.bindString(adhanCheck, "adhanCheck");
         I18N.bindString(adhanCombo, "adhan");
         I18N.bindString(customAdhanCheck, "customAdhan");
-        I18N.bindString(customAdhanButton, "selectFile");
+        customAdhanButton.setText(I18N.get("selectFile"));
         I18N.bindString(customFajrAdhanCheck, "customFajrAdhan");
-        I18N.bindString(customFajrAdhanButton, "selectFile");
+        customFajrAdhanButton.setText(I18N.get("selectFile"));
         I18N.bindString(duaCheck, "playDua");
         I18N.bindString(startupSoundCheck, "playSound");
     }

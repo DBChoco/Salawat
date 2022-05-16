@@ -30,7 +30,7 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label text="Theme">
+                  <Label fx:id="themeLabel" text="Theme">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
@@ -50,7 +50,7 @@
 
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Background Image">
+                  <Label fx:id="backgroundImageLabel" text="Background Image">
                      <font>
                         <Font size="20.0" />
                      </font></Label>

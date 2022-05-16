@@ -1,10 +1,9 @@
 package io.github.dbchoco.Salawat;
 
 import io.github.dbchoco.Salawat.app.*;
-import io.github.dbchoco.Salawat.helpers.Controllers;
-import io.github.dbchoco.Salawat.helpers.Reloader;
-import io.github.dbchoco.Salawat.helpers.SizeBinder;
-import io.github.dbchoco.Salawat.helpers.StageController;
+import io.github.dbchoco.Salawat.helpers.*;
+import io.github.palexdev.materialfx.dialogs.MFXDialogs;
+import io.github.palexdev.materialfx.dialogs.MFXFilterDialog;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -12,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +24,7 @@ public class Main extends Application {
         StageController.setStage(stage);
         loadPrayerTimes();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        Scene scene = new Scene(fxmlLoader.load());
         URL cssURL = getClass().getResource("css/main.css");
         URL theme;
         if (UserSettings.darkMode){
@@ -50,9 +50,18 @@ public class Main extends Application {
         minimizeToTray();
         launchTrayIcon();
 
-        if(!UserSettings.launchMinimized) stage.show();
+        if(!UserSettings.launchMinimized) {
+            stage.setMaximized(true);
+            stage.show();
+        }
 
         playStartupSound();
+        checkFirstTime();
+        checkForUpdates();
+    }
+
+    private void checkForUpdates() {
+        UpdateChecker updateChecker = new UpdateChecker();
     }
 
     private void launchPrayerTimer(){
@@ -94,6 +103,14 @@ public class Main extends Application {
                 TrayMenu.launch();
             }
         });
+    }
+
+    private void checkFirstTime(){
+        if (UserSettings.firstTime){
+            UserSettings.firstTime = false;
+            ApiRequester apiRequester = new ApiRequester();
+            apiRequester.requestLocation();
+        }
     }
     public static void main(String[] args) {
         launch();

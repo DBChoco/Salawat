@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.controllers.main;
 
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.AudioPlayer;
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.TrayMenu;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
@@ -34,6 +35,7 @@ public class FooterController extends BaseController {
     public HBox buttonBox;
 
     public void initialize(){
+        translate();
         Controllers.setMainFooterController(this);
         loadHandlers();
         loadVolume();
@@ -55,7 +57,7 @@ public class FooterController extends BaseController {
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/settings.fxml"));
                     Scene scene = null;
                     try {
-                        scene = new Scene(fxmlLoader.load(), 1280, 720);
+                        scene = new Scene(fxmlLoader.load());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -101,7 +103,9 @@ public class FooterController extends BaseController {
 
     @Override
     protected void translate() {
-
+        I18N.bindString(stopButton, "stop");
+        I18N.bindString(playButton, "play");
+        I18N.bindString(settingsButton, "settings");
     }
 
     @Override

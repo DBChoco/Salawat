@@ -1,0 +1,59 @@
+@import 'colors.css';
+
+
+#clock, #date, #timeLeft{
+    -fx-background-color: -color-dark-faded;
+}
+
+#progressBar{
+    -fx-background-color: -color-dark-faded;
+}
+
+#progressBar .bar1, #volumeSlider .bar{
+    -fx-fill: -color-light;
+}
+
+#progressBar .track, #volumeSlider .track{
+    -fx-fill: derive(-color-dark, 30%);
+}
+
+#volumeSlider .thumb,
+#volumeSlider .track{
+    -mfx-color: -color-light;
+}
+
+#volumeSlider .thumb-container:hover .thumb-radius,
+#volumeSlider .thumb-container:pressed .thumb-radius {
+	-mfx-color: derive(-color-light, 85%);
+	-fx-opacity: 0.5;
+}
+
+#volumeSlider .thumb-container .mfx-ripple-generator {
+	-mfx-ripple-color: -color-light;
+}
+
+#prayerGrid{
+    -fx-background-color: -color-dark-faded;
+    -fx-font-color: black;
+}
+
+.mfx-button{
+    -fx-background-color: -color-light;
+    -fx-text-fill: black;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+
+.mfx-checkbox, .mfx-radio-button{
+    -fx-text-fill: white;
+    -mfx-secondary: white;
+}
+
+.mfx-combo-box .label{
+    -fx-text-fill: black;
+}
+
+

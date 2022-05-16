@@ -1,6 +1,7 @@
 package io.github.dbchoco.Salawat.controllers.settings;
 
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
@@ -18,7 +19,7 @@ public class FooterController extends BaseController {
     public HBox hbox;
 
     public void initialize() {
-        
+        translate();
         makeResizable();
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
@@ -36,7 +37,6 @@ public class FooterController extends BaseController {
                     throw new RuntimeException(e);
                 }
 
-
                 StageController.setCurrentScene(StageController.getMainScene());
             }
         });
@@ -44,7 +44,7 @@ public class FooterController extends BaseController {
 
     @Override
     protected void translate() {
-
+        I18N.bindString(returnButton, "return");
     }
 
     @Override

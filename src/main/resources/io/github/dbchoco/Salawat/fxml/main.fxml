@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="background" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.MainController">
+<Pane id="background" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="800" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.MainController">
+   <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" />
    <BorderPane fx:id="borderPane" prefHeight="720.0" prefWidth="1280.0">
       <top>
          <HBox prefHeight="35.0" prefWidth="1280.0" BorderPane.alignment="CENTER">

@@ -17,6 +17,13 @@
     -fx-background-radius: 10px 10px 0 0;
 }
 
+#progressBar .bar, #progressBar .track {
+    -fx-background-insets: 0px;
+    -fx-background-radius:0;
+    -fx-border-radius: 0;
+}
+
+
 #prayerGrid{
     -fx-border-radius: 0 0 10px 10px;
     -fx-background-radius: 0 0 10px 10px;
@@ -36,6 +43,11 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.12, -1.0, 2.0);
 }
 
-.root{
-    -fx-font-family: "Rubik";
+.mfx-checkbox, .mfx-radio-button{
+    -mfx-main: -common-gradient;
+}
+
+.mfx-checkbox .mfx-ripple-generator {
+	-mfx-ripple-color: -common-gradient;
+	-fx-opacity: 0.5;
 }

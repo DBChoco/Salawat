@@ -10,7 +10,7 @@
     <HBox fx:id="hbox" alignment="CENTER" prefWidth="1280.0">
       <FlowPane fx:id="flowPane" alignment="CENTER" prefHeight="70.0" prefWidth="1280.0">
          <children>
-              <Label text="Settings">
+              <Label fx:id="settingsLabel" text="Settings">
                <font>
                   <Font size="33.0" />
                </font>

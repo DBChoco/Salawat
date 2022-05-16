@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.FooterController">
-    <HBox fx:id="hbox" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+    <HBox fx:id="hbox" alignment="BOTTOM_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1280.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <MFXButton id="returnButton" fx:id="returnButton" buttonType="RAISED" minHeight="27.0" minWidth="70.0" text="Return">
          <font>
             <Font size="16.0" />

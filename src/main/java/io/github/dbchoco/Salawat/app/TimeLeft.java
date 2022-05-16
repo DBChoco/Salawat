@@ -75,7 +75,8 @@ public class TimeLeft {
     }
 
     public String toString(){
-        return addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
+        if (UserSettings.showSeconds || (hours == 0 && minutes == 0)) return addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
+        else return addZero(hours)+":"+addZero(minutes);
     }
 
     private String addZero(int number){

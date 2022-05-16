@@ -1,13 +1,13 @@
 package io.github.dbchoco.Salawat.controllers.settings;
 
+import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import javafx.beans.property.ReadOnlyDoubleProperty;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class SettingsController extends BaseController {
     public BorderPane borderPane;
@@ -16,6 +16,7 @@ public class SettingsController extends BaseController {
     public FlowPane mainSettings;
 
     public void initialize(){
+        loadBackground();
         Controllers.setSettingsController(this);
         makeResizable();
     }
@@ -37,5 +38,20 @@ public class SettingsController extends BaseController {
 
     public ReadOnlyDoubleProperty getHeightProperty(){
         return root.heightProperty();
+    }
+
+    private void loadBackground(){
+        BackgroundFill backgroundFill;
+        if (UserSettings.darkMode) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
+        else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
+        Background background = new Background(backgroundFill);
+        root.setBackground(background);
+    }
+    public void loadBackground(Boolean dark){
+        BackgroundFill backgroundFill;
+        if (dark) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
+        else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
+        Background background = new Background(backgroundFill);
+        root.setBackground(background);
     }
 }

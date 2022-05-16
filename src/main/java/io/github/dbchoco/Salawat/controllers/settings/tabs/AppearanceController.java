@@ -1,7 +1,9 @@
 package io.github.dbchoco.Salawat.controllers.settings.tabs;
 
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import io.github.dbchoco.Salawat.helpers.StringShortener;
@@ -11,18 +13,22 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class AppearanceController implements SettingsPage{
+public class AppearanceController extends BaseController implements SettingsPage{
 
     public MFXButton bgImageButton;
     public MFXCheckbox bgImageCheck;
     public MFXCheckbox darkmodeCheck;
+    public Label themeLabel;
+    public Label backgroundImageLabel;
 
     public void initialize() throws ClassNotFoundException {
+        translate();
         setupFilePickers();
         setupThemeListener();
         loadSettings();
@@ -36,6 +42,13 @@ public class AppearanceController implements SettingsPage{
 
 
         if (!bgImageCheck.isSelected()){
+            UserSettings.bgImagePath = Main.class.getResource("images/bgImage.jpg").toExternalForm();
+        }
+
+        if (UserSettings.darkMode && UserSettings.bgImagePath.equals(Main.class.getResource("images/bgImage.jpg").toExternalForm())){
+            UserSettings.bgImagePath = Main.class.getResource("images/bgImage_dark.jpg").toExternalForm();
+        }
+        else if (!UserSettings.darkMode && UserSettings.bgImagePath.equals(Main.class.getResource("images/bgImage_dark.jpg").toExternalForm())){
             UserSettings.bgImagePath = Main.class.getResource("images/bgImage.jpg").toExternalForm();
         }
     }
@@ -72,8 +85,24 @@ public class AppearanceController implements SettingsPage{
         darkmodeCheck.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                StageController.changeTheme(StageController.getSettingsScene(), darkmodeCheck.isSelected());
+                StageController.changeTheme(StageController.getSettingsScene(), t1);
+                Controllers.getSettingsController().loadBackground(t1);
             }
         });
+    }
+
+    @Override
+    protected void translate() {
+        I18N.bindString(themeLabel, "theme");
+        I18N.bindString(backgroundImageLabel, "bgImage");
+
+        I18N.bindString(darkmodeCheck, "darkMode");
+        I18N.bindString(bgImageCheck, "bgImageCheck");
+        bgImageButton.setText(I18N.get("selectFile"));
+    }
+
+    @Override
+    protected void makeResizable() {
+
     }
 }

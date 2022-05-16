@@ -6,6 +6,7 @@ module io.github.dbchoco.salawat {
     requires adhan;
     requires MaterialFX;
     requires FXTrayIcon;
+    requires json.simple;
 
     exports io.github.dbchoco.Salawat;
     opens io.github.dbchoco.Salawat to javafx.fxml;

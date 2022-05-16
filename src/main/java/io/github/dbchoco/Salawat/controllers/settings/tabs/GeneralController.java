@@ -36,6 +36,8 @@ public class GeneralController extends BaseController implements SettingsPage{
         languageItems.add(new ListItem(I18N.get("english"), "en"));
         languageItems.add(new ListItem(I18N.get("french"), "fr"));
         languageItems.add(new ListItem(I18N.get("spanish"), "es"));
+        languageItems.add(new ListItem(I18N.get("arabic"), "ar"));
+        languageItems.add(new ListItem(I18N.get("turkish"), "tr"));
         ListGenerator.generateList(languageCombo, languageItems);
         loadSettings();
         Controllers.setGeneralController(this);

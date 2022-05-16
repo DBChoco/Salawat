@@ -6,6 +6,7 @@ import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.FormatLoader;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.palexdev.materialfx.beans.NumberRange;
 import io.github.palexdev.materialfx.controls.MFXProgressBar;
@@ -42,7 +43,7 @@ public class PrayerGridController extends BaseController {
     public HBox hbox;
 
     public void setPrayerTimes(PrayerTimes prayerTimes){
-        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat formatter = (new FormatLoader()).getShortTimeFormatter();
         fajrTime.setText(formatter.format(prayerTimes.fajr));
         sunriseTime.setText(formatter.format(prayerTimes.sunrise));
         dhuhrTime.setText(formatter.format(prayerTimes.dhuhr));
