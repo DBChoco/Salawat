@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="root" prefHeight="310.0" prefWidth="219.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.SideBarController">
    <children>
-      <VBox fx:id="vbox" alignment="TOP_RIGHT" prefHeight="310.0" prefWidth="199.0" style="-fx-border-color: #212121; -fx-border-width: 0 2px 0 0;">
+      <VBox id="sideBar" fx:id="vbox" alignment="TOP_RIGHT" prefHeight="310.0" prefWidth="199.0">
           <MFXButton fx:id="generalButton" buttonType="RAISED" depthLevel="LEVEL1" minHeight="27.0" minWidth="70.0" text="General">
             <VBox.margin>
                <Insets bottom="15.0" />

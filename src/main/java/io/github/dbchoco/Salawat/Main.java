@@ -2,8 +2,6 @@ package io.github.dbchoco.Salawat;
 
 import io.github.dbchoco.Salawat.app.*;
 import io.github.dbchoco.Salawat.helpers.*;
-import io.github.palexdev.materialfx.dialogs.MFXDialogs;
-import io.github.palexdev.materialfx.dialogs.MFXFilterDialog;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -11,16 +9,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 
 public class Main extends Application {
 
     private static PrayerTimesCalculator prayerTimesCalculator;
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
+        //Fix arabic text bug
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("prism.lcdtext", "false");
+
         StageController.setStage(stage);
         loadPrayerTimes();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
@@ -40,14 +42,13 @@ public class Main extends Application {
 
         StageController.setCurrentScene(scene);
 
-        SizeBinder.init();
+        FontBinder.init();
 
         MainTimer mainTimer = new MainTimer();
         mainTimer.start();
 
-        //Notifier notifier = new Notifier(StageController.getStage());
+        loadLocale();
 
-        minimizeToTray();
         launchTrayIcon();
 
         if(!UserSettings.launchMinimized) {
@@ -60,13 +61,14 @@ public class Main extends Application {
         checkForUpdates();
     }
 
+    private void loadLocale() {
+        I18N.setLocale(Locale.forLanguageTag(UserSettings.language));
+    }
+
     private void checkForUpdates() {
         UpdateChecker updateChecker = new UpdateChecker();
     }
 
-    private void launchPrayerTimer(){
-
-    }
     public static void loadPrayerTimes() throws ClassNotFoundException {
         prayerTimesCalculator = new PrayerTimesCalculator();
         prayerTimesCalculator.calculatePrayers();
@@ -97,12 +99,15 @@ public class Main extends Application {
     }
 
     private void launchTrayIcon(){
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                TrayMenu.launch();
-            }
-        });
+        if (UserSettings.systemTray){
+            Platform.runLater(new Runnable(){
+                @Override
+                public void run() {
+                    TrayMenu.launch();
+                    minimizeToTray();
+                }
+            });
+        }
     }
 
     private void checkFirstTime(){

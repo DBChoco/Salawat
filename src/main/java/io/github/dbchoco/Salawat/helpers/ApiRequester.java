@@ -39,7 +39,7 @@ public class ApiRequester {
     }
 
     public String requestVersion(){
-        String githubVersion = "1.0.0";
+        String githubVersion = null;
         JSONObject response = request("https://api.github.com/repos/DBChoco/Salawat/releases/latest");
 
         if (response != null){
@@ -82,26 +82,6 @@ public class ApiRequester {
                 JSONObject data_obj = (JSONObject) parse.parse(inline);
 
                 return data_obj;
-
-                /*System.out.println(data_obj.get("latitude"));
-
-                //Get the required object from the above created object
-                JSONObject latObj = (JSONObject) data_obj.get("latitude");
-
-                //Get the required data using its key
-                System.out.println(latObj);
-
-                JSONArray arr = (JSONArray) data_obj.get("Countries");
-
-                for (int i = 0; i < arr.size(); i++) {
-
-                    JSONObject new_obj = (JSONObject) arr.get(i);
-
-                    if (new_obj.get("Slug").equals("albania")) {
-                        System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
-                        break;
-                    }
-                }*/
             }
 
         } catch (Exception e) {

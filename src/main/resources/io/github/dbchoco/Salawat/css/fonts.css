@@ -2,3 +2,8 @@
     font-family: 'Rubik';
     src: url('../fonts/MPLUSRounded1c-Regular.ttf');
 }
+
+@font-face {
+    font-family: 'Arabic';
+    src: url('../fonts/IBMPlexSansArabic-Regular.ttf');
+}

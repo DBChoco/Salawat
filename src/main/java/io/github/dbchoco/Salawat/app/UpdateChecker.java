@@ -28,7 +28,11 @@ public class UpdateChecker {
                     @Override
                     public void run() {
                         githubVersion = apiRequester.requestVersion();
-                        if (compareVersion()){
+                        if (githubVersion == null){
+                            System.out.println("You appear to be offline, we will not look for updates this session");
+                            timer.purge();
+                        }
+                        else if (compareVersion()){
                             DialogCreator dialogCreator = new DialogCreator();
                             dialogCreator.showUpdateDialog(githubVersion);
                             timer.purge();

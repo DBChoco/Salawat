@@ -1,5 +1,3 @@
-@import 'fonts.css';
-
 #title{
     -fx-font-size: 20px;
     -fx-padding: 5px 0 0 5px;
@@ -22,7 +20,6 @@
     -fx-background-radius:0;
     -fx-border-radius: 0;
 }
-
 
 #prayerGrid{
     -fx-border-radius: 0 0 10px 10px;
@@ -50,4 +47,8 @@
 .mfx-checkbox .mfx-ripple-generator {
 	-mfx-ripple-color: -common-gradient;
 	-fx-opacity: 0.5;
+}
+
+#sideBar{
+    -fx-border-width: 0 2px 0 0;
 }

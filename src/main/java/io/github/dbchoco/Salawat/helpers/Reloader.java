@@ -9,5 +9,6 @@ public class Reloader {
         Controllers.getPrayerGridController().setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
         Controllers.getMainController().reload();
         StageController.reloadTheme();
+        FontBinder.reloadFonts();
     }
 }

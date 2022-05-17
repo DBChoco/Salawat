@@ -6,6 +6,7 @@ import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.FontBinder;
 import io.github.dbchoco.Salawat.helpers.FormatLoader;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.palexdev.materialfx.beans.NumberRange;
@@ -14,7 +15,6 @@ import io.github.palexdev.materialfx.effects.Interpolators;
 import io.github.palexdev.materialfx.utils.AnimationUtils;
 import javafx.animation.Animation;
 import javafx.application.Platform;
-import javafx.css.Size;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -98,7 +98,7 @@ public class PrayerGridController extends BaseController {
                 Label[] labels = {fajrText, fajrTime, sunriseText, sunriseTime, dhuhrText, dhuhrTime, asrText, asrTime,
                 maghribText, maghribTime, ishaText, ishaTime};
                 for (Label label : labels){
-                    SizeBinder.bindFontSize(label, "small");
+                    FontBinder.bindFontSize(label, "small");
                 }
             }
         });

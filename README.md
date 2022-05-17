@@ -118,7 +118,6 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
   - [x] Spanish
   - [ ] Arabic
   - [ ] Turkish
-
   
 #### Probably future updates, inshaAllah:
 - [ ] Weather

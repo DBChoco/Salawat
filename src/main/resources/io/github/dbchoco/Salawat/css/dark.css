@@ -42,10 +42,13 @@
     -fx-text-fill: black;
 }
 
+.mfx-button .mfx-ripple-generator{
+    -mfx-ripple-color: -color-dark;
+}
+
 .label{
     -fx-text-fill: white;
 }
-
 
 .mfx-checkbox, .mfx-radio-button{
     -fx-text-fill: white;
@@ -54,6 +57,10 @@
 
 .mfx-combo-box .label{
     -fx-text-fill: black;
+}
+
+#sideBar{
+    -fx-border-color: white;
 }
 
 

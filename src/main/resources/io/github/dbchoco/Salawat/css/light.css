@@ -37,3 +37,7 @@
     -fx-background-color: -color-dark;
     -fx-text-fill: white;
 }
+
+#sideBar{
+    -fx-border-color: #212121;
+}
