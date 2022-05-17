@@ -16,6 +16,8 @@ import io.github.palexdev.materialfx.utils.AnimationUtils;
 import javafx.animation.Animation;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -102,5 +104,7 @@ public class PrayerGridController extends BaseController {
                 }
             }
         });
+
+
     }
 }

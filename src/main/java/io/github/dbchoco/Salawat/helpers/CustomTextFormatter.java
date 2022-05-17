@@ -2,15 +2,19 @@ package io.github.dbchoco.Salawat.helpers;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.util.Locale;
 import java.util.function.UnaryOperator;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 
 public class CustomTextFormatter extends TextFormatter<Number>{ //Source: purring pigeon on Stackoverflow
-    private static final DecimalFormat format = new DecimalFormat("#.0;-#.0");
+
+
+    private static final DecimalFormat format = new DecimalFormat("#.0;-#.0", new DecimalFormatSymbols(Locale.US));
 
     public CustomTextFormatter(int minDecimals, int maxDecimals) {
         super(getStringConverter(minDecimals, maxDecimals), 0, getUnaryOperator(maxDecimals, true,-1));
@@ -40,7 +44,7 @@ public class CustomTextFormatter extends TextFormatter<Number>{ //Source: purrin
                     }
                 }
                 format = format + ";-" + format;
-                DecimalFormat df = new DecimalFormat(format);
+                DecimalFormat df = new DecimalFormat(format, new DecimalFormatSymbols(Locale.US));
                 String formatted = df.format(object);
                 return formatted;
             }

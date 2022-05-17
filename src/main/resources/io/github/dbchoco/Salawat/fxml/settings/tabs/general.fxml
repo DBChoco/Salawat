@@ -23,8 +23,8 @@
         <rowConstraints>
             <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <FlowPane prefHeight="56.0" prefWidth="170.0">
@@ -109,14 +109,14 @@
                      </font></Label>
                  </children>
              </FlowPane>
-             <FlowPane alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+             <FlowPane alignment="TOP_RIGHT" prefHeight="89.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <MFXCheckbox fx:id="systrayCheck" text="Minimize to tray">
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </MFXCheckbox>
-                  <MFXCheckbox fx:id="minStartCheck" text="Start minimized" />
+                  <VBox alignment="TOP_RIGHT" prefHeight="67.0" prefWidth="240.0" spacing="10.0">
+                     <children>
+                        <MFXCheckbox fx:id="systrayCheck" text="Minimize to tray" />
+                        <MFXCheckbox fx:id="minStartCheck" text="Start minimized" />
+                     </children>
+                  </VBox>
                </children>
                <GridPane.margin>
                   <Insets top="10.0" />

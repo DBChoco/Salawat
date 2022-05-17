@@ -22,11 +22,11 @@ public class LocationController extends BaseController implements SettingsPage{
     private ListItemArray timezones = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
-        //TODO fix latitude and longitude loaded to 0x
         latField.setTextLimit(10);
         latField.delegateSetTextFormatter(new CustomTextFormatter(0, 7, true));
         lonField.setTextLimit(10);
         lonField.delegateSetTextFormatter(new CustomTextFormatter(0, 7, true));
+
         String[] ids = TimeZone.getAvailableIDs();
         for (String id : ids) {
             timezones.add(new ListItem(TimeZone.getTimeZone(id).getID(), TimeZone.getTimeZone(id).getID()));
