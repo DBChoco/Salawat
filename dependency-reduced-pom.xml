@@ -3,8 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.dbchoco</groupId>
   <artifactId>Salawat</artifactId>
-  <name>salawat</name>
+  <name>Salawat</name>
   <version>1.0</version>
+  <description>Prayer times (Adhan) app that is higly customizable and light weight.
+        Available for Windows and GNU/Linux.</description>
+  <organization>
+    <name>DarkBlackChocolate</name>
+    <url>https://github.com/DBChoco/Salawat</url>
+  </organization>
   <build>
     <plugins>
       <plugin>
@@ -72,6 +78,29 @@
               <administratorRequired>false</administratorRequired>
               <createTarball>true</createTarball>
               <platform>auto</platform>
+              <linuxConfig>
+                <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
+              </linuxConfig>
+              <winConfig>
+                <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
+                <originalFilename>${name}-${version}.exe</originalFilename>
+                <setupMode>installForAllUsers</setupMode>
+                <disableDirPage>true</disableDirPage>
+                <disableProgramGroupPage>false</disableProgramGroupPage>
+                <disableFinishedPage>false</disableFinishedPage>
+                <disableRunAfterInstall>false</disableRunAfterInstall>
+                <disableWelcomePage>true</disableWelcomePage>
+                <createDesktopIconTask>false</createDesktopIconTask>
+                <removeOldLibs>false</removeOldLibs>
+                <registry>
+                  <entries>
+                    <entry>
+                      <key>HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</key>
+                      <valueName>salawatStartup</valueName>
+                    </entry>
+                  </entries>
+                </registry>
+              </winConfig>
             </configuration>
           </execution>
         </executions>
@@ -118,11 +147,6 @@
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <app.installerdir>${project.build.directory}/installer</app.installerdir>
     <junit.version>5.8.2</junit.version>
-    <app.filename>Salawat</app.filename>
-    <app.mainClass>io.github.dbchoco.Salawat</app.mainClass>
-    <app.dir>${project.build.directory}/app</app.dir>
-    <app.url>https://github.com/DBChoco/Salawat</app.url>
   </properties>
 </project>

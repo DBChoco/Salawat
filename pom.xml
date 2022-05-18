@@ -7,26 +7,17 @@
     <groupId>io.github.dbchoco</groupId>
     <artifactId>Salawat</artifactId>
     <version>1.0</version>
-    <name>salawat</name>
+    <name>Salawat</name>
+    <description>Prayer times (Adhan) app that is higly customizable and light weight.
+        Available for Windows and GNU/Linux.</description>
+    <organization>
+        <name>DarkBlackChocolate</name>
+        <url>https://github.com/DBChoco/Salawat</url>
+    </organization>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
-
-        <!-- Application Name -->
-        <app.filename>Salawat</app.filename>
-
-        <!-- The JavaFX Application class name -->
-        <app.mainClass>io.github.dbchoco.Salawat</app.mainClass>
-
-        <!-- The app and launcher will be assembled in this folder -->
-        <app.dir>${project.build.directory}/app</app.dir>
-
-        <!-- Native installers will be build in this folder -->
-        <app.installerdir>${project.build.directory}/installer</app.installerdir>
-
-        <!-- Base URL where you will host the application artifacts -->
-        <app.url>https://github.com/DBChoco/Salawat</app.url>
     </properties>
 
     <dependencies>
@@ -156,6 +147,39 @@
                             <administratorRequired>false</administratorRequired>
                             <createTarball>true</createTarball>
                             <platform>auto</platform>
+
+                            <linuxConfig>
+                                <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
+                            </linuxConfig>
+
+                            <!-- https://github.com/fvarrui/JavaPackager/blob/master/docs/macosx-specific-properties.md -->
+                            <winConfig>
+                                <!-- general properties -->
+                                <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
+
+                                <!-- exe creation properties -->
+                                <originalFilename>${name}-${version}.exe</originalFilename>
+
+                                <!-- setup generation properties -->
+                                <setupMode>installForAllUsers</setupMode>
+                                <disableDirPage>true</disableDirPage>
+                                <disableProgramGroupPage>false</disableProgramGroupPage>
+                                <disableFinishedPage>false</disableFinishedPage>
+                                <disableRunAfterInstall>false</disableRunAfterInstall>
+                                <disableWelcomePage>true</disableWelcomePage>
+                                <createDesktopIconTask>false</createDesktopIconTask>
+                                <removeOldLibs>false</removeOldLibs>
+
+                                <!-- windows registry entries added during installation -->
+                                <registry>
+                                    <entries>
+                                        <entry>
+                                            <key>HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</key>
+                                            <valueName>salawatStartup</valueName>
+                                        </entry>
+                                    </entries>
+                                </registry>
+                            </winConfig>
                         </configuration>
                     </execution>
                 </executions>

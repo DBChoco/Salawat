@@ -116,7 +116,7 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
   - [x] Load language from I18N
   - [x] French
   - [x] Spanish
-  - [ ] Arabic
+  - [x] Arabic
   - [ ] Turkish
   
 #### Probably future updates, inshaAllah:

@@ -8,6 +8,7 @@ import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -31,11 +32,11 @@ public class AudioController extends BaseController implements SettingsPage{
     private ListItemArray adhanItems = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
+        addListItems();
         translate();
         setupFilePickers();
-        addListItems();
-        loadSettings();
         Controllers.setAudioController(this);
+        loadSettings();
     }
 
 
@@ -50,7 +51,9 @@ public class AudioController extends BaseController implements SettingsPage{
                     UserSettings.adhanPath = Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm();
                 }
             }
-            else UserSettings.adhanPath = Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm();
+            else {
+                UserSettings.adhanPath = Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm();
+            }
             UserSettings.customAdhan = customAdhanCheck.isSelected();
             UserSettings.customFajrAdhan = customFajrAdhanCheck.isSelected();
         }
@@ -64,30 +67,42 @@ public class AudioController extends BaseController implements SettingsPage{
     }
 
     @Override
-    public void loadSettings() throws ClassNotFoundException {
-        adhanCombo.disableProperty().bind(adhanCheck.selectedProperty().not().or(customAdhanCheck.selectedProperty()));
-        customAdhanCheck.disableProperty().bind(adhanCheck.selectedProperty().not());
-        customAdhanButton.disableProperty().bind(adhanCheck.selectedProperty().not().or(customAdhanCheck.selectedProperty().not()));
-        customFajrAdhanCheck.disableProperty().bind(adhanCheck.selectedProperty().not());
-        customFajrAdhanButton.disableProperty().bind(adhanCheck.selectedProperty().not().or(customFajrAdhanCheck.selectedProperty().not()));
+    public void loadSettings() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                adhanCombo.disableProperty().bind(adhanCheck.selectedProperty().not().or(customAdhanCheck.selectedProperty()));
+                customAdhanCheck.disableProperty().bind(adhanCheck.selectedProperty().not());
+                customAdhanButton.disableProperty().bind(adhanCheck.selectedProperty().not().or(customAdhanCheck.selectedProperty().not()));
+                customFajrAdhanCheck.disableProperty().bind(adhanCheck.selectedProperty().not());
+                customFajrAdhanButton.disableProperty().bind(adhanCheck.selectedProperty().not().or(customFajrAdhanCheck.selectedProperty().not()));
 
-        adhanCheck.setSelected(UserSettings.enableAdhan);
-        if (adhanCheck.isSelected()){
-            adhanCombo.getSelectionModel().selectItem(adhanItems.getItembyValue(UserSettings.adhanPath));
-            customAdhanCheck.setSelected(UserSettings.customAdhan);
-            customFajrAdhanCheck.setSelected(UserSettings.customFajrAdhan);
-            if (customAdhanCheck.isSelected()){
-                customAdhanButton.setText(StringShortener.shortenString(UserSettings.customAdhanPath, 25));
+                adhanCheck.setSelected(UserSettings.enableAdhan);
+                if (adhanCheck.isSelected()){
+                    customAdhanCheck.setSelected(UserSettings.customAdhan);
+                    customFajrAdhanCheck.setSelected(UserSettings.customFajrAdhan);
+                    if (UserSettings.customAdhan){
+                        customAdhanButton.setText(StringShortener.shortenString(UserSettings.customAdhanPath, 25));
+                    }
+                    else {
+                        if (adhanItems.getItembyValue(UserSettings.adhanPath) != null){
+                            adhanCombo.getSelectionModel().selectItem(adhanItems.getItembyValue(UserSettings.adhanPath));
+                        }
+                        else {
+                            adhanCombo.getSelectionModel().selectIndex(0);
+                        }
+                    }
+                    if (UserSettings.customFajrAdhan){
+                        customFajrAdhanButton.setText(StringShortener.shortenString(UserSettings.customFajrAdhanPath, 25));
+                    }
+                }
+                duaCheck.setSelected(UserSettings.dua);
+                startupSoundCheck.setSelected(UserSettings.startupSound);
             }
-            if (customFajrAdhanCheck.isSelected()){
-                customFajrAdhanButton.setText(StringShortener.shortenString(UserSettings.customFajrAdhanPath, 25));
-            }
-        }
-        duaCheck.setSelected(UserSettings.dua);
-        startupSoundCheck.setSelected(UserSettings.startupSound);
+        });
     }
 
-    private void addListItems() {
+    private void addListItems() throws ClassNotFoundException {
         adhanItems.add(new ListItem(I18N.get("adhanAhmed"), Main.class.getResource("audio/Adhan - Ahmed Al-Nufais.mp3").toExternalForm()));
         adhanItems.add(new ListItem(I18N.get("adhanMecca"), Main.class.getResource("audio/Adhan - Mecca.mp3").toExternalForm()));
         adhanItems.add(new ListItem(I18N.get("adhanAqsa"), Main.class.getResource("audio/Adhan - al-Aqsa.mp3").toExternalForm()));
