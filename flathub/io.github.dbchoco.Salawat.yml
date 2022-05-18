@@ -30,3 +30,4 @@ modules:
         path: io.github.dbchoco.Salawat.metainfo.xml
       - type: file
         path: salawat.sh
+
