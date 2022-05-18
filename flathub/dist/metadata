@@ -1,0 +1,9 @@
+[Application]
+name=io.github.dbchoco.Salawat
+runtime=org.freedesktop.Platform/x86_64/21.08
+sdk=org.freedesktop.Sdk/x86_64/21.08
+command=salawat
+
+[Context]
+shared=network;ipc;
+sockets=x11;pulseaudio;

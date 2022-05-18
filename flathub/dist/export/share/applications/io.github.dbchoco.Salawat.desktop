@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Salawat
+GenericName=Salawat
+Comment=Prayer times (Adhan) app that is higly customizable and light weight.
+        Available for Windows and GNU/Linux.
+Exec=/opt/Salawat/Salawat %U
+Icon=/opt/Salawat/Salawat.png
+Terminal=false
+Type=Application
+StartupNotify=true

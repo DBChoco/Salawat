@@ -1,0 +1,47 @@
+{
+  "id" : "io.github.dbchoco.Salawat",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "21.08",
+  "runtime-commit" : "e5aff027f1cfc1b950d476dab5159628f077a4ca114e87160a123df9cce700bf",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-commit" : "1a972810d883f9721f90b87e092d282184b8a95fc10fc72068723cd54f893b22",
+  "command" : "salawat",
+  "modules" : [
+    {
+      "name" : "salawat",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "dest" : "Salawat",
+          "url" : "https://github.com/DBChoco/Salawat/releases/download/v1.0.0/Salawat-1.0-linux.tar.gz",
+          "sha256" : "59820046b3f3acd6aaefb6080c7c7e078fc8777d508022d6004d66cb2ac975fb",
+          "type" : "archive"
+        },
+        {
+          "path" : "io.github.dbchoco.Salawat.metainfo.xml",
+          "type" : "file"
+        },
+        {
+          "path" : "salawat.sh",
+          "type" : "file"
+        }
+      ],
+      "build-commands" : [
+        "install --directory --mode=0755 /app/salawat",
+        "install -Dm644 --target-directory=/app/salawat/ Salawat/*",
+        "install -Dm755 salawat.sh /app/bin/salawat",
+        "ls Salawat/",
+        "install -Dm644 Salawat/icon.png /app/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png",
+        "install -Dm644 Salawat/Salawat.desktop /app/share/applications/${FLATPAK_ID}.desktop",
+        "install -Dm644 io.github.dbchoco.Salawat.metainfo.xml /app/share/metainfo/$FLATPAK_ID.appdata.xml"
+      ]
+    }
+  ],
+  "separate-locales" : false,
+  "finish-args" : [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--share=network"
+  ]
+}
