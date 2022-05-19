@@ -34,7 +34,7 @@ public class ApiRequester {
         try{
             Main.reload();
         }catch (ClassNotFoundException e){
-            System.out.println("Couldn't reload the app to appy new location: " + e);
+            System.out.println("Couldn't reload the app to apply new location: " + e);
         }
     }
 
