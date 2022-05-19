@@ -69,6 +69,7 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 * Français
 * Español
 * Arabic
+* Turkish
 
 ### Built With
 
@@ -108,17 +109,13 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [x] Darkmode
 - [x] Update Dialog
 
-
 #### Todo:
 
-- [ ] Languages
-  - [x] English
-  - [x] Load language from I18N
-  - [x] French
-  - [x] Spanish
-  - [x] Arabic
-  - [ ] Turkish
-  
+- [ ] Aur
+- [ ] Flathub
+- [ ] Snapstore
+- [ ] Fix bugs
+
 #### Probably future updates, inshaAllah:
 - [ ] Weather
 - [ ] Quran Quote
@@ -138,7 +135,16 @@ See the [open issues](https://github.com/DBChoco/SalawatPrayerTimes/issues) for 
 <!-- How to install -->
 ## How to install
 
-For now, you can't, dm me if you want to be a tester, I'd appreciate it.
+### Windows
+From the  <a href="https://github.com/DBChoco/Salawat/releases/latest"><strong>download page</strong></a>, select the .EXE installer.
+Download it and install it. 
+
+You might receive a warning, that is because the app is not signed and I do not have the money to do so. The app is completely safe, you can read through the source code or have a trusted friend do it for you, all the code is <b>Open-Source</b>.
+
+### GNU/Linux
+
+I'm currently working on Flathub, Snapstore and AUR support.
+In the meanwhile you can use the .DEB and TAR.GZ files as an alternative.
 
 <!-- CONTRIBUTING -->
 ## Contributing
