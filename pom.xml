@@ -6,7 +6,7 @@
 
     <groupId>io.github.dbchoco</groupId>
     <artifactId>Salawat</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>Salawat</name>
     <description>Prayer times (Adhan) app that is higly customizable and light weight.
         Available for Windows and GNU/Linux.</description>
@@ -79,8 +79,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.9.0</version>
                 <configuration>
-                    <source>18</source>
-                    <target>18</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -140,13 +140,14 @@
                             <!-- mandatory -->
                             <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
                             <!-- optional -->
-                            <bundleJre>false</bundleJre>
-                            <copyDependencies>false</copyDependencies>
+                            <bundleJre>true</bundleJre>
+                            <copyDependencies>true</copyDependencies>
                             <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
                             <generateInstaller>true</generateInstaller>
                             <administratorRequired>false</administratorRequired>
                             <createTarball>true</createTarball>
                             <platform>auto</platform>
+                            <additionalResources>Salawat.desktop</additionalResources>
 
                             <linuxConfig>
                                 <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
@@ -184,7 +185,43 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>flatpak</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.github.fvarrui</groupId>
+                        <artifactId>javapackager</artifactId>
+                        <version>1.6.6</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <!-- mandatory -->
+                                    <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
+                                    <!-- optional -->
+                                    <bundleJre>true</bundleJre>
+                                    <copyDependencies>true</copyDependencies>
+                                    <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
+                                    <generateInstaller>true</generateInstaller>
+                                    <administratorRequired>false</administratorRequired>
+                                    <createTarball>false</createTarball>
+                                    <platform>auto</platform>
+                                    <additionalResources>Salawat.desktop</additionalResources>
+                                    <linuxConfig>
+                                        <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
+                                        <generateDeb>false</generateDeb>
+                                        <generateRpm>false</generateRpm>
+                                    </linuxConfig>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <!-- https://github.com/fvarrui/JavaPackager -->
+        </profile>
+    </profiles>
 </project>
