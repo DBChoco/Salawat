@@ -44,6 +44,11 @@
   </a>
 </p>
 
+
+<a href="https://snapcraft.io/salawat">
+    <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -81,39 +86,10 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 <!-- ROADMAP -->
 ### Roadmap
 
-#### Done
-
-- [x] TimeFormat
-- [x] Hijri date
-- [x] Start Minimized
-- [x] Latitude & Longitude
-- [x] Adhan
-  - [x] Adhan list
-    - [x] Custom Adhan
-    - [x] Custom Fajr Adhan
-  - [x] Dua after Adhan
-- [x] Startup Sound
-- [x] Calculation methods
-  - [x] Custom calculation methods
-  - [x] Delay after Maghrib
-- [x] Logo (somewhat)
-- [x] System Tray
-- [x] Timezone
-- [x] Notifications
-- [x] Whole UI style (make it look good (only 1280x720))
-  - [x] Scale UI
-- [x] Added packager
-- [x] Reduce jar size
-- [x] Background images
-- [x] Automatic Location
-- [x] Darkmode
-- [x] Update Dialog
-
-#### Todo:
-
 - [ ] Aur
 - [ ] Flathub
-- [ ] Snapstore
+- [x] Snapstore
+- [ ] Add auto start to Windows
 - [ ] Fix bugs
 
 #### Probably future updates, inshaAllah:
@@ -128,7 +104,7 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - Calculation methods
   - [ ] Adjustements
 
-See the [open issues](https://github.com/DBChoco/SalawatPrayerTimes/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/DBChoco/Salawat/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#Salawat">back to top</a>)</p>
 
@@ -143,7 +119,11 @@ You might receive a warning, that is because the app is not signed and I do not 
 
 ### GNU/Linux
 
-I'm currently working on Flathub, Snapstore and AUR support.
+<a href="https://snapcraft.io/salawat">
+    <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+
+I'm currently working on Flathub and AUR support. (Snapstore [x])
 In the meanwhile you can use the .DEB and TAR.GZ files as an alternative.
 
 <!-- CONTRIBUTING -->

@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -38,6 +39,7 @@ public class Main extends Application {
         scene.getStylesheets().add(cssURL.toExternalForm());
         scene.getStylesheets().add(1, theme.toExternalForm());
         StageController.setMainScene(scene);
+        stage.getIcons().add(new Image(getClass().getResource("images/icon.png").toExternalForm()));
         stage.setTitle("Salawat");
 
         StageController.setCurrentScene(scene);
