@@ -5,8 +5,7 @@
   <artifactId>Salawat</artifactId>
   <name>Salawat</name>
   <version>1.0.0</version>
-  <description>Prayer times (Adhan) app that is higly customizable and light weight.
-        Available for Windows and GNU/Linux.</description>
+  <description>Salawat: Adhan app</description>
   <organization>
     <name>DarkBlackChocolate</name>
     <url>https://github.com/DBChoco/Salawat</url>
@@ -29,7 +28,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>io.github.dbchoco.Salawat.Main</mainClass>
+              <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
@@ -84,20 +83,17 @@
               </linuxConfig>
               <winConfig>
                 <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
+                <headerType>console</headerType>
                 <originalFilename>${name}-${version}.exe</originalFilename>
-                <setupMode>installForAllUsers</setupMode>
-                <disableDirPage>true</disableDirPage>
-                <disableProgramGroupPage>false</disableProgramGroupPage>
-                <disableFinishedPage>false</disableFinishedPage>
                 <disableRunAfterInstall>false</disableRunAfterInstall>
-                <disableWelcomePage>true</disableWelcomePage>
                 <createDesktopIconTask>false</createDesktopIconTask>
-                <removeOldLibs>false</removeOldLibs>
                 <registry>
                   <entries>
                     <entry>
-                      <key>HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</key>
-                      <valueName>salawatStartup</valueName>
+                      <key>HKCU:Software\Microsoft\Windows\CurrentVersion\Run</key>
+                      <valueName>Salawat</valueName>
+                      <valueType>REG_SZ</valueType>
+                      <valueData>C:\Program Files\Salawat\Salawat.exe</valueData>
                     </entry>
                   </entries>
                 </registry>
@@ -126,7 +122,7 @@
                   <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
                   <generateInstaller>true</generateInstaller>
                   <administratorRequired>false</administratorRequired>
-                  <createTarball>true</createTarball>
+                  <createTarball>false</createTarball>
                   <platform>auto</platform>
                   <additionalResources>Salawat.desktop</additionalResources>
                   <linuxConfig>

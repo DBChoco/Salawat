@@ -93,7 +93,7 @@ public class Main extends Application {
     }
 
     private void playStartupSound(){
-        if (UserSettings.startupSound) AudioPlayer.play("audio/Bismillah - Fatih Sefaragic.mp3", false);
+        if (UserSettings.startupSound) AudioPlayer.play(getClass().getResource("audio/Bismillah - Fatih Sefaragic.mp3").toExternalForm(), false);
     }
 
     private void minimizeToTray(){

@@ -29,8 +29,6 @@ public class MainTimer{
                     @Override
                     public void run() {
                         checkIfNewDay();
-                        Controllers.getTimeController().displayTimeLeft();
-                        Controllers.getPrayerGridController().createProgressAnimation();
                         checkAdhan();
                     }
                 });
@@ -45,6 +43,7 @@ public class MainTimer{
                     @Override
                     public void run() {
                         Controllers.getTimeController().displayGregorianDate();
+                        Controllers.getPrayerGridController().createProgressAnimation();
                     }
                 });
             }
@@ -67,23 +66,34 @@ public class MainTimer{
             int hours = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getHours();
             int minutes = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getMinutes();
             int seconds = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getSeconds();
-            if (hours == 0 && minutes == 0 && seconds <= 10){
-                if (!launchedAlerts){
-                    if (UserSettings.enableAdhan){
-                        if (!AudioPlayer.getIsPlaying()){
-                            if (UserSettings.customFajrAdhan && (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr")) AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
-                            else AudioPlayer.play(true);
+            if (hours == 00 && minutes <= 10){
+                if (minutes == 0 && seconds <= 10){
+                    if (!AudioPlayer.getIsPlaying()){
+                        Controllers.getTimeController().displayTimeLeft("adhan");
+                    }
+                    if (!launchedAlerts){
+                        if (UserSettings.enableAdhan){
+                            if (!AudioPlayer.getIsPlaying()){
+                                if (UserSettings.customFajrAdhan && (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr")) AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
+                                else AudioPlayer.play(true);
+                            }
                         }
+                        if (UserSettings.notifications){
+                            TrayMenu.showNotification(I18N.get("timeForPrayer").replace("%prayer",
+                                            Main.getPrayerTimesCalculator().getCurrentPrayer().getI18Name()) ,
+                                    I18N.get("comeToPrayer"));
+                        }
+                        launchedAlerts = true;
                     }
-                    if (UserSettings.notifications){
-                        TrayMenu.showNotification(I18N.get("timeForPrayer").replace("%prayer",
-                                        Main.getPrayerTimesCalculator().getCurrentPrayer().getI18Name()) ,
-                                I18N.get("comeToPrayer"));
-                    }
-                    launchedAlerts = true;
+                }
+                else {
+                    Controllers.getTimeController().displayTimeLeft("now");
                 }
             }
-            else launchedAlerts = false;
+            else {
+                Controllers.getTimeController().displayTimeLeft("default");
+                launchedAlerts = false;
+            }
         }
     }
 }

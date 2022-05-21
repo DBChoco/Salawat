@@ -33,7 +33,7 @@ public class TimeController extends BaseController{
 
     public void initialize(){
         Controllers.setTimeController(this);
-        displayTimeLeft();
+        displayTimeLeft("now");
         displayGregorianDate();
         makeResizable();
     }
@@ -60,13 +60,19 @@ public class TimeController extends BaseController{
         hijri = !hijri;
     }
 
-    public void displayTimeLeft(){
+    public void displayTimeLeft(String state){
         Date date = new Date();
         SimpleDateFormat formatter = (new FormatLoader()).getTimeFormatter();
         clock.setText(formatter.format(date));
-        timeLeft.setText(I18N.get("timeUntil").replace("%prayer", Main.getPrayerTimesCalculator().getNextPrayer().getI18Name()) +
-                " " +
-                Main.getPrayerTimesCalculator().timeUntilNextPrayer().toString());
+
+        switch (state) {
+            case "default" -> timeLeft.setText(I18N.get("timeUntil").replace("%prayer",
+                    Main.getPrayerTimesCalculator().getNextPrayer().getI18Name()) + " " +
+                    Main.getPrayerTimesCalculator().timeUntilNextPrayer().toString());
+            case "now" -> timeLeft.setText(I18N.get("now").replace("%prayer",
+                    Main.getPrayerTimesCalculator().getCurrentPrayer().getI18Name()));
+            case "adhan" -> timeLeft.setText(I18N.get("adhan"));
+        }
     }
 
     @Override

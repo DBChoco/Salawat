@@ -89,7 +89,7 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [ ] Aur
 - [ ] Flathub
 - [x] Snapstore
-- [ ] Add auto start to Windows
+- [x] Add auto start to Windows (only if installed on default path)
 - [ ] Fix bugs
 - [ ] Add loader
 

@@ -106,15 +106,22 @@ public class PrayerGridController extends BaseController {
     public void createProgressAnimation(){
         PrayerTimesCalculator prayerTimesCalculator = Main.getPrayerTimesCalculator();
         final double[] progress = {0.00};
-        Platform.runLater(() -> {
-            progress[0] = prayerTimesCalculator.progressTime();
-            Animation a1 = AnimationUtils.TimelineBuilder.build()
-                    .add(
-                            AnimationUtils.KeyFrames.of(1000, progressBar.progressProperty(), progress[0], Interpolators.INTERPOLATOR_V1)
-                    )
-                    .getAnimation();
-            a1.play();
-        });
+        progress[0] = prayerTimesCalculator.progressTime();
+        if (progressBar.getProgress() > progress[0] || progressBar.getProgress() + 0.05 < progress[0]){
+            Platform.runLater(() -> {
+
+                Animation a1 = AnimationUtils.TimelineBuilder.build()
+                        .add(
+                                AnimationUtils.KeyFrames.of(1000, progressBar.progressProperty(), progress[0], Interpolators.INTERPOLATOR_V1)
+                        )
+                        .getAnimation();
+                a1.play();
+            });
+        }
+        else{
+            progressBar.setProgress(progress[0]);
+        }
+
     }
 
     @Override
