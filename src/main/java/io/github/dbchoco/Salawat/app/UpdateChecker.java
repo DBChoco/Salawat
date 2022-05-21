@@ -12,9 +12,9 @@ import java.util.TimerTask;
 
 public class UpdateChecker {
 
-    private String currentVersion;
+    private final String currentVersion;
     private String githubVersion;
-    private ApiRequester apiRequester = new ApiRequester();
+    private final ApiRequester apiRequester = new ApiRequester();
 
     public UpdateChecker(){
         ResourceBundle bundle = ResourceBundle.getBundle("data");
@@ -30,12 +30,12 @@ public class UpdateChecker {
                         githubVersion = apiRequester.requestVersion();
                         if (githubVersion == null){
                             System.out.println("You appear to be offline, we will not look for updates this session");
-                            timer.purge();
+                            timer.cancel();
                         }
                         else if (compareVersion()){
                             DialogCreator dialogCreator = new DialogCreator();
                             dialogCreator.showUpdateDialog(githubVersion);
-                            timer.purge();
+                            timer.cancel();
                         }
                     }
                 });

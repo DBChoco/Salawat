@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,10 +13,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="290.0" prefWidth="1280" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.PrayerGridController">
-   <HBox fx:id="hbox" alignment="CENTER" prefHeight="290.0" prefWidth="1280.0">
+<AnchorPane fx:id="root" prefHeight="330.0" prefWidth="1280" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.PrayerGridController">
+   <HBox fx:id="hbox" alignment="CENTER" prefHeight="330.0" prefWidth="1280.0">
       <children>
-         <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="290.0" prefWidth="320.0">
+         <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="330.0" prefWidth="320.0">
             <children>
                 <MFXProgressBar id="progressBar" fx:id="progressBar" prefHeight="10.0" prefWidth="320.0" progress="0" />
                 <GridPane id="prayerGrid" fx:id="prayerGrid" prefHeight="280.0" prefWidth="320.0" style="-fx-padding: 5px;">
@@ -160,6 +161,10 @@
                      <Insets />
                   </VBox.margin>
                 </GridPane>
+               <DatePicker fx:id="datePicker">
+                  <VBox.margin>
+                     <Insets top="15.0" />
+                  </VBox.margin></DatePicker>
             </children>
          </VBox>
       </children>

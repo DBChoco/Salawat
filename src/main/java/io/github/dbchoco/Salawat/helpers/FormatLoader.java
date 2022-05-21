@@ -7,8 +7,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class FormatLoader {
-    private SimpleDateFormat timeFormatter;
-    private SimpleDateFormat shortTimeFormatter;
+    private final SimpleDateFormat timeFormatter;
+    private final SimpleDateFormat shortTimeFormatter;
 
     public FormatLoader(){
         if (UserSettings.timeFormat == 12){

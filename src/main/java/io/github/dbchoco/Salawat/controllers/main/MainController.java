@@ -5,12 +5,14 @@ import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.DialogCreator;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -20,6 +22,7 @@ public class MainController extends BaseController {
     public Pane root;
     public FlowPane gridFlowPane;
     public ImageView background;
+    public GridPane gridpane;
 
     public void initialize(){
         Controllers.setMainController(this);

@@ -63,4 +63,47 @@
     -fx-border-color: white;
 }
 
+.date-picker .arrow-button {
+	-fx-background-color: -color-light;
+	-fx-background-radius: 0;
+}
+.date-picker .arrow-button:hover {
+	-fx-background-color: -color-light-faded;
+}
+.date-picker .arrow-button .arrow {
+	-fx-background-color: black;
+}
+.date-picker .cell {
+	-fx-background-color: white;
+}
+.date-picker .cell:hover {
+	-fx-background-color: -fx-light-grey-color;
+}
+.date-picker .cell:focused {
+	-fx-background-color: -fx-light-grey-color;
+}
+.date-picker .selected {
+	-fx-background-color: -color-light;
+	-fx-text-fill: white;
+}
+.date-picker .selected:focused {
+	-fx-background-color: -color-light;
+	-fx-text-fill: black;
+}
+.date-picker-popup  {
+	-fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+	-fx-background-color: -color-light;
+}
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill: black;
+}
+.date-picker-popup .week-number-cell {
+	-fx-text-fill: -color-light-faded;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+	-fx-background-color: black;
+}
 

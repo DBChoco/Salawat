@@ -15,15 +15,19 @@ import io.github.palexdev.materialfx.effects.Interpolators;
 import io.github.palexdev.materialfx.utils.AnimationUtils;
 import javafx.animation.Animation;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PrayerGridController extends BaseController {
     public Label fajrText;
@@ -43,6 +47,51 @@ public class PrayerGridController extends BaseController {
     public GridPane prayerGrid;
     public VBox vbox;
     public HBox hbox;
+    public DatePicker datePicker;
+
+    public void initialize() throws ClassNotFoundException {
+        Controllers.setPrayerGridController(this);
+        progressBar.getRanges1().add(NumberRange.of(0.0,1.0));
+        setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
+        createProgressAnimation();
+        makeResizable();
+        translate();
+        setupDatePicker();
+    }
+
+    private void setupDatePicker() {
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            String pattern = "dd/MM/yyyy";
+            final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            {
+                datePicker.setPromptText(pattern.toLowerCase());
+            }
+
+            @Override public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+        datePicker.setValue(LocalDate.now());
+        datePicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            @Override
+            public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate localDate, LocalDate t1) {
+                setPrayerTimes(Main.getPrayerTimesCalculator().calculateDatePrayers(t1));
+            }
+        });
+    }
 
     public void setPrayerTimes(PrayerTimes prayerTimes){
         SimpleDateFormat formatter = (new FormatLoader()).getShortTimeFormatter();
@@ -52,15 +101,6 @@ public class PrayerGridController extends BaseController {
         asrTime.setText(formatter.format(prayerTimes.asr));
         maghribTime.setText(formatter.format(prayerTimes.maghrib));
         ishaTime.setText(formatter.format(prayerTimes.isha));
-    }
-
-    public void initialize() throws ClassNotFoundException {
-        Controllers.setPrayerGridController(this);
-        progressBar.getRanges1().add(NumberRange.of(0.0,1.0));
-        setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
-        createProgressAnimation();
-        makeResizable();
-        translate();
     }
 
     public void createProgressAnimation(){
@@ -89,22 +129,17 @@ public class PrayerGridController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                SizeBinder.bindSize(root, 1280, 290, "main");
-                SizeBinder.bindSize(hbox, 1280, 290, "main");
-                SizeBinder.bindSizeVH(vbox, 320, 290, "main");
-                SizeBinder.bindSizeVH(prayerGrid, 320, 280, "main");
-                SizeBinder.bindSizeVH(progressBar, 320, 10, "main");
-                Label[] labels = {fajrText, fajrTime, sunriseText, sunriseTime, dhuhrText, dhuhrTime, asrText, asrTime,
-                maghribText, maghribTime, ishaText, ishaTime};
-                for (Label label : labels){
-                    FontBinder.bindFontSize(label, "small");
-                }
+        Platform.runLater(() -> {
+            SizeBinder.bindSize(root, 1280, 330, "main");
+            SizeBinder.bindSize(hbox, 1280, 330, "main");
+            SizeBinder.bindSizeVH(vbox, 320, 330, "main");
+            SizeBinder.bindSizeVH(prayerGrid, 320, 280, "main");
+            SizeBinder.bindSizeVH(progressBar, 320, 10, "main");
+            Label[] labels = {fajrText, fajrTime, sunriseText, sunriseTime, dhuhrText, dhuhrTime, asrText, asrTime,
+            maghribText, maghribTime, ishaText, ishaTime};
+            for (Label label : labels){
+                FontBinder.bindFontSize(label, "small");
             }
         });
-
-
     }
 }

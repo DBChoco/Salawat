@@ -91,16 +91,17 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [x] Snapstore
 - [ ] Add auto start to Windows
 - [ ] Fix bugs
+- [ ] Add loader
 
 #### Probably future updates, inshaAllah:
 - [ ] Weather
 - [ ] Quran Quote
 - [ ] City list instead of lat & lon
 - [ ] Sunnah times
-- [ ] Date picker
+- [x] Date picker
 - [ ] DateFormat
 - [ ] Taskbar customization
-- [ ] Better system tray
+- [ ] Better system tray (probably not possible until compatibility with JavaFX is enabled)
 - Calculation methods
   - [ ] Adjustements
 

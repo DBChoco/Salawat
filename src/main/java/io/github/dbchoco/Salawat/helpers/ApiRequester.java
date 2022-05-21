@@ -2,21 +2,18 @@ package io.github.dbchoco.Salawat.helpers;
 
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.UserSettings;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.MessageFormat;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ApiRequester {
     public void requestLocation(){
-        Double latitude = 0.00;
-        Double longitude = 0.00;
+        double latitude = 0.00;
+        double longitude = 0.00;
         String timezone = "Europe/Brussels";
         ResourceBundle bundle = ResourceBundle.getBundle("data");
         JSONObject response = request("https://api.ipgeolocation.io/ipgeo?apiKey=" + bundle.getString("locationApiKey"));
@@ -50,7 +47,6 @@ public class ApiRequester {
 
     private JSONObject request(String apiURL){
         try {
-
             URL url = new URL(apiURL);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -58,35 +54,32 @@ public class ApiRequester {
             conn.connect();
 
             //Getting the response code
-            int responsecode = conn.getResponseCode();
+            int responseCode = conn.getResponseCode();
 
-            if (responsecode != 200) {
-                throw new RuntimeException("HttpResponseCode: " + responsecode);
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
             } else {
 
-                String inline = "";
+                StringBuilder inline = new StringBuilder();
                 Scanner scanner = new Scanner(url.openStream());
 
                 //Write all the JSON data into a string using a scanner
                 while (scanner.hasNext()) {
-                    inline += scanner.nextLine();
+                    inline.append(scanner.nextLine());
                 }
 
                 //Close the scanner
                 scanner.close();
 
-                System.out.println(inline);
-
                 //Using the JSON simple library parse the string into a json object
                 JSONParser parse = new JSONParser();
-                JSONObject data_obj = (JSONObject) parse.parse(inline);
 
-                return data_obj;
+                return (JSONObject) parse.parse(inline.toString());
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }

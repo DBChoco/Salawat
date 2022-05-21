@@ -39,6 +39,11 @@ public class StageController {
         stage.setScene(currentScene);
     }
 
+    public static void launchCurrentScene(){
+        currentScene = mainScene;
+        stage.setScene(mainScene);
+    }
+
     public static void setMainScene(Scene mainScene) {
         StageController.mainScene = mainScene;
     }

@@ -24,8 +24,23 @@ public class Main extends Application {
         System.setProperty("prism.text", "t2k");
         System.setProperty("prism.lcdtext", "false");
 
+        Thread thread = new Thread(){
+            public void run(){
+                try {
+                    loadPrayerTimes();
+                    FontBinder.init();
+                    loadLocale();
+                    checkFirstTime();
+                    checkForUpdates();
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        thread.start();
+
         StageController.setStage(stage);
-        loadPrayerTimes();
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         URL cssURL = getClass().getResource("css/main.css");
@@ -44,12 +59,8 @@ public class Main extends Application {
 
         StageController.setCurrentScene(scene);
 
-        FontBinder.init();
-
         MainTimer mainTimer = new MainTimer();
         mainTimer.start();
-
-        loadLocale();
 
         launchTrayIcon();
 
@@ -59,8 +70,6 @@ public class Main extends Application {
         }
 
         playStartupSound();
-        checkFirstTime();
-        checkForUpdates();
     }
 
     private void loadLocale() {
@@ -101,14 +110,9 @@ public class Main extends Application {
     }
 
     private void launchTrayIcon(){
-        if (UserSettings.systemTray){
-            Platform.runLater(new Runnable(){
-                @Override
-                public void run() {
-                    TrayMenu.launch();
-                    minimizeToTray();
-                }
-            });
+        if (UserSettings.systemTray) {
+            TrayMenu.launch();
+            minimizeToTray();
         }
     }
 

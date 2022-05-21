@@ -19,7 +19,7 @@ public class LocationController extends BaseController implements SettingsPage{
     public Label coordinatesLabel;
     public Label timezoneLabel;
 
-    private ListItemArray timezones = new ListItemArray();
+    private final ListItemArray timezones = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
         latField.setTextLimit(10);
@@ -51,9 +51,9 @@ public class LocationController extends BaseController implements SettingsPage{
     @Override
     public void loadSettings() throws ClassNotFoundException {
         timezoneCombo.getSelectionModel().selectItem(timezones.getItembyValue(UserSettings.timezone));
-        double latitude = (double) UserSettings.latitude;
+        double latitude = UserSettings.latitude;
         latField.setText(String.valueOf(latitude));
-        double longitude = (double) UserSettings.longitude;
+        double longitude = UserSettings.longitude;
         lonField.setText(String.valueOf(longitude));
     }
 

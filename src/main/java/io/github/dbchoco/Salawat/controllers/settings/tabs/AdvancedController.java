@@ -27,9 +27,9 @@ public class AdvancedController extends BaseController implements SettingsPage{
     public Label delayLabel;
     public Label customSettingsLabel;
 
-    private ListItemArray calcMethodItems = new ListItemArray();
-    private ListItemArray madhabItems = new ListItemArray();
-    private ListItemArray hlrItems = new ListItemArray();
+    private final ListItemArray calcMethodItems = new ListItemArray();
+    private final ListItemArray madhabItems = new ListItemArray();
+    private final ListItemArray hlrItems = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
         translate();

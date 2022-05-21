@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ListItemArray extends ArrayList<ListItem> {
 
-    private ArrayList<ListItem> arrayList;
+    private final ArrayList<ListItem> arrayList;
 
     public ListItemArray(){
         arrayList = this;

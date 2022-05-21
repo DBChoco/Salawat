@@ -29,7 +29,7 @@ public class AudioController extends BaseController implements SettingsPage{
     public Label statupSoundLabel;
     public Label duaAfterAdhanLabel;
 
-    private ListItemArray adhanItems = new ListItemArray();
+    private final ListItemArray adhanItems = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
         addListItems();

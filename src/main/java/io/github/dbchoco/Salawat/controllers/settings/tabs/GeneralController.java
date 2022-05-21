@@ -30,7 +30,7 @@ public class GeneralController extends BaseController implements SettingsPage{
     public Label timeformatLabel;
     public Label notificationsLabel;
     public Label systrayLabel;
-    private ListItemArray languageItems = new ListItemArray();
+    private final ListItemArray languageItems = new ListItemArray();
 
     public void initialize(){
         languageItems.add(new ListItem(I18N.get("english"), "en"));

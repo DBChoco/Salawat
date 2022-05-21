@@ -3,8 +3,8 @@ package io.github.dbchoco.Salawat.helpers;
 import io.github.dbchoco.Salawat.app.I18N;
 
 public class ListItem {
-    private String name;
-    private String value;
+    private final String name;
+    private final String value;
 
     public ListItem(String name, String value){
         this.name = name;

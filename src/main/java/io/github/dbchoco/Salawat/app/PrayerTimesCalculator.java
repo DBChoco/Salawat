@@ -3,7 +3,10 @@ package io.github.dbchoco.Salawat.app;
 import com.batoulapps.adhan.*;
 import com.batoulapps.adhan.data.DateComponents;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class PrayerTimesCalculator {
     Coordinates coordinates = new Coordinates(UserSettings.latitude, UserSettings.longitude);
@@ -95,6 +98,10 @@ public class PrayerTimesCalculator {
         }
     }
 
+    public PrayerTimes calculateDatePrayers(LocalDate localDate){
+        PrayerTimes datePrayers = new PrayerTimes(coordinates, DateComponents.from(Date.from(localDate.atStartOfDay(TimeZone.getTimeZone(UserSettings.timezone).toZoneId()).toInstant())), parameters);
+        return datePrayers;
+    }
 
     public void calculatePrayers(){
         prayerTimes = new PrayerTimes(coordinates, dateComponents, parameters);
