@@ -37,5 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 
-### Sensitive data ###
+###Sensitive data
 src/main/resources/data.properties
