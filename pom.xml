@@ -155,6 +155,7 @@
                             <!-- https://github.com/fvarrui/JavaPackager/blob/master/docs/macosx-specific-properties.md -->
                             <winConfig>
                                 <!-- general properties -->
+                                <generateMsi>false</generateMsi>
                                 <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
 
                                 <!-- exe creation properties -->
@@ -162,6 +163,7 @@
                                 <originalFilename>${name}-${version}.exe</originalFilename>
 
                                 <!-- setup generation properties -->
+                                <setupMode>installForCurrentUser</setupMode>
                                 <disableRunAfterInstall>false</disableRunAfterInstall>
                                 <createDesktopIconTask>false</createDesktopIconTask>
 
@@ -172,7 +174,7 @@
                                             <key>HKCU:Software\Microsoft\Windows\CurrentVersion\Run</key>
                                             <valueName>Salawat</valueName>
                                             <valueType>REG_SZ</valueType>
-                                            <valueData>C:\Program Files\Salawat\Salawat.exe</valueData>
+                                            <valueData>%USERPROFILE%\AppData\Local\Programs\Salawat\Salawat.exe</valueData>
                                         </entry>
                                     </entries>
                                 </registry>
@@ -183,41 +185,4 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>flatpak</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.github.fvarrui</groupId>
-                        <artifactId>javapackager</artifactId>
-                        <version>1.6.6</version>
-                        <executions>
-                            <execution>
-                                <configuration>
-                                    <!-- mandatory -->
-                                    <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
-                                    <!-- optional -->
-                                    <bundleJre>true</bundleJre>
-                                    <copyDependencies>true</copyDependencies>
-                                    <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
-                                    <generateInstaller>true</generateInstaller>
-                                    <administratorRequired>false</administratorRequired>
-                                    <createTarball>false</createTarball>
-                                    <platform>auto</platform>
-                                    <additionalResources>Salawat.desktop</additionalResources>
-                                    <linuxConfig>
-                                        <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
-                                        <generateDeb>false</generateDeb>
-                                        <generateRpm>false</generateRpm>
-                                    </linuxConfig>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <!-- https://github.com/fvarrui/JavaPackager -->
-        </profile>
-    </profiles>
 </project>

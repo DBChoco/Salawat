@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -7,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.SettingsController">
    <children>
@@ -22,22 +25,41 @@
             </FlowPane>
          </bottom>
          <center>
-            <GridPane fx:id="gridPane" alignment="TOP_CENTER" pickOnBounds="false" prefHeight="582.0" prefWidth="669.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gridPane" alignment="TOP_CENTER" pickOnBounds="false" prefHeight="550.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="481.0" minHeight="10.0" prefHeight="448.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="285.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                    <HBox fx:id="innerHBox" alignment="TOP_CENTER" pickOnBounds="false" spacing="20.0">
                        <children>
                            <fx:include fx:id="sideBar" source="settings/sideBar.fxml" />
-                           <FlowPane fx:id="mainSettings" prefHeight="600" prefWidth="400.0">
+                           <FlowPane fx:id="mainSettings" prefHeight="585.0" prefWidth="400.0">
                                <fx:include source="settings/tabs/general.fxml" />
                            </FlowPane>
                        </children>
+                     <GridPane.margin>
+                        <Insets top="30.0" />
+                     </GridPane.margin>
                    </HBox>
+                  <VBox alignment="BOTTOM_CENTER" mouseTransparent="true" pickOnBounds="false" prefWidth="1280.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="quranQuote" alignment="CENTER" contentDisplay="CENTER" text="Quran Quote" wrapText="true">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin></Label>
+                         <Label fx:id="quranSource" text="Quran Source" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="40.0" />
+                     </GridPane.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
                </children>
             </GridPane>
          </center>

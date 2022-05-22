@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.controllers.settings;
 
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.controllers.BaseController;
+import io.github.dbchoco.Salawat.helpers.FontBinder;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -24,7 +25,8 @@ public class HeaderController extends BaseController {
 
     @Override
     protected void makeResizable() {
-        SizeBinder.bindSize(hbox, 1280, 70, "settings");
-        SizeBinder.bindSize(flowPane, 600, 70, "settings");
+        SizeBinder.bindSize(hbox, 1280, 80, "settings");
+        SizeBinder.bindSize(flowPane, 600, 80, "settings");
+        FontBinder.bindFontSize(settingsLabel, "large");
     }
 }
