@@ -13,7 +13,7 @@ public class TrayMenu {
 
     private static final Boolean isSupported = FXTrayIcon.isSupported();
 
-    public static  void launch() {
+    public static void launch() {
         if (isSupported) {
             icon = new FXTrayIcon(StageController.getStage(), Main.class.getResource("images/icon.png"));
 

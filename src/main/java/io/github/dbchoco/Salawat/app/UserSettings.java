@@ -49,9 +49,10 @@ public class UserSettings {
     public static Integer asrAdjustments = prefs.getInt("asrAdjustments", 0);
     public static Integer maghribAdjustments = prefs.getInt("maghribAdjustments", 0);
     public static Integer ishaAdjustments = prefs.getInt("ishaAdjustments", 0);
-    public static Boolean firstTime = prefs.getBoolean("firstTime", true);
-
     public static Double volume = prefs.getDouble("volume", 0.5);
+    public static Boolean firstTime = prefs.getBoolean("firstTime", true);
+    public static Double windowWidth = prefs.getDouble("width", 0);
+    public static Double windowHeight = prefs.getDouble("height", 0);
 
     public static void saveSetting(String key, Object value) throws ClassNotFoundException {
         if (value instanceof String) prefs.put(key, (String) value);
@@ -112,7 +113,12 @@ public class UserSettings {
         prefs.putInt("asrAdjustments", asrAdjustments);
         prefs.putInt("maghribAdjustments", maghribAdjustments);
         prefs.putInt("ishaAdjustments", ishaAdjustments);
-        prefs.putDouble("volume", volume);
         prefs.putBoolean("firstTime", firstTime);
+    }
+
+    public static void saveWhenClosing() {
+        prefs.putDouble("volume", volume);
+        prefs.putDouble("width", windowWidth);
+        prefs.putDouble("height", windowHeight);
     }
 }

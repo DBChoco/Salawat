@@ -91,6 +91,7 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [x] Snapstore
 - [x] Add auto start to Windows (only if installed on default path)
 - [ ] Fix bugs
+  - [ ] Fix bug that causes crash after Adhan is played (need more information about the cause)
 - [ ] Add loader
 
 #### Probably future updates, inshaAllah:

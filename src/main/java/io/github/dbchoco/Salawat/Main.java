@@ -4,6 +4,7 @@ import io.github.dbchoco.Salawat.app.*;
 import io.github.dbchoco.Salawat.helpers.*;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -64,8 +65,15 @@ public class Main extends Application {
 
         launchTrayIcon();
 
+
+        if (UserSettings.windowWidth != 0){
+            stage.setWidth(UserSettings.windowWidth);
+            stage.setHeight(UserSettings.windowHeight);
+        }
+        else stage.setMaximized(true);
+        addStageSizeListener(stage);
+
         if(!UserSettings.launchMinimized) {
-            stage.setMaximized(true);
             stage.show();
         }
 
@@ -74,6 +82,15 @@ public class Main extends Application {
 
     private void loadLocale() {
         I18N.setLocale(Locale.forLanguageTag(UserSettings.language));
+    }
+
+    private void addStageSizeListener(Stage stage){
+        ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) -> {
+            UserSettings.windowWidth = stage.getWidth();
+            UserSettings.windowHeight = stage.getHeight();
+        };
+        stage.widthProperty().addListener(stageSizeListener);
+        stage.heightProperty().addListener(stageSizeListener);
     }
 
     private void checkForUpdates() {
@@ -123,6 +140,15 @@ public class Main extends Application {
             apiRequester.requestLocation();
         }
     }
+
+    @Override
+    /**
+     * When closing the app, settings are saved (especially for window size)
+     */
+    public void stop(){
+        UserSettings.saveWhenClosing();
+    }
+
     public static void main(String[] args) {
         launch();
     }
