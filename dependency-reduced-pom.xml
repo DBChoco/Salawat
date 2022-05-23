@@ -4,7 +4,7 @@
   <groupId>io.github.dbchoco</groupId>
   <artifactId>Salawat</artifactId>
   <name>Salawat</name>
-  <version>1.0.0</version>
+  <version>1.0.3</version>
   <description>Salawat: Adhan app</description>
   <organization>
     <name>DarkBlackChocolate</name>
@@ -82,9 +82,11 @@
                 <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
               </linuxConfig>
               <winConfig>
+                <generateMsi>false</generateMsi>
                 <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
                 <headerType>console</headerType>
                 <originalFilename>${name}-${version}.exe</originalFilename>
+                <setupMode>installForCurrentUser</setupMode>
                 <disableRunAfterInstall>false</disableRunAfterInstall>
                 <createDesktopIconTask>false</createDesktopIconTask>
                 <registry>
@@ -93,7 +95,7 @@
                       <key>HKCU:Software\Microsoft\Windows\CurrentVersion\Run</key>
                       <valueName>Salawat</valueName>
                       <valueType>REG_SZ</valueType>
-                      <valueData>C:\Program Files\Salawat\Salawat.exe</valueData>
+                      <valueData>%USERPROFILE%\AppData\Local\Programs\Salawat\Salawat.exe</valueData>
                     </entry>
                   </entries>
                 </registry>
@@ -104,40 +106,6 @@
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>flatpak</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>io.github.fvarrui</groupId>
-            <artifactId>javapackager</artifactId>
-            <version>1.6.6</version>
-            <executions>
-              <execution>
-                <configuration>
-                  <mainClass>io.github.dbchoco.Salawat.FakeMain</mainClass>
-                  <bundleJre>true</bundleJre>
-                  <copyDependencies>true</copyDependencies>
-                  <runnableJar>${project.build.directory}/${project.artifactId}-${project.version}.jar</runnableJar>
-                  <generateInstaller>true</generateInstaller>
-                  <administratorRequired>false</administratorRequired>
-                  <createTarball>false</createTarball>
-                  <platform>auto</platform>
-                  <additionalResources>Salawat.desktop</additionalResources>
-                  <linuxConfig>
-                    <pngFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.png</pngFile>
-                    <generateDeb>false</generateDeb>
-                    <generateRpm>false</generateRpm>
-                  </linuxConfig>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

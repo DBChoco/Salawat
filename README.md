@@ -44,6 +44,9 @@
   </a>
 </p>
 
+<a href='https://flathub.org/apps/details/io.github.dbchoco.Salawat'>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/>
+</a>
 
 <a href="https://snapcraft.io/salawat">
     <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
@@ -87,14 +90,12 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 ### Roadmap
 
 - [ ] Aur
-- [ ] Flathub
+- [x] Flathub
 - [x] Snapstore
 - [x] Add auto start to Windows (only if installed on default path)
 - [ ] Fix bugs
   - [ ] Fix bug that causes crash after Adhan is played (need more information about the cause)
-- [ ] Add loader
-
-#### Probably future updates, inshaAllah:
+- [ ] Add loading screen
 - [ ] Weather
 - [ ] Quran Quote
 - [ ] City list instead of lat & lon
@@ -121,11 +122,15 @@ You might receive a warning, that is because the app is not signed and I do not 
 
 ### GNU/Linux
 
+<a href='https://flathub.org/apps/details/io.github.dbchoco.Salawat'>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/>
+</a>
+
 <a href="https://snapcraft.io/salawat">
     <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
 </a>
 
-I'm currently working on Flathub and AUR support. (Snapstore [x])
+I'm currently working on AUR support. (Snapstore and Flathub: "check")
 In the meanwhile you can use the .DEB and TAR.GZ files as an alternative.
 
 <!-- CONTRIBUTING -->

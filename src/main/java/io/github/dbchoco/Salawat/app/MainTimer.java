@@ -68,7 +68,7 @@ public class MainTimer{
             int seconds = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getSeconds();
             if (hours == 00 && minutes <= 10){
                 if (minutes == 0 && seconds <= 10){
-                    if (!AudioPlayer.getIsPlaying()){
+                    if (AudioPlayer.getIsPlaying()){
                         Controllers.getTimeController().displayTimeLeft("adhan");
                     }
                     if (!launchedAlerts){
