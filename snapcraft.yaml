@@ -1,0 +1,77 @@
+name: salawat
+base: core18
+version: '1.0.3'
+summary: Ligthweight and elegant prayer times (Adhan) app.
+description: |
+  Fast, elegant and higly customizable prayer times (Adhan) app for Muslims around the world.
+  It features multi-language support, custom appearance and audio, advanced prayer times options and much more.
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+
+
+apps:
+  salawat:
+    command: desktop-launch $SNAP/bin/salawat
+    plugs: [home, x11, opengl, network, audio-playback, pulseaudio]
+    extensions: [ gnome-3-28 ]
+    environment:
+      XDG_DATA_HOME: "$SNAP/usr/share"
+      JAVA_HOME: "$SNAP/usr/lib/jvm/java-17-openjdk-amd64"
+      JAVA_BIN: "$SNAP/usr/lib/jvm/java-17-openjdk-amd64/bin/java"
+      PATH: "$SNAP/bin:$PATH:$SNAP/usr/lib/jvm/java-17-openjdk-amd64/bin"
+      LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
+      ALSA_CONFIG_PATH: "${SNAP}/etc/asound.conf"
+      SALAWAT_PATH: "$SNAP/bin/Salawat.jar"
+
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+
+parts:
+  alsa-pulseaudio:
+    plugin: dump
+    source: .
+    override-pull: |
+      mkdir etc -p
+      cat > etc/asound.conf <<EOF
+      pcm.!default {
+          type pulse
+          fallback "sysdefault"
+          hint {
+              show on
+              description "Default ALSA Output (currently PulseAudio Sound Server)"
+          }
+      }
+      ctl.!default {
+          type pulse
+          fallback "sysdefault"
+      }
+      EOF
+  salawat:
+    plugin: nil
+    override-build: |
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      wget -O $SNAPCRAFT_PART_INSTALL/bin/Salawat.jar https://github.com/DBChoco/Salawat/releases/download/v1.0.3/Salawat-1.0.3.jar
+      echo '$SNAP/usr/lib/jvm/java-17-openjdk-amd64/bin/java -Djavax.net.ssl.trustStore=$SNAP/etc/ssl/certs/java/cacerts -jar $SNAP/bin/Salawat.jar' > $SNAPCRAFT_PART_INSTALL/bin/salawat
+      chmod +x $SNAPCRAFT_PART_INSTALL/bin/salawat
+    stage-packages:
+      - ca-certificates
+      - ca-certificates-java
+      - openjdk-17-jre
+      - libpulse0
+      - libpulsedsp
+      - libasound2-plugins
+      - ubuntu-restricted-extras
+      - ffmpeg
+    build-packages:
+      - wget
+      - openjdk-17-jre
+      - ca-certificates-java
+      - ca-certificates
+    prime:
+      - -usr/lib/jvm/java-*/lib/security/cacerts
+      - -usr/lib/jvm/java-*/jre/lib/security/cacerts
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
