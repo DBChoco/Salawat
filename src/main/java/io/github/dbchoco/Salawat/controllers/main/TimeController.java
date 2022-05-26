@@ -28,24 +28,28 @@ public class TimeController extends BaseController{
     @FXML
     public Label timeLeft;
     public GridPane grid;
-
     private Boolean hijri = false;
+    String format;
 
     public void initialize(){
         Controllers.setTimeController(this);
         displayTimeLeft("now");
+        loadFormat();
         displayGregorianDate();
         makeResizable();
+        loadFormat();
+    }
+
+    public void loadFormat(){
+        if (UserSettings.dateformat.equals("ddmmyyyy")) format = "EEEE, d MMMM y";
+        else if (UserSettings.dateformat.equals("mmddyyyy")) format = "EEEE, MMMM d, y";
+        else format = "EEEE, y MMMM d";
     }
 
     public void displayGregorianDate(){
-        /*Date now = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        date.setText(formatter.format(now));*/
-
         if (hijri){
             Date now = new Date();
-            DateFormat formatter = new SimpleDateFormat("EEEE, d MMMM y", I18N.getLocale());
+            DateFormat formatter = new SimpleDateFormat(format, I18N.getLocale());
             String stringDate = formatter.format(now);
             formatter.setTimeZone(TimeZone.getTimeZone(UserSettings.timezone));
             stringDate = stringDate.substring(0, 1).toUpperCase() + stringDate.substring(1);
@@ -53,7 +57,7 @@ public class TimeController extends BaseController{
         }
         else {
             HijrahDate hijriDate = HijrahDate.now();
-            String stringDate = DateTimeFormatter.ofPattern("EEEE, d MMMM y",I18N.getLocale()).format(hijriDate);
+            String stringDate = DateTimeFormatter.ofPattern(format,I18N.getLocale()).format(hijriDate);
             stringDate = stringDate.substring(0, 1).toUpperCase() + stringDate.substring(1);
             date.setText(stringDate);
         }

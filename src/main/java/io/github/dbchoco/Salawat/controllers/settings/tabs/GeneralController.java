@@ -28,6 +28,10 @@ public class GeneralController extends BaseController implements SettingsPage{
     public Label notificationsLabel;
     public Label systrayLabel;
     private final ListItemArray languageItems = new ListItemArray();
+    public Label dateFormatLabel;
+    public MFXRadioButton ddmmyyyy;
+    public MFXRadioButton mmddyyyy;
+    public MFXRadioButton yyyymmdd;
 
     public void initialize(){
         languageItems.add(new ListItem(I18N.get("english"), "en"));
@@ -61,6 +65,10 @@ public class GeneralController extends BaseController implements SettingsPage{
         UserSettings.notifications = notificationsCheck.isSelected();
         UserSettings.systemTray = systrayCheck.isSelected();
         UserSettings.launchMinimized = minStartCheck.isSelected();
+
+        if (ddmmyyyy.isSelected()) UserSettings.dateformat = "ddmmyyyy";
+        else if (mmddyyyy.isSelected()) UserSettings.dateformat = "mmddyyyy";
+        else UserSettings.dateformat = "yyyymmdd";
     }
 
     @Override
@@ -77,6 +85,28 @@ public class GeneralController extends BaseController implements SettingsPage{
         notificationsCheck.setSelected(UserSettings.notifications);
         systrayCheck.setSelected(UserSettings.systemTray);
         minStartCheck.setSelected(UserSettings.launchMinimized);
+
+        ddmmyyyy.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                mmddyyyy.setSelected(false);
+                yyyymmdd.setSelected(false);
+            }
+        });
+        mmddyyyy.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1) {
+                ddmmyyyy.setSelected(false);
+                yyyymmdd.setSelected(false);
+            }
+        });
+        yyyymmdd.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1) {
+                mmddyyyy.setSelected(false);
+                ddmmyyyy.setSelected(false);
+            }
+        });
+        if (UserSettings.dateformat.equals("ddmmyyyy")) ddmmyyyy.setSelected(true);
+        else if (UserSettings.dateformat.equals("mmddyyyy")) mmddyyyy.setSelected(true);
+        else yyyymmdd.setSelected(true);
     }
 
     @Override
@@ -93,6 +123,11 @@ public class GeneralController extends BaseController implements SettingsPage{
         I18N.bindString(notificationsCheck, "notifCheck");
         I18N.bindString(systrayCheck, "systrayCheck");
         I18N.bindString(minStartCheck, "minStart");
+
+        I18N.bindString(dateFormatLabel, "dateformat");
+        I18N.bindString(ddmmyyyy, "ddmmyyyy");
+        I18N.bindString(mmddyyyy, "mmddyyyy");
+        I18N.bindString(yyyymmdd, "yyyymmdd");
     }
 
     @Override

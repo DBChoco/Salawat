@@ -53,6 +53,7 @@ public class UserSettings {
     public static Boolean firstTime = prefs.getBoolean("firstTime", true);
     public static Double windowWidth = prefs.getDouble("width", 0);
     public static Double windowHeight = prefs.getDouble("height", 0);
+    public static String dateformat = prefs.get("dateformat", "ddmmyyyy");
 
     public static void saveSetting(String key, Object value) throws ClassNotFoundException {
         if (value instanceof String) prefs.put(key, (String) value);
@@ -114,6 +115,7 @@ public class UserSettings {
         prefs.putInt("maghribAdjustments", maghribAdjustments);
         prefs.putInt("ishaAdjustments", ishaAdjustments);
         prefs.putBoolean("firstTime", firstTime);
+        prefs.get("dateformat", dateformat);
     }
 
     public static void saveWhenClosing() {

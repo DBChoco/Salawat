@@ -5,6 +5,7 @@ import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.AudioPlayer;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.PrayerTimesCalculator;
+import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.FontBinder;
@@ -49,6 +50,8 @@ public class PrayerGridController extends BaseController {
     public VBox vbox;
     public HBox hbox;
     public DatePicker datePicker;
+    private String pattern;
+    private String oldPattern;
 
     public void initialize() throws ClassNotFoundException {
         Controllers.setPrayerGridController(this);
@@ -60,38 +63,45 @@ public class PrayerGridController extends BaseController {
         setupDatePicker();
     }
 
-    private void setupDatePicker() {
-        datePicker.setConverter(new StringConverter<LocalDate>() {
-            String pattern = "dd/MM/yyyy";
-            final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+    public void setupDatePicker() {
+        if (pattern != null) oldPattern = pattern;
 
-            {
-                datePicker.setPromptText(pattern.toLowerCase());
-            }
+        if (UserSettings.dateformat.equals("ddmmyyyy")) pattern = "dd/MM/yyyy";
+        else if (UserSettings.dateformat.equals("mmddyyyy")) pattern = "MM/dd/yyyy";
+        else pattern = "yyyy/MM/dd";
 
-            @Override public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
+        if (oldPattern == null || !oldPattern.equals(pattern)){
+            datePicker.setConverter(new StringConverter<LocalDate>() {
+                final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+                {
+                    datePicker.setPromptText(pattern.toLowerCase());
                 }
-            }
 
-            @Override public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
+                @Override public String toString(LocalDate date) {
+                    if (date != null) {
+                        return dateFormatter.format(date);
+                    } else {
+                        return "";
+                    }
                 }
-            }
-        });
-        datePicker.setValue(LocalDate.now());
-        datePicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
-            @Override
-            public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate localDate, LocalDate t1) {
-                setPrayerTimes(Main.getPrayerTimesCalculator().calculateDatePrayers(t1));
-            }
-        });
+
+                @Override public LocalDate fromString(String string) {
+                    if (string != null && !string.isEmpty()) {
+                        return LocalDate.parse(string, dateFormatter);
+                    } else {
+                        return null;
+                    }
+                }
+            });
+            datePicker.setValue(LocalDate.now());
+            datePicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
+                @Override
+                public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate localDate, LocalDate t1) {
+                    setPrayerTimes(Main.getPrayerTimesCalculator().calculateDatePrayers(t1));
+                }
+            });
+        }
     }
 
     public void setPrayerTimes(PrayerTimes prayerTimes){
