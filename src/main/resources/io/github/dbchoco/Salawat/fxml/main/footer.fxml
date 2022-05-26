@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXSlider?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -15,25 +16,65 @@
                <MFXButton fx:id="stopButton" buttonType="RAISED" text="Stop">
                   <font>
                      <Font size="16.0" />
-                  </font></MFXButton>
+                  </font>
+                  <graphic>
+                     <Label fx:id="stopIcon" text="">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <padding>
+                           <Insets right="5.0" />
+                        </padding></Label>
+                  </graphic></MFXButton>
                <MFXButton fx:id="playButton" buttonType="RAISED" text="Play">
                   <HBox.margin>
                      <Insets left="15.0" />
                   </HBox.margin>
                   <font>
                      <Font size="16.0" />
-                  </font></MFXButton>
+                  </font>
+                  <graphic>
+                     <Label fx:id="playIcon" text="">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <padding>
+                           <Insets right="5.0" />
+                        </padding></Label>
+                  </graphic></MFXButton>
+               <Label fx:id="volumeDownIcon" text="">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Label>
                <MFXSlider id="volumeSlider" fx:id="volumeSlider">
                   <HBox.margin>
                      <Insets left="15.0" />
                   </HBox.margin></MFXSlider>
+               <Label fx:id="volumeUpIcon" text="">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Label>
             </children></HBox>
          <HBox fx:id="buttonBox" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50" prefWidth="640.0">
             <children>
                 <MFXButton id="settingsButton" fx:id="settingsButton" buttonType="RAISED" minHeight="27.0" minWidth="70.0" text="Settings">
                   <font>
                      <Font size="16.0" />
-                  </font></MFXButton>
+                  </font>
+                   <graphic>
+                      <Label fx:id="settingsIcon" text="">
+                         <font>
+                            <Font size="16.0" />
+                         </font></Label>
+                   </graphic></MFXButton>
             </children>
          </HBox>
       </children>

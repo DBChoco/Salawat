@@ -39,7 +39,10 @@
 
 .mfx-button{
     -fx-background-color: -color-light;
-    -fx-text-fill: black;
+    -fx-text-fill: -color-dark;
+}
+.mfx-button .label{
+    -fx-text-fill: -color-dark;
 }
 
 .mfx-button .mfx-ripple-generator{
@@ -65,7 +68,6 @@
 
 .date-picker .arrow-button {
 	-fx-background-color: -color-light;
-	-fx-background-radius: 0;
 }
 .date-picker .arrow-button:hover {
 	-fx-background-color: -color-light-faded;

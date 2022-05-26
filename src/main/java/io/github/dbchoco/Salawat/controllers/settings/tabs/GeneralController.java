@@ -3,10 +3,7 @@ package io.github.dbchoco.Salawat.controllers.settings.tabs;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
-import io.github.dbchoco.Salawat.helpers.Controllers;
-import io.github.dbchoco.Salawat.helpers.ListGenerator;
-import io.github.dbchoco.Salawat.helpers.ListItem;
-import io.github.dbchoco.Salawat.helpers.ListItemArray;
+import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -46,10 +43,11 @@ public class GeneralController extends BaseController implements SettingsPage{
     }
 
     private void setupLanguageListener() {
-        languageCombo.valueProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                I18N.setLocale(Locale.forLanguageTag(((ListItem) t1).getValue()));
+        languageCombo.valueProperty().addListener((observableValue, o, t1) -> {
+            I18N.setLocale(Locale.forLanguageTag(((ListItem) t1).getValue()));
+            if (((ListItem) o).getValue().equals("ar") || ((ListItem) t1).getValue().equals("ar")){
+                UserSettings.language  = ((ListItem) t1).getValue();
+                FontBinder.reloadFonts();
             }
         });
     }

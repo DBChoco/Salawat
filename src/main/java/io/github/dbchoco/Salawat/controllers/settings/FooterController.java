@@ -5,10 +5,12 @@ import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.FontChooser;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -17,10 +19,12 @@ public class FooterController extends BaseController {
     public MFXButton returnButton;
     public AnchorPane root;
     public HBox hbox;
+    public Label returnIcon;
 
     public void initialize() {
         translate();
         makeResizable();
+        returnIcon.setFont(FontChooser.getIconFont(16.00));
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
 

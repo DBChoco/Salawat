@@ -11,7 +11,6 @@ public class Reloader {
         Controllers.getPrayerGridController().setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
         Controllers.getPrayerGridController().datePicker.setValue(LocalDate.now());
         StageController.reloadTheme();
-        FontBinder.reloadFonts();
         Controllers.getMainController().loadBGImage();
     }
 }

@@ -52,3 +52,14 @@
 #sideBar{
     -fx-border-width: 0 2px 0 0;
 }
+
+.date-picker {
+    -fx-background-radius: 10 10 10 10;
+}
+.date-picker > .text-field {
+    -fx-background-radius: 10 0 0 10;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-radius: 0 10 10 0;
+}

@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane fx:id="root" prefHeight="310.0" prefWidth="219.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.settings.SideBarController">
    <children>
       <VBox id="sideBar" fx:id="vbox" alignment="TOP_RIGHT" prefHeight="310.0" prefWidth="199.0">
@@ -15,35 +16,65 @@
             </VBox.margin>
             <font>
                <Font size="23.0" />
-            </font></MFXButton>
+            </font>
+              <graphic>
+                  <Label fx:id="generalIcon" text="&#xf66b;">
+                      <font>
+                          <Font size="16.0" />
+                      </font></Label>
+              </graphic></MFXButton>
           <MFXButton fx:id="locationButton" buttonType="RAISED" depthLevel="LEVEL1" minHeight="27.0" minWidth="70.0" text="Location">
             <VBox.margin>
                <Insets bottom="15.0" />
             </VBox.margin>
             <font>
                <Font size="23.0" />
-            </font></MFXButton>
+            </font>
+              <graphic>
+                  <Label fx:id="locationIcon" text="&#xf3c5;">
+                      <font>
+                          <Font size="16.0" />
+                      </font></Label>
+              </graphic></MFXButton>
           <MFXButton fx:id="audioButton" buttonType="RAISED" depthLevel="LEVEL1" minHeight="27.0" minWidth="70.0" text="Audio">
             <VBox.margin>
                <Insets bottom="15.0" />
             </VBox.margin>
             <font>
                <Font size="23.0" />
-            </font></MFXButton>
+            </font>
+              <graphic>
+                  <Label fx:id="audioIcon" text="&#xf028;">
+                      <font>
+                          <Font size="16.0" />
+                      </font></Label>
+              </graphic></MFXButton>
           <MFXButton fx:id="appearanceButton" buttonType="RAISED" depthLevel="LEVEL1" minHeight="27.0" minWidth="70.0" text="Appearance">
             <VBox.margin>
                <Insets bottom="15.0" />
             </VBox.margin>
             <font>
                <Font size="23.0" />
-            </font></MFXButton>
+            </font>
+              <graphic>
+                  <Label fx:id="apperanceIcon" text="&#xf53f;">
+                      <font>
+                          <Font size="16.0" />
+                      </font></Label>
+              </graphic></MFXButton>
           <MFXButton fx:id="advancedButton" buttonType="RAISED" depthLevel="LEVEL1" minHeight="27.0" minWidth="70.0" text="Advanced">
             <VBox.margin>
                <Insets bottom="15.0" />
             </VBox.margin>
             <font>
                <Font size="23.0" />
-            </font></MFXButton>
+            </font>
+              <graphic>
+                  <Label fx:id="advancedIcon" text="&#xf1de;">
+                      <font>
+                          <Font size="16.0" />
+                      </font></Label>
+              </graphic></MFXButton>
          <padding>
             <Insets right="15.0" />
          </padding>

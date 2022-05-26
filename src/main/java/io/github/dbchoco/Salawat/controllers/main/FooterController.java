@@ -7,20 +7,24 @@ import io.github.dbchoco.Salawat.app.TrayMenu;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.FontChooser;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXSlider;
+import io.github.palexdev.materialfx.font.MFXFontIcon;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 
@@ -33,6 +37,11 @@ public class FooterController extends BaseController {
     public HBox hbox;
     public HBox volumeBox;
     public HBox buttonBox;
+    public Label stopIcon;
+    public Label playIcon;
+    public Label volumeDownIcon;
+    public Label volumeUpIcon;
+    public Label settingsIcon;
 
     public void initialize(){
         translate();
@@ -41,6 +50,13 @@ public class FooterController extends BaseController {
         loadVolume();
         loadListeners();
         makeResizable();
+        setupIcons();
+    }
+
+    private void setupIcons() {
+        for (Label i : new Label[]{stopIcon, playIcon, volumeDownIcon, volumeUpIcon, settingsIcon}){
+            i.setFont(FontChooser.getIconFont(16.00));
+        }
     }
 
     private void loadVolume(){

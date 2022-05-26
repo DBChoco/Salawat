@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="330.0" prefWidth="1280" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.PrayerGridController">
-   <HBox fx:id="hbox" alignment="CENTER" prefHeight="330.0" prefWidth="1280.0">
+   <HBox fx:id="hbox" alignment="CENTER" prefHeight="350.0" prefWidth="1280.0">
       <children>
          <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="330.0" prefWidth="320.0">
             <children>
@@ -161,7 +162,7 @@
                      <Insets />
                   </VBox.margin>
                 </GridPane>
-               <DatePicker fx:id="datePicker">
+               <DatePicker fx:id="datePicker" promptText="Select Date">
                   <VBox.margin>
                      <Insets top="15.0" />
                   </VBox.margin></DatePicker>

@@ -4,10 +4,12 @@ import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.FontChooser;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +25,11 @@ public class SideBarController extends BaseController{
     public MFXButton advancedButton;
     public VBox vbox;
     public AnchorPane root;
+    public Label generalIcon;
+    public Label locationIcon;
+    public Label audioIcon;
+    public Label apperanceIcon;
+    public Label advancedIcon;
 
     public void initialize(){
         translate();
@@ -32,6 +39,13 @@ public class SideBarController extends BaseController{
         setupButtonHandler(audioButton, "audio");
         setupButtonHandler(appearanceButton, "appearance");
         setupButtonHandler(advancedButton, "advanced");
+        setupIcons();
+    }
+
+    private void setupIcons() {
+        for (Label i : new Label[]{generalIcon, locationIcon, audioIcon, apperanceIcon, advancedIcon}){
+            i.setFont(FontChooser.getIconFont(16.00));
+        }
     }
 
     private void setupButtonHandler(MFXButton button, String title){
