@@ -6,6 +6,7 @@ import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.DialogCreator;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,26 +50,47 @@ public class MainController extends BaseController {
         SizeBinder.bindSize(gridFlowPane, 1280, 300, "main");
     }
 
-    private void loadBGImage(){
-        if (UserSettings.bgImage){
-            Image image = new Image(UserSettings.bgImagePath);
-            // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
-            BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
-            // new BackgroundImage(image, repeatX, repeatY, position, size)
-            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+    public void loadBGImage(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                if (UserSettings.bgImage){
+                    if (!root.getBackground().getImages().isEmpty()){
+                        if (!root.getBackground().getImages().get(0).getImage().getUrl().equals(UserSettings.bgImagePath)){
+                            Image image = new Image(UserSettings.bgImagePath);
+                            // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
+                            BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
+                            // new BackgroundImage(image, repeatX, repeatY, position, size)
+                            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 
-            // new Background(images...)
-            Background background = new Background(backgroundImage);
+                            // new Background(images...)
+                            Background background = new Background(backgroundImage);
 
-            root.setBackground(background);
-        }
-        else {
-            BackgroundFill backgroundFill;
-            if (UserSettings.darkMode) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
-            else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
-            Background background = new Background(backgroundFill);
-            root.setBackground(background);
-        }
+                            root.setBackground(background);
+                        }
+                    }
+                    else {
+                        Image image = new Image(UserSettings.bgImagePath);
+                        // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
+                        BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
+                        // new BackgroundImage(image, repeatX, repeatY, position, size)
+                        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+
+                        // new Background(images...)
+                        Background background = new Background(backgroundImage);
+
+                        root.setBackground(background);
+                    }
+                }
+                else {
+                    BackgroundFill backgroundFill;
+                    if (UserSettings.darkMode) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
+                    else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
+                    Background background = new Background(backgroundFill);
+                    root.setBackground(background);
+                }
+            }
+        });
     }
 
     public void reload() {

@@ -64,9 +64,11 @@ public class StageController {
         else {
             theme = Main.class.getResource("css/light.css");
         }
-        scene.getStylesheets().remove(1);
-        assert theme != null;
-        scene.getStylesheets().add(1, theme.toExternalForm());
+        if (!scene.getStylesheets().get(1).equals(theme)){
+            scene.getStylesheets().remove(1);
+            assert theme != null;
+            scene.getStylesheets().add(1, theme.toExternalForm());
+        }
     }
 
     public static void changeTheme(Scene scene, Boolean darkMode){

@@ -10,8 +10,8 @@ public class Reloader {
         Main.loadPrayerTimes();
         Controllers.getPrayerGridController().setPrayerTimes(Main.getPrayerTimesCalculator().getPrayerTimes());
         Controllers.getPrayerGridController().datePicker.setValue(LocalDate.now());
-        Controllers.getMainController().reload();
         StageController.reloadTheme();
         FontBinder.reloadFonts();
+        Controllers.getMainController().loadBGImage();
     }
 }

@@ -24,12 +24,6 @@ public class ListGenerator {
                 return null;
             }
         });
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-
-            }
-        });
     }
 
     public static void generateList(MFXComboBox comboBox, ListItemArray items){
@@ -47,12 +41,6 @@ public class ListGenerator {
             @Override
             public Object fromString(String s) {
                 return null;
-            }
-        });
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-
             }
         });
     }

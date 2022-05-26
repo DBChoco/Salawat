@@ -9,6 +9,7 @@ import io.github.dbchoco.Salawat.helpers.StageController;
 import io.github.dbchoco.Salawat.helpers.StringShortener;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -39,7 +40,6 @@ public class AppearanceController extends BaseController implements SettingsPage
     public void saveSettings() {
         UserSettings.darkMode = darkmodeCheck.isSelected();
         UserSettings.bgImage = bgImageCheck.isSelected();
-
 
         if (!bgImageCheck.isSelected()){
             UserSettings.bgImagePath = Main.class.getResource("images/bgImage.jpg").toExternalForm();

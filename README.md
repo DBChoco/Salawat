@@ -90,14 +90,12 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 ### Roadmap
 
 - [ ] Aur
-- [x] Flathub
-- [x] Snapstore
-- [x] Add auto start to Windows (only if installed on default path)
 - [ ] Fix bugs
   - [ ] Fix bug that causes crash after Adhan is played (need more information about the cause)
+  - [ ] Fix Windows internet
 - [ ] Add loading screen
 - [ ] Weather
-- [ ] Quran Quote
+- [x] Quran Quote
 - [ ] City list instead of lat & lon
 - [ ] Sunnah times
 - [x] Date picker
