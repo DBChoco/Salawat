@@ -100,6 +100,10 @@
                   </entries>
                 </registry>
               </winConfig>
+              <vmArgs>
+                <vmArg>-Djavax.net.ssl.trustStore=jre/lib/security/cacerts</vmArg>
+                <vmArg>-Dhttps.protocols=TLSv1.2,TLSv1.1,TLSv1</vmArg>
+              </vmArgs>
             </configuration>
           </execution>
         </executions>

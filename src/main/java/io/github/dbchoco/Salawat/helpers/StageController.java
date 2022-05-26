@@ -83,4 +83,10 @@ public class StageController {
         assert theme != null;
         scene.getStylesheets().add(1, theme.toExternalForm());
     }
+
+    public static void show(){
+        if(!UserSettings.launchMinimized) {
+            stage.show();
+        }
+    }
 }

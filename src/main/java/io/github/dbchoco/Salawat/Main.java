@@ -25,19 +25,17 @@ public class Main extends Application {
         System.setProperty("prism.text", "t2k");
         System.setProperty("prism.lcdtext", "false");
 
-        Thread thread = new Thread(){
-            public void run(){
-                try {
-                    loadPrayerTimes();
-                    FontBinder.init();
-                    loadLocale();
-                    checkFirstTime();
-                    checkForUpdates();
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
+        Thread thread = new Thread(() -> {
+            try {
+                loadPrayerTimes();
+                FontBinder.init();
+                loadLocale();
+                checkFirstTime();
+                checkForUpdates();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        };
+        });
         thread.start();
 
         StageController.setStage(stage);
@@ -72,10 +70,6 @@ public class Main extends Application {
         }
         else stage.setMaximized(true);
         addStageSizeListener(stage);
-
-        if(!UserSettings.launchMinimized) {
-            stage.show();
-        }
 
         playStartupSound();
     }

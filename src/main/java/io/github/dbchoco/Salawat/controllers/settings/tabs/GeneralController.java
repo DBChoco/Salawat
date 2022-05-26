@@ -45,7 +45,7 @@ public class GeneralController extends BaseController implements SettingsPage{
     private void setupLanguageListener() {
         languageCombo.valueProperty().addListener((observableValue, o, t1) -> {
             I18N.setLocale(Locale.forLanguageTag(((ListItem) t1).getValue()));
-            if (((ListItem) o).getValue().equals("ar") || ((ListItem) t1).getValue().equals("ar")){
+            if (o != null && (((ListItem) o).getValue().equals("ar")) || ((ListItem) t1).getValue().equals("ar")){
                 UserSettings.language  = ((ListItem) t1).getValue();
                 FontBinder.reloadFonts();
             }

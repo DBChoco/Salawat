@@ -5,6 +5,7 @@ import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.DialogCreator;
 import io.github.dbchoco.Salawat.helpers.SizeBinder;
+import io.github.dbchoco.Salawat.helpers.StageController;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -29,6 +30,7 @@ public class MainController extends BaseController {
         Controllers.setMainController(this);
         makeResizable();
         loadBGImage();
+        StageController.show();
     }
 
     public ReadOnlyDoubleProperty getWidthProperty(){
@@ -51,25 +53,10 @@ public class MainController extends BaseController {
     }
 
     public void loadBGImage(){
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                if (UserSettings.bgImage){
-                    if (!root.getBackground().getImages().isEmpty()){
-                        if (!root.getBackground().getImages().get(0).getImage().getUrl().equals(UserSettings.bgImagePath)){
-                            Image image = new Image(UserSettings.bgImagePath);
-                            // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
-                            BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
-                            // new BackgroundImage(image, repeatX, repeatY, position, size)
-                            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-
-                            // new Background(images...)
-                            Background background = new Background(backgroundImage);
-
-                            root.setBackground(background);
-                        }
-                    }
-                    else {
+        Platform.runLater(() -> {
+            if (UserSettings.bgImage){
+                if (!root.getBackground().getImages().isEmpty()){
+                    if (!root.getBackground().getImages().get(0).getImage().getUrl().equals(UserSettings.bgImagePath)){
                         Image image = new Image(UserSettings.bgImagePath);
                         // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
                         BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
@@ -83,17 +70,25 @@ public class MainController extends BaseController {
                     }
                 }
                 else {
-                    BackgroundFill backgroundFill;
-                    if (UserSettings.darkMode) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
-                    else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
-                    Background background = new Background(backgroundFill);
+                    Image image = new Image(UserSettings.bgImagePath);
+                    // new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
+                    BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true);
+                    // new BackgroundImage(image, repeatX, repeatY, position, size)
+                    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+
+                    // new Background(images...)
+                    Background background = new Background(backgroundImage);
+
                     root.setBackground(background);
                 }
             }
+            else {
+                BackgroundFill backgroundFill;
+                if (UserSettings.darkMode) backgroundFill = new BackgroundFill(Color.web("#212121"), null, null);
+                else backgroundFill = new BackgroundFill(Color.WHITE, null, null);
+                Background background = new Background(backgroundFill);
+                root.setBackground(background);
+            }
         });
-    }
-
-    public void reload() {
-        loadBGImage();
     }
 }
