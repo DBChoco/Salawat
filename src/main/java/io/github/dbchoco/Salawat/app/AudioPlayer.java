@@ -90,6 +90,12 @@ public class AudioPlayer {
         });
         isPlaying = true;
     }
+
+    public static double getProgressTime(){
+        double progress = mediaPlayer.getCurrentTime().toMillis()/mediaPlayer.getTotalDuration().toMillis();
+        if (Double.isNaN(progress)) return 0.00;
+        else return progress;
+    }
     public static Boolean getIsPlaying() {
         return isPlaying;
     }

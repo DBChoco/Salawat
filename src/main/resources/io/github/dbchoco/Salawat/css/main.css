@@ -63,3 +63,10 @@
 .date-picker > .arrow-button {
     -fx-background-radius: 0 10 10 0;
 }
+
+#progressBar .track,
+#progressBar .bar1,
+#progressBar .bar2 {
+    -fx-arc-height: 2;
+    -fx-arc-width: 10;
+}

@@ -3,6 +3,7 @@ package io.github.dbchoco.Salawat.app;
 import com.batoulapps.adhan.PrayerTimes;
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.helpers.Controllers;
+import io.github.dbchoco.Salawat.helpers.Reloader;
 import io.github.dbchoco.Salawat.helpers.StageController;
 import javafx.application.Platform;
 
@@ -28,8 +29,8 @@ public class MainTimer{
                 Platform.runLater(new Runnable(){
                     @Override
                     public void run() {
-                        checkIfNewDay();
                         checkAdhan();
+                        Controllers.getPrayerGridController().createProgressAnimation();
                     }
                 });
             }
@@ -43,7 +44,7 @@ public class MainTimer{
                     @Override
                     public void run() {
                         Controllers.getTimeController().displayGregorianDate();
-                        Controllers.getPrayerGridController().createProgressAnimation();
+                        checkIfNewDay();
                     }
                 });
             }
@@ -53,7 +54,7 @@ public class MainTimer{
     private void checkIfNewDay(){
         if (startTime.getDayOfMonth() != now().getDayOfMonth()){
             try {
-                Main.reload();
+                Reloader.reload();
             } catch (ClassNotFoundException e) {
                 System.err.println("Couldn't Reload prayer times");
                 throw new RuntimeException(e);

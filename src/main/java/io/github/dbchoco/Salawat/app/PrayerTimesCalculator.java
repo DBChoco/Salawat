@@ -4,7 +4,6 @@ import com.batoulapps.adhan.*;
 import com.batoulapps.adhan.data.DateComponents;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -140,7 +139,7 @@ public class PrayerTimesCalculator {
         return TimeLeft.timeUntilDate(nextPrayer.getPrayerTimes());
     }
 
-    public double progressTime(){
+    public double getProgressTime(){
         Date now = new Date();
         double progress;
         if (!currentPrayer.getName().equalsIgnoreCase("isha")) progress = (double) 1 - (nextPrayer.getPrayerTimes().getTime() - now.getTime()) /

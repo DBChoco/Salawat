@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.controllers.main;
 
 import com.batoulapps.adhan.PrayerTimes;
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.AudioPlayer;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.PrayerTimesCalculator;
 import io.github.dbchoco.Salawat.controllers.BaseController;
@@ -104,24 +105,38 @@ public class PrayerGridController extends BaseController {
     }
 
     public void createProgressAnimation(){
-        PrayerTimesCalculator prayerTimesCalculator = Main.getPrayerTimesCalculator();
         final double[] progress = {0.00};
-        progress[0] = prayerTimesCalculator.progressTime();
-        if (progressBar.getProgress() > progress[0] || progressBar.getProgress() + 0.05 < progress[0]){
+        if (AudioPlayer.getIsPlaying()){
+            progress[0] = AudioPlayer.getProgressTime();
+        }
+        else {
+            PrayerTimesCalculator prayerTimesCalculator = Main.getPrayerTimesCalculator();
+            progress[0] = prayerTimesCalculator.getProgressTime();
+        }
+        boolean bigger = progressBar.getProgress() > progress[0];
+        if (bigger || progressBar.getProgress() + 0.005 < progress[0]){
             Platform.runLater(() -> {
-
-                Animation a1 = AnimationUtils.TimelineBuilder.build()
-                        .add(
-                                AnimationUtils.KeyFrames.of(1000, progressBar.progressProperty(), progress[0], Interpolators.INTERPOLATOR_V1)
-                        )
-                        .getAnimation();
+                Animation a1;
+                if (bigger | progressBar.getProgress() + 0.05 < progress[0]){
+                    a1 = AnimationUtils.TimelineBuilder.build()
+                            .add(
+                                    AnimationUtils.KeyFrames.of(1000, progressBar.progressProperty(), progress[0], Interpolators.INTERPOLATOR_V1)
+                            )
+                            .getAnimation();
+                }
+                else {
+                    a1 = AnimationUtils.TimelineBuilder.build()
+                            .add(
+                                    AnimationUtils.KeyFrames.of(1000, progressBar.progressProperty(), progress[0], Interpolators.LINEAR)
+                            )
+                            .getAnimation();
+                }
                 a1.play();
             });
         }
         else{
             progressBar.setProgress(progress[0]);
         }
-
     }
 
     @Override

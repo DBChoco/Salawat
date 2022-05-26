@@ -92,15 +92,11 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [ ] Aur
 - [ ] Fix bugs
   - [ ] Fix bug that causes crash after Adhan is played (need more information about the cause)
-  - [x] Fix Windows internet
-- [ ] ~~Add loading screen~~ Decided against it, the app is fast enough that I can just hide the window while everything loads.
 - [ ] Weather
-- [x] Quran Quote
-- [ ] ~~City list instead of lat & lon~~ Takes too much place, lat and lon are good enough.
 - [ ] Sunnah times
-- [x] Date picker
 - [ ] DateFormat
-- [ ] Better system tray (probably not possible until compatibility with JavaFX is added)
+- [x] Make progress bar display audio progress
+- [x] Make progress bar squared
 - Calculation methods
   - [ ] Adjustements
 
