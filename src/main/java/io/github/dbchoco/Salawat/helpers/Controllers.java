@@ -1,9 +1,6 @@
 package io.github.dbchoco.Salawat.helpers;
 
-import io.github.dbchoco.Salawat.controllers.main.FooterController;
-import io.github.dbchoco.Salawat.controllers.main.MainController;
-import io.github.dbchoco.Salawat.controllers.main.TimeController;
-import io.github.dbchoco.Salawat.controllers.main.PrayerGridController;
+import io.github.dbchoco.Salawat.controllers.main.*;
 import io.github.dbchoco.Salawat.controllers.settings.SettingsController;
 import io.github.dbchoco.Salawat.controllers.settings.tabs.*;
 
@@ -18,6 +15,8 @@ public class Controllers {
     private static AdvancedController advancedController;
     private static MainController mainController;
     private static FooterController mainFooterController;
+
+    private static HeaderController mainHeaderController;
 
 
     public static TimeController getTimeController() {
@@ -42,6 +41,10 @@ public class Controllers {
 
     public static AppearanceController getAppearanceController() {
         return appearanceController;
+    }
+
+    public static HeaderController getMainHeaderController() {
+        return mainHeaderController;
     }
 
     public static SettingsPage getSettingsPage(String tab) throws ClassNotFoundException {
@@ -91,5 +94,9 @@ public class Controllers {
 
     public static void setSettingsController(SettingsController settingsController) {
         Controllers.settingsController = settingsController;
+    }
+
+    public static void setMainHeaderController(HeaderController mainHeaderController) {
+        Controllers.mainHeaderController = mainHeaderController;
     }
 }

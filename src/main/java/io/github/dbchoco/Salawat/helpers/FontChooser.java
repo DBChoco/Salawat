@@ -19,4 +19,8 @@ public class FontChooser {
     public static Font getIconFont(Double size){
         return Font.loadFont( Main.class.getResourceAsStream( "fonts/Font Awesome 6 Free-Solid-900.otf"), size);
     }
+
+    public static Font getWeatherFont(Double size){
+        return Font.loadFont( Main.class.getResourceAsStream( "fonts/weathericons-regular-webfont.ttf"), size);
+    }
 }

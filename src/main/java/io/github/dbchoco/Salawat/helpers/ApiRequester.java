@@ -2,6 +2,7 @@ package io.github.dbchoco.Salawat.helpers;
 
 import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.UserSettings;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -43,6 +44,25 @@ public class ApiRequester {
             githubVersion = (String) response.get("name");
         }
         return githubVersion;
+    }
+
+    public String[] requestWeather(){
+        String[] weather = {null, null, null};
+        ResourceBundle bundle = ResourceBundle.getBundle("data");
+        JSONObject response = request("https://api.openweathermap.org/data/2.5/weather?lat=" + UserSettings.latitude +
+                "&lon=" + UserSettings.longitude +
+                "&units=" + "metric" +
+                "&appid=" + bundle.getString("weatherApiKey"));
+
+        if (response != null){
+            System.out.println(response);
+            weather[0] = String.valueOf(((JSONObject)(((JSONArray)response.get("weather")).get(0))).get("id"));
+            if (((String) ((JSONObject)(((JSONArray)response.get("weather")).get(0))).get("icon")).charAt(2) == 'd'){
+                weather[1] = "day";
+            } else weather[1] = "night";
+            weather[2] = ((JSONObject)response.get("main")).get("temp").toString();
+        }
+        return weather;
     }
 
     private JSONObject request(String apiURL){

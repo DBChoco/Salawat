@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.github.dbchoco.Salawat.controllers.main.HeaderController">
-      <Label id="title" fx:id="title" styleClass="title" text="Salawat" />
+<AnchorPane fx:id="root" prefHeight="40.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbchoco.Salawat.controllers.main.HeaderController">
+   <HBox fx:id="hbox" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <HBox fx:id="titleBox" prefWidth="640.0">
+            <children>
+                  <Label id="title" fx:id="title" styleClass="title" text="Salawat" />
+            </children>
+         </HBox>
+         <HBox fx:id="weatherBox" visible="false" alignment="TOP_RIGHT" prefWidth="680.0">
+            <children>
+               <Label fx:id="weatherLabel" text="20°C">
+                  <graphic>
+                     <Label fx:id="weatherIcon" text="X">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Label>
+                  </graphic>
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
+      </children>
+   </HBox>
 </AnchorPane>

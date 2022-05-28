@@ -4,24 +4,23 @@ import io.github.dbchoco.Salawat.helpers.ApiRequester;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.DialogCreator;
 import javafx.application.Platform;
-import org.json.simple.JSONObject;
 
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class UpdateChecker {
+public class ApiTimer {
 
     private final String currentVersion;
     private String githubVersion;
     private final ApiRequester apiRequester = new ApiRequester();
 
-    public UpdateChecker(){
+    public ApiTimer(){
         ResourceBundle bundle = ResourceBundle.getBundle("data");
 
         currentVersion = bundle.getString("version");
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        Timer updater = new Timer();
+        updater.schedule(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(new Runnable(){
@@ -30,17 +29,30 @@ public class UpdateChecker {
                         githubVersion = apiRequester.requestVersion();
                         if (githubVersion == null){
                             System.out.println("You appear to be offline, we will not look for updates this session");
-                            timer.cancel();
+                            updater.cancel();
                         }
                         else if (compareVersion()){
                             DialogCreator dialogCreator = new DialogCreator();
                             dialogCreator.showUpdateDialog(githubVersion);
-                            timer.cancel();
+                            updater.cancel();
                         }
                     }
                 });
             }
-        }, 3000, 900000);
+        }, 3000, 900000*4); //1 hour
+
+        Timer weatherChecker = new Timer();
+        weatherChecker.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(new Runnable(){
+                    @Override
+                    public void run() {
+                        Controllers.getMainHeaderController().setWeather(apiRequester.requestWeather());
+                    }
+                });
+            }
+        }, 3000, 900000); //15 minutes
     }
 
     private Boolean compareVersion(){

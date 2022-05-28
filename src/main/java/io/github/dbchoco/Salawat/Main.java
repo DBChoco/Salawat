@@ -88,7 +88,7 @@ public class Main extends Application {
     }
 
     private void checkForUpdates() {
-        UpdateChecker updateChecker = new UpdateChecker();
+        ApiTimer apiTimer = new ApiTimer();
     }
 
     public static void loadPrayerTimes() throws ClassNotFoundException {
