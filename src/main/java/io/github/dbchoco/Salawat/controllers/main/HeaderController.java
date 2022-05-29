@@ -1,6 +1,7 @@
 package io.github.dbchoco.Salawat.controllers.main;
 
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
 import io.github.dbchoco.Salawat.helpers.Controllers;
 import io.github.dbchoco.Salawat.helpers.FontBinder;
@@ -37,7 +38,7 @@ public class HeaderController extends BaseController {
     public void setWeather(String[] weather){
         if (weather[0] != null){
             weatherIcon.setText(getWeatherIcon(Integer.parseInt(weather[0]), weather[1]));
-            weatherLabel.setText(Math.round(Double.parseDouble(weather[2])) + "°C");
+            weatherLabel.setText(Math.round(Double.parseDouble(weather[2])) + "°" + UserSettings.weatherUnit);
             if (!weatherShown){
                 weatherBox.setVisible(true);
                 weatherShown = true;

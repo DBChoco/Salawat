@@ -48,10 +48,14 @@ public class ApiRequester {
 
     public String[] requestWeather(){
         String[] weather = {null, null, null};
+        String unit;
+        if (UserSettings.weatherUnit.equals("C")) unit = "metric";
+        else if (UserSettings.weatherUnit.equals("F")) unit = "imperial";
+        else unit = "standard";
         ResourceBundle bundle = ResourceBundle.getBundle("data");
         JSONObject response = request("https://api.openweathermap.org/data/2.5/weather?lat=" + UserSettings.latitude +
                 "&lon=" + UserSettings.longitude +
-                "&units=" + "metric" +
+                "&units=" + unit +
                 "&appid=" + bundle.getString("weatherApiKey"));
 
         if (response != null){

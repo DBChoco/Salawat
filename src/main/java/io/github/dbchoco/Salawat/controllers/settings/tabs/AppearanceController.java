@@ -4,11 +4,10 @@ import io.github.dbchoco.Salawat.Main;
 import io.github.dbchoco.Salawat.app.I18N;
 import io.github.dbchoco.Salawat.app.UserSettings;
 import io.github.dbchoco.Salawat.controllers.BaseController;
-import io.github.dbchoco.Salawat.helpers.Controllers;
-import io.github.dbchoco.Salawat.helpers.StageController;
-import io.github.dbchoco.Salawat.helpers.StringShortener;
+import io.github.dbchoco.Salawat.helpers.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,8 +26,16 @@ public class AppearanceController extends BaseController implements SettingsPage
     public MFXCheckbox darkmodeCheck;
     public Label themeLabel;
     public Label backgroundImageLabel;
+    public Label weatherLabel;
+    public MFXCheckbox weatherCheck;
+    public MFXComboBox unitCombo;
+    private ListItemArray weatherUnits = new ListItemArray();
 
     public void initialize() throws ClassNotFoundException {
+        weatherUnits.add(new ListItem(I18N.get("celsius"), "C"));
+        weatherUnits.add(new ListItem(I18N.get("fahrenheit"), "F"));
+        weatherUnits.add(new ListItem(I18N.get("kelvin"), "K"));
+        ListGenerator.generateList(unitCombo, weatherUnits);
         translate();
         setupFilePickers();
         setupThemeListener();
@@ -51,6 +58,9 @@ public class AppearanceController extends BaseController implements SettingsPage
         else if (!UserSettings.darkMode && UserSettings.bgImagePath.equals(Main.class.getResource("images/bgImage_dark.jpg").toExternalForm())){
             UserSettings.bgImagePath = Main.class.getResource("images/bgImage.jpg").toExternalForm();
         }
+
+        UserSettings.showWeather = weatherCheck.isSelected();
+        UserSettings.weatherUnit  = weatherUnits.getItembyName(unitCombo.getText()).getValue();
     }
 
     @Override
@@ -60,6 +70,10 @@ public class AppearanceController extends BaseController implements SettingsPage
         darkmodeCheck.setSelected(UserSettings.darkMode);
         bgImageCheck.setSelected(UserSettings.bgImage);
         bgImageButton.setText(StringShortener.shortenString(UserSettings.bgImagePath, 25));
+
+        weatherCheck.setSelected(UserSettings.showWeather);
+        System.out.println(unitCombo.getSelectionModel().getSelectedItem());
+        unitCombo.getSelectionModel().selectItem(weatherUnits.getItembyValue(UserSettings.weatherUnit));
     }
 
     private void setupFilePickers() {
@@ -99,6 +113,10 @@ public class AppearanceController extends BaseController implements SettingsPage
         I18N.bindString(darkmodeCheck, "darkMode");
         I18N.bindString(bgImageCheck, "bgImageCheck");
         bgImageButton.setText(I18N.get("selectFile"));
+
+        I18N.bindString(weatherLabel, "weather");
+        I18N.bindString(weatherCheck, "showWeather");
+        I18N.bindString(unitCombo, "unit");
     }
 
     @Override

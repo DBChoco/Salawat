@@ -68,15 +68,20 @@ public class MainTimer{
             int minutes = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getMinutes();
             int seconds = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getSeconds();
             if (hours == 00 && minutes <= 10){
+                if (AudioPlayer.getIsPlaying()){
+                    Controllers.getTimeController().displayTimeLeft("adhan");
+                }
                 if (minutes == 0 && seconds <= 10){
-                    if (AudioPlayer.getIsPlaying()){
-                        Controllers.getTimeController().displayTimeLeft("adhan");
-                    }
                     if (!launchedAlerts){
                         if (UserSettings.enableAdhan){
                             if (!AudioPlayer.getIsPlaying()){
-                                if (UserSettings.customFajrAdhan && (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr")) AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
-                                else AudioPlayer.play(true);
+                                Runnable runnable = () -> {
+                                    if (UserSettings.customFajrAdhan &&
+                                            (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr"))
+                                        AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
+                                    else AudioPlayer.play(true);
+                                };
+                                runnable.run();
                             }
                         }
                         if (UserSettings.notifications){

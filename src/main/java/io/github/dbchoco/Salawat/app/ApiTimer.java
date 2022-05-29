@@ -48,11 +48,22 @@ public class ApiTimer {
                 Platform.runLater(new Runnable(){
                     @Override
                     public void run() {
-                        Controllers.getMainHeaderController().setWeather(apiRequester.requestWeather());
+                        if (UserSettings.showWeather){
+                            Controllers.getMainHeaderController().setWeather(apiRequester.requestWeather());
+                        }
                     }
                 });
             }
         }, 3000, 900000); //15 minutes
+    }
+
+    public void reloadWeather(){
+        if (UserSettings.showWeather){
+            Controllers.getMainHeaderController().setWeather(apiRequester.requestWeather());
+        }
+        else {
+            Controllers.getMainHeaderController().weatherBox.setVisible(false);
+        }
     }
 
     private Boolean compareVersion(){

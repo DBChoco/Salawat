@@ -1,6 +1,7 @@
 package io.github.dbchoco.Salawat.helpers;
 
 import io.github.dbchoco.Salawat.Main;
+import io.github.dbchoco.Salawat.app.UserSettings;
 
 import java.time.LocalDate;
 
@@ -16,5 +17,7 @@ public class Reloader {
         //TODO add if value of dateformat changed
         Controllers.getPrayerGridController().setupDatePicker();
         Controllers.getTimeController().loadFormat();
+
+        Main.getApiTimer().reloadWeather();
     }
 }

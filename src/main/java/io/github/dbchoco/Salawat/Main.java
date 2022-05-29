@@ -19,6 +19,7 @@ import java.util.Locale;
 public class Main extends Application {
 
     private static PrayerTimesCalculator prayerTimesCalculator;
+    private static ApiTimer apiTimer;
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
         //Fix arabic text bug
@@ -88,7 +89,11 @@ public class Main extends Application {
     }
 
     private void checkForUpdates() {
-        ApiTimer apiTimer = new ApiTimer();
+        apiTimer = new ApiTimer();
+    }
+
+    public static ApiTimer getApiTimer() {
+        return apiTimer;
     }
 
     public static void loadPrayerTimes() throws ClassNotFoundException {

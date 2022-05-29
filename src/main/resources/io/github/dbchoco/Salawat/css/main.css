@@ -41,11 +41,11 @@
 }
 
 .mfx-checkbox, .mfx-radio-button{
-    -mfx-main: -common-gradient;
+    -mfx-main: -color-main;
 }
 
 .mfx-checkbox .mfx-ripple-generator {
-	-mfx-ripple-color: -common-gradient;
+	-mfx-ripple-color: -color-main;
 	-fx-opacity: 0.5;
 }
 
