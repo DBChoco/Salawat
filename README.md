@@ -92,9 +92,9 @@ On Salawat you can choose to play an Adhan or not, you can import your own audio
 - [ ] Aur
 - [ ] Fix bugs
   - [ ] Fix bug that causes crash after Adhan is played (need more information about the cause)
-- [ ] Weather
+- [x] Weather
 - [ ] Sunnah times
-- [ ] DateFormat
+- [x] DateFormat
 - [x] Make progress bar display audio progress
 - [x] Make progress bar squared
 - Calculation methods

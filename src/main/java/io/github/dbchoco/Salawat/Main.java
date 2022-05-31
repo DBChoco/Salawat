@@ -69,7 +69,10 @@ public class Main extends Application {
             stage.setWidth(UserSettings.windowWidth);
             stage.setHeight(UserSettings.windowHeight);
         }
-        else stage.setMaximized(true);
+        else{
+            stage.setWidth(1280);
+            stage.setHeight(720);
+        }
         addStageSizeListener(stage);
 
         playStartupSound();

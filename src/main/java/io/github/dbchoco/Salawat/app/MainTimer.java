@@ -68,9 +68,6 @@ public class MainTimer{
             int minutes = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getMinutes();
             int seconds = Main.getPrayerTimesCalculator().timeAfterCurrentPrayer().getSeconds();
             if (hours == 00 && minutes <= 10){
-                if (AudioPlayer.getIsPlaying()){
-                    Controllers.getTimeController().displayTimeLeft("adhan");
-                }
                 if (minutes == 0 && seconds <= 10){
                     if (!launchedAlerts){
                         if (UserSettings.enableAdhan){
@@ -93,7 +90,12 @@ public class MainTimer{
                     }
                 }
                 else {
-                    Controllers.getTimeController().displayTimeLeft("now");
+                    if (AudioPlayer.getIsPlaying()){
+                        Controllers.getTimeController().displayTimeLeft("adhan");
+                    }
+                    else {
+                        Controllers.getTimeController().displayTimeLeft("now");
+                    }
                 }
             }
             else {
