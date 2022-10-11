@@ -11,6 +11,9 @@ public class FontChooser {
         if (UserSettings.language.equals("ar")){
             return Font.loadFont( Main.class.getResourceAsStream( "fonts/IBMPlexSansArabic-Regular.ttf"), size);
         }
+        else if (UserSettings.language.equals("ru")){
+            return new Font(size);
+        }
         else{
             return Font.loadFont( Main.class.getResourceAsStream( "fonts/Quicksand-VariableFont_wght.ttf"), size);
         }

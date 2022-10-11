@@ -72,13 +72,10 @@ public class MainTimer{
                     if (!launchedAlerts){
                         if (UserSettings.enableAdhan){
                             if (!AudioPlayer.getIsPlaying()){
-                                Runnable runnable = () -> {
-                                    if (UserSettings.customFajrAdhan &&
-                                            (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr"))
-                                        AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
-                                    else AudioPlayer.play(true);
-                                };
-                                runnable.run();
+                                if (UserSettings.customFajrAdhan &&
+                                        (Main.getPrayerTimesCalculator().getCurrentPrayer().getName()).equals("fajr"))
+                                    AudioPlayer.play(UserSettings.customFajrAdhanPath, true);
+                                else AudioPlayer.play(true);
                             }
                         }
                         if (UserSettings.notifications){
@@ -89,13 +86,11 @@ public class MainTimer{
                         launchedAlerts = true;
                     }
                 }
+                if (AudioPlayer.getIsPlaying()){
+                    Controllers.getTimeController().displayTimeLeft("adhan");
+                }
                 else {
-                    if (AudioPlayer.getIsPlaying()){
-                        Controllers.getTimeController().displayTimeLeft("adhan");
-                    }
-                    else {
-                        Controllers.getTimeController().displayTimeLeft("now");
-                    }
+                    Controllers.getTimeController().displayTimeLeft("now");
                 }
             }
             else {

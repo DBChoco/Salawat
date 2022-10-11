@@ -4,7 +4,7 @@
   <groupId>io.github.dbchoco</groupId>
   <artifactId>Salawat</artifactId>
   <name>Salawat</name>
-  <version>1.0.3</version>
+  <version>1.3.0</version>
   <description>Salawat: Adhan app</description>
   <organization>
     <name>DarkBlackChocolate</name>
@@ -84,18 +84,22 @@
               <winConfig>
                 <generateMsi>false</generateMsi>
                 <icoFile>src/main/resources/io/github/dbchoco/Salawat/images/icon.ico</icoFile>
-                <headerType>console</headerType>
+                <headerType>gui</headerType>
                 <originalFilename>${name}-${version}.exe</originalFilename>
-                <setupMode>installForCurrentUser</setupMode>
+                <setupMode>askTheUser</setupMode>
                 <disableRunAfterInstall>false</disableRunAfterInstall>
                 <createDesktopIconTask>false</createDesktopIconTask>
+                <disableDirPage>false</disableDirPage>
+                <disableProgramGroupPage>false</disableProgramGroupPage>
+                <disableFinishedPage>false</disableFinishedPage>
+                <disableRunAfterInstall>false</disableRunAfterInstall>
                 <registry>
                   <entries>
                     <entry>
                       <key>HKCU:Software\Microsoft\Windows\CurrentVersion\Run</key>
                       <valueName>Salawat</valueName>
                       <valueType>REG_SZ</valueType>
-                      <valueData>%USERPROFILE%\AppData\Local\Programs\Salawat\Salawat.exe</valueData>
+                      <valueData>""{app}\{#MyAppExeName}""</valueData>
                     </entry>
                   </entries>
                 </registry>
