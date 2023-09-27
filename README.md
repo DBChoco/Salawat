@@ -7,7 +7,7 @@
     <img src="images/icon.png" alt="Logo" width="150" height="150">
   </a>
 
-<h3 align="center">Salawat - سالوات</h3>
+<h3 align="center">Salawat - صلوات</h3>
 
   <p align="center">
     A prayer times and Adhan application for Windows, macOS and GNU/Linux written in Java
